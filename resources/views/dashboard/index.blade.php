@@ -1,227 +1,291 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="main-container">
-    <div class="pd-ltr-20">
-        <!-- burada bir kart var <div class="card-box pd-20 height-100-p mb-30">
-            <div class="row align-items-center">
-                <div class="col-md-4">
-                    <img src="{{ asset('assets/vendors/images/banner-img.png') }}" alt="">
-                </div>
-                <div class="col-md-8">
-                    <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                        Welcome back <div class="weight-600 font-30 text-blue">Johnny Brown!</div>
-                    </h4>
-                    <p class="font-18 max-width-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde hic non repellendus debitis iure, doloremque assumenda. Autem modi, corrupti, nobis ea iure fugiat, veniam non quaerat mollitia animi error corporis.</p>
-                </div>
-            </div>
-        </div> -->
-        <div class="row">
-            <div class="col-xl-3 mb-30">
-                <div class="card-box height-100-p widget-style1">
-                    <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart"></div>
+<div class="row">
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-info card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Kategori Sayısı
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                               
+                            </span>
                         </div>
-                        <div class="widget-data">
-                            <div class="h4 mb-0">2020</div>
-                            <div class="weight-600 font-14">Contact</div>
+                        <div class="col-auto">
+                            <i class="fas fa-list text-white"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 mb-30">
-                <div class="card-box height-100-p widget-style1">
-                    <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart2"></div>
+        </a>
+    </div>
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-success card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Ürün Sayısı
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                               
+                            </span>
                         </div>
-                        <div class="widget-data">
-                            <div class="h4 mb-0">400</div>
-                            <div class="weight-600 font-14">Deals</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 mb-30">
-                <div class="card-box height-100-p widget-style1">
-                    <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart3"></div>
-                        </div>
-                        <div class="widget-data">
-                            <div class="h4 mb-0">350</div>
-                            <div class="weight-600 font-14">Campaign</div>
+                        <div class="col-auto">
+                            <i class="fas fa-tags text-white"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 mb-30">
-                <div class="card-box height-100-p widget-style1">
-                    <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart4"></div>
+        </a>
+    </div>
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-warning card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Müşteri Sayısı
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                                
+                            </span>
                         </div>
-                        <div class="widget-data">
-                            <div class="h4 mb-0">$6060</div>
-                            <div class="weight-600 font-14">Worth</div>
+                        <div class="col-auto">
+                            <i class="fas fa-users text-white"></i>
                         </div>
                     </div>
                 </div>
             </div>
+        </a>
+    </div>
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-danger card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Bugünkü Siparişler
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                                
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-shopping-cart text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-info card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Bekleyen Siparişler
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                                
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-hourglass-start text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-success card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Hazırlanıyor
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                                
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-hourglass-half text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-warning card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Hazır Siparişler
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                                
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-hourglass-end text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-danger card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Tamamlanan Siparişler
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                               
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-check-circle text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-info card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Havale/Eft Bildirimleri
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                                
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-handshake text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-success card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Onay Bekleyen Yorumlar
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                               
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comment text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-warning card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Ürün Bekleyenler Listesi
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                              
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-list text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xl-3">
+        <a href="">
+            <div class="card card-custom bg-danger card-stretch gutter-b">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="card-title text-uppercase text-white mb-2">
+                                Toplam Sipariş Sayısı
+                            </h6>
+                            <span class="h3 mb-0 text-white">
+                            
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-cart-arrow-down text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="card card-custom gutter-b">
+    <div class="card-header border-0 py-5 ribbon ribbon-clip ribbon-left">
+        <div class="ribbon-target" style="top: 15px; height: 45px;">
+            <span class="ribbon-inner bg-success"></span><i class="fa fa-star text-white"></i>
         </div>
-        <div class="row">
-            <div class="col-xl-8 mb-30">
-                <div class="card-box height-100-p pd-20">
-                    <h2 class="h4 mb-20">Activity</h2>
-                    <div id="chart5"></div>
-                </div>
-            </div>
-            <div class="col-xl-4 mb-30">
-                <div class="card-box height-100-p pd-20">
-                    <h2 class="h4 mb-20">Lead Target</h2>
-                    <div id="chart6"></div>
-                </div>
-            </div>
+        <h3 class="card-title align-items-start flex-column">
+            <span class="card-label font-weight-bolder text-dark ml-5">Son Gelen Siparişler</span>
+        </h3>
+        <div class="card-toolbar">
+            <a href="" class="btn btn-info font-weight-bolder font-size-sm">Bütün Siparişleri Görüntüle</a>
         </div>
-        <div class="card-box mb-30">
-            <h2 class="h4 pd-20">Best Selling Products</h2>
-            <table class="data-table table nowrap">
-                <thead>
-                    <tr>
-                        <th class="table-plus datatable-nosort">Product</th>
-                        <th>Name</th>
-                        <th>Color</th>
-                        <th>Size</th>
-                        <th>Price</th>
-                        <th>Oty</th>
-                        <th class="datatable-nosort">Action</th>
+    </div>
+    <div class="card-body py-0">
+        <div class="table-responsive">
+            <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
+                <thead class="datatable-head">
+                    <tr class="datatable-row" style="left: 0px;">
+                        <th class="datatable-cell datatable-toggle-detail"><span></span></th>
+                        <th data-field="Sipariş Numarası" class="datatable-cell datatable-cell-sort"><span style="width: 80px;">Sipariş No</span></th>
+                        <th data-field="Sipariş Sahibi" class="datatable-cell datatable-cell-sort"><span style="width: 110px;">Sipariş Sahibi</span></th>
+                        <th data-field="Sipariş Tarihi" class="datatable-cell datatable-cell-sort"><span style="width: 125px;">Sipariş Tarihi</span></th>
+                        <th data-field="Kargo Şirketi" class="datatable-cell datatable-cell-sort"><span style="width: 115px;">Kargo Şirketi</span></th>
+                        <th data-field="Status" class="datatable-cell datatable-cell-sort"><span style="width: 140px;">Sipariş Durumu</span></th>
+                        <th data-field="Ödeme Yöntemi" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 150px;">Ödeme Yöntemi</span></th>
+                        <th data-field="Sipariş Tutarı" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 130px;">Sipariş Tutarı</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="table-plus">
-                            <img src="vendors/images/product-1.jpg" width="70" height="70" alt="">
-                        </td>
-                        <td>
-                            <h5 class="font-16">Shirt</h5>
-                            by John Doe
-                        </td>
-                        <td>Black</td>
-                        <td>M</td>
-                        <td>$1000</td>
-                        <td>1</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                    <i class="dw dw-more"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                    <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                    <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                    <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="table-plus">
-                            <img src="vendors/images/product-2.jpg" width="70" height="70" alt="">
-                        </td>
-                        <td>
-                            <h5 class="font-16">Boots</h5>
-                            by Lea R. Frith
-                        </td>
-                        <td>brown</td>
-                        <td>9UK</td>
-                        <td>$900</td>
-                        <td>1</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                    <i class="dw dw-more"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                    <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                    <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                    <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="table-plus">
-                            <img src="vendors/images/product-3.jpg" width="70" height="70" alt="">
-                        </td>
-                        <td>
-                            <h5 class="font-16">Hat</h5>
-                            by Erik L. Richards
-                        </td>
-                        <td>Orange</td>
-                        <td>M</td>
-                        <td>$100</td>
-                        <td>4</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                    <i class="dw dw-more"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                    <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                    <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                    <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="table-plus">
-                            <img src="vendors/images/product-4.jpg" width="70" height="70" alt="">
-                        </td>
-                        <td>
-                            <h5 class="font-16">Long Dress</h5>
-                            by Renee I. Hansen
-                        </td>
-                        <td>Gray</td>
-                        <td>L</td>
-                        <td>$1000</td>
-                        <td>1</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                    <i class="dw dw-more"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                    <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                    <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                    <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="table-plus">
-                            <img src="vendors/images/product-5.jpg" width="70" height="70" alt="">
-                        </td>
-                        <td>
-                            <h5 class="font-16">Blazer</h5>
-                            by Vicki M. Coleman
-                        </td>
-                        <td>Blue</td>
-                        <td>M</td>
-                        <td>$1000</td>
-                        <td>1</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                    <i class="dw dw-more"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                    <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                    <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                    <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                </div>
-                            </div>
+                        <td colspan="8">
+                            <h4 class="text-muted m-5"><i>Henüz herhangi bir sipariş bulunmamaktadır</i></h4>
                         </td>
                     </tr>
                 </tbody>
@@ -229,3 +293,4 @@
         </div>
     </div>
 </div>
+@endsection

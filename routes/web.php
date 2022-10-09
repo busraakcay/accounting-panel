@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('authManager');
+Route::post('/signin', [AuthController::class, 'signin'])->name('signin')->middleware('authManager');
+Route::middleware('auth')->group(function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+});
