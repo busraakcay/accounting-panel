@@ -1,10 +1,12 @@
 <?php
 
-if(!function_exists("generateUniqueToken")){
-
-    function generateUniqueToken($size = 10,$table = null,$column = null)
+if (!function_exists("checkPasswords")) {
+    function checkPasswords($password, $repassword)
     {
-	 
-	     return 23423423;
+        if ($password == $repassword) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

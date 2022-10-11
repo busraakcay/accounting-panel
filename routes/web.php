@@ -22,4 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('create-admin', [AdminController::class, 'create'])->name('create-admin');
+    Route::post('store-admin', [AdminController::class, 'store'])->name('store-admin');
+    Route::get('edit-admin/{id}', [AdminController::class, 'edit'])->name('edit-admin');
+    Route::put('update-admin/{id}', [AdminController::class, 'update'])->name('update-admin');
+    Route::delete('delete-admin/{id}', [AdminController::class, 'destroy'])->name('delete-admin');
 });

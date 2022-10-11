@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="tr">
 
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
@@ -280,6 +280,13 @@
 						<a href="{{ route('admin') }}" class="menu-link menu-toggle">
 							<i class="menu-icon fas fa-user-shield"></i>
 							<span class="menu-text">Kullanıcılar</span>
+						</a>
+					</li>
+
+					<li class="menu-item {{ (request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+						<a href="{{ route('admin') }}" class="menu-link menu-toggle">
+							<i class="menu-icon fas fa-user-shield"></i>
+							<span class="menu-text">Firmalar</span>
 						</a>
 					</li>
 
