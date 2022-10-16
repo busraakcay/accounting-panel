@@ -92,18 +92,9 @@
 								<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
 							</li>
 							<li class="menu-item menu-item-submenu 
-										{{ (request()->segment(2) == 'site-settings') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'config') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'social') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'tax-rate') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'cargo') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'currency') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'payment-methods') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'unit-weights') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'country') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'city') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'email') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'sms') ? 'menu-item-active menu-item-open' : '' }}
+										{{ (request()->segment(1) == 'admin') ? 'menu-item-active menu-item-open' : '' }}
+										{{ (request()->segment(1) == 'branch') ? 'menu-item-active menu-item-open' : '' }}
+										{{ (request()->segment(1) == 'company') ? 'menu-item-active menu-item-open' : '' }}
 										" aria-haspopup="true" data-menu-toggle="hover">
 								<a class="menu-link menu-toggle">
 									<i class="menu-icon fas fa-cogs"></i>
@@ -114,477 +105,141 @@
 									<i class="menu-arrow"></i>
 									<ul class="menu-subnav">
 
-										<li class="menu-item {{ (request()->segment(2) == 'site-settings') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="" class="menu-link">
-												<i class="menu-icon fas fa-cog">
+										<li class="menu-item {{ (request()->segment(1) == 'branch') ? 'menu-item-active  menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+											<a href="{{ route('branch') }}" class="menu-link">
+												<i class="menu-icon fas fa-sharp fa-solid fa-code-branch">
 													<span></span>
 												</i>
-												<span class="menu-text">Site Ayarları</span>
-												<span class="menu-label">
-													<!-- <span class="label label-rounded label-primary">6</span> -->
-												</span>
+												<span class="menu-text">Şubeler</span>
 											</a>
 										</li>
 
-										<li class="menu-item {{ (request()->segment(2) == 'config') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="" class="menu-link">
-												<i class="menu-icon fas fa-sliders-h">
-													<span></span>
-												</i>
-												<span class="menu-text">Genel Ayarlar</span>
-												<span class="menu-label">
-													<!-- <span class="label label-rounded label-primary">6</span> -->
-												</span>
-											</a>
-										</li>
-										<li class="menu-item {{ (request()->segment(2) == 'social') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="" class="menu-link">
-												<i class="menu-icon fas fa-share-alt">
-													<span></span>
-												</i>
-												<span class="menu-text">Sosyal Medya</span>
-												<span class="menu-label">
-													<!-- <span class="label label-rounded label-primary">6</span> -->
-												</span>
-											</a>
-										</li>
-										<li class="menu-item {{ (request()->segment(2) == 'tax-rate') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="" class="menu-link">
-												<i class="menu-icon fas fa-lira-sign">
-													<span></span>
-												</i>
-												<span class="menu-text">Vergi Oranları</span>
-												<span class="menu-label">
-													<!-- <span class="label label-rounded label-primary">6</span> -->
-												</span>
-											</a>
-										</li>
-										<li class="menu-item {{ (request()->segment(2) == 'cargo') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="" class="menu-link">
-												<i class="menu-icon fas fa-truck">
-													<span></span>
-												</i>
-												<span class="menu-text">Kargo Şirketleri</span>
-												<span class="menu-label">
-													<!-- <span class="label label-rounded label-primary">6</span> -->
-												</span>
-											</a>
-										</li>
-
-										<li class="menu-item {{ (request()->segment(2) == 'currency') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="" class="menu-link">
-												<i class="menu-icon far fa-money-bill-alt">
-													<span></span>
-												</i>
-												<span class="menu-text">Para Birimleri</span>
-												<span class="menu-label">
-													<!-- <span class="label label-rounded label-primary">6</span> -->
-												</span>
-											</a>
-										</li>
-
-										<li class="menu-item {{ (request()->segment(2) == 'payment-methods') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="" class="menu-link">
-												<i class="menu-icon fab fa-cc-visa">
-													<span></span>
-												</i>
-												<span class="menu-text">Ödeme Yöntemleri</span>
-												<span class="menu-label">
-													<!-- <span class="label label-rounded label-primary">6</span> -->
-												</span>
-											</a>
-										</li>
-
-										<li class="menu-item {{ (request()->segment(2) == 'unit-weights') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="" class="menu-link">
-												<i class="menu-icon fas fa-balance-scale">
-													<span></span>
-												</i>
-												<span class="menu-text">Ağırlık Birimleri</span>
-												<span class="menu-label">
-													<!-- <span class="label label-rounded label-primary">6</span> -->
-												</span>
-											</a>
-										</li>
-
-										<li class="menu-item menu-item-submenu
-										{{ (request()->segment(2) == 'country') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(2) == 'city') ? 'menu-item-active menu-item-open' : '' }}
-										" aria-haspopup="true" data-menu-toggle="hover">
-											<a class="menu-link menu-toggle">
+										<li class="menu-item {{ (request()->segment(1) == 'company') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+											<a href="{{ route('company') }}" class="menu-link menu-toggle">
 												<i class="menu-icon fas fa-city"></i>
-												<span class="menu-text">Ülkeler ve Şehirler</span>
-												<i class="menu-arrow"></i>
-											</a>
-											<div class="menu-submenu">
-												<i class="menu-arrow"></i>
-												<ul class="menu-subnav">
-													<li class="menu-item {{ (request()->segment(2) == 'country') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-														<a href="" class="menu-link">
-															<i class="menu-bullet menu-bullet-line">
-																<span></span>
-															</i>
-															<span class="menu-text">Ülkeler</span>
-															<span class="menu-label">
-																<!-- <span class="label label-rounded label-primary">6</span> -->
-															</span>
-														</a>
-													</li>
-													<li class="menu-item {{ (request()->segment(2) == 'city') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-														<a href="" class="menu-link">
-															<i class="menu-bullet menu-bullet-line">
-																<span></span>
-															</i>
-															<span class="menu-text">Şehirler</span>
-															<span class="menu-label">
-																<!-- <span class="label label-rounded label-primary">6</span> -->
-															</span>
-														</a>
-													</li>
-												</ul>
-											</div>
-
-										<li class="menu-item {{ (request()->segment(2) == 'email') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="" class="menu-link">
-												<i class="menu-icon fas fa-envelope-open-text"></i>
-												<span class="menu-text">Mail Şablonu Ayarları</span>
-												<span class="menu-label">
-													<!-- <span class="label label-rounded label-primary">6</span> -->
-												</span>
+												<span class="menu-text">Firmalar</span>
 											</a>
 										</li>
-
-										<li class="menu-item {{ (request()->segment(2) == 'sms') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="" class="menu-link">
-												<i class="menu-icon fas fa-sms"></i>
-												<span class="menu-text">SMS Şablonu Ayarları</span>
-												<span class="menu-label">
-													<!-- <span class="label label-rounded label-primary">6</span> -->
-												</span>
+										<li class="menu-item {{ (request()->segment(1) == 'bill_type') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+											<a href="" class="menu-link menu-toggle">
+												<i class="menu-icon fas fa-tags"></i>
+												<span class="menu-text">Fatura Türleri</span>
 											</a>
 										</li>
+										<li class="menu-item {{ (request()->segment(1) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+											<a href="{{ route('admin') }}" class="menu-link menu-toggle">
+												<i class="menu-icon fas fa-user-shield"></i>
+												<span class="menu-text">Kullanıcılar</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+
+							<li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
+								<a class="menu-link menu-toggle">
+									<i class="menu-icon fas fa-chart-line"></i>
+									<span class="menu-text">Analiz ve Raporlar</span>
+								</a>
 							</li>
+
+
+
+
+
+							<li class="menu-item {{ (request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="{{ route('admin') }}" class="menu-link menu-toggle">
+									<i class="menu-icon fas fa-receipt"></i>
+									<span class="menu-text">Faturalar</span>
+								</a>
+							</li>
+
+
+
+							<li class="menu-item {{ (request()->segment(2) == 'orders') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="" class="menu-link menu-toggle">
+									<i class="menu-icon far fa-money-bill-alt"></i>
+									<span class="menu-text">Borçlarım</span>
+								</a>
+							</li>
+
 						</ul>
 					</div>
-
-					<!-- <li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
-						<a class="menu-link menu-toggle">
-							<i class="menu-icon fas fa-chart-line"></i>
-							<span class="menu-text">Analiz</span>
-						</a>
-					</li> -->
-
-
-
-					<li class="menu-item {{ (request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-						<a href="{{ route('admin') }}" class="menu-link menu-toggle">
-							<i class="menu-icon fas fa-user-shield"></i>
-							<span class="menu-text">Kullanıcılar</span>
-						</a>
-					</li>
-
-					<li class="menu-item {{ (request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-						<a href="{{ route('admin') }}" class="menu-link menu-toggle">
-							<i class="menu-icon fas fa-user-shield"></i>
-							<span class="menu-text">Firmalar</span>
-						</a>
-					</li>
-
-
-
-					<li class="menu-item menu-item-submenu 
-					{{ (request()->segment(2) == 'categories') ? 'menu-item-active menu-item-open' : '' }}
-					{{ (request()->segment(2) == 'products') ? 'menu-item-active menu-item-open' : '' }}
-					{{ (request()->segment(2) == 'variations') ? 'menu-item-active menu-item-open' : '' }}
-					{{ (request()->segment(2) == 'brand') ? 'menu-item-active menu-item-open' : '' }}
-					" aria-haspopup="true" data-menu-toggle="hover">
-						<a class="menu-link menu-toggle">
-							<i class="menu-icon fas fa-shopping-cart"></i>
-							<span class="menu-text">Katalog</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="menu-submenu">
-							<i class="menu-arrow"></i>
-							<ul class="menu-subnav">
-
-								<li class="menu-item {{ (request()->segment(2) == 'categories') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="" class="menu-link">
-										<i class="menu-icon fas fa-tags">
-											<span></span>
-										</i>
-										<span class="menu-text">Kategoriler</span>
-										<span class="menu-label">
-											<!-- <span class="label label-rounded label-primary">6</span> -->
-										</span>
-									</a>
-								</li>
-
-								<li class="menu-item {{ (request()->segment(2) == 'products') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="" class="menu-link">
-										<i class="menu-icon fas fa-shopping-bag">
-											<span></span>
-										</i>
-										<span class="menu-text">Ürünler</span>
-										<span class="menu-label">
-											<!-- <span class="label label-rounded label-primary">6</span> -->
-										</span>
-									</a>
-								</li>
-
-								<li class="menu-item {{ (request()->segment(2) == 'variations') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="" class="menu-link">
-										<i class="menu-icon fas fa-border-all">
-											<span></span>
-										</i>
-										<span class="menu-text">Ürün Varyasyonları</span>
-										<span class="menu-label">
-											<!-- <span class="label label-rounded label-primary">6</span> -->
-										</span>
-									</a>
-								</li>
-
-								<li class="menu-item {{ (request()->segment(2) == 'brand') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="" class="menu-link">
-										<i class="menu-icon far fa-copyright">
-											<span></span>
-										</i>
-										<span class="menu-text">Markalar</span>
-										<span class="menu-label">
-											<!-- <span class="label label-rounded label-primary">6</span> -->
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-
-					<li class="menu-item {{ (request()->segment(2) == 'orders') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-						<a href="" class="menu-link menu-toggle">
-							<i class="menu-icon fas fa-shopping-basket"></i>
-							<span class="menu-text">Siparişler</span>
-						</a>
-					</li>
-
-					<li class="menu-item {{ (request()->segment(2) == 'discounts') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-						<a href="" class="menu-link menu-toggle">
-							<i class="menu-icon fas fa-percent"></i>
-							<span class="menu-text">İndirimler</span>
-						</a>
-					</li>
-
-
-					<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-						<a class="menu-link menu-toggle">
-							<i class="menu-icon fas fa-puzzle-piece"></i>
-							<span class="menu-text">Entegrasyon</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="menu-submenu">
-							<i class="menu-arrow"></i>
-							<ul class="menu-subnav">
-
-								<li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="javascript:;" class="menu-link">
-										<i class="menu-icon fas fa-puzzle-piece">
-											<span></span>
-										</i>
-										<span class="menu-text">Entegrasyon Ayarları</span>
-										<span class="menu-label">
-											<!-- <span class="label label-rounded label-primary">6
-										</span> -->
-										</span>
-									</a>
-								</li>
-
-								<li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="javascript:;" class="menu-link">
-										<i class="menu-icon fas fa-pager">
-											<span></span>
-										</i>
-										<span class="menu-text">Açıklama Şablonu</span>
-										<span class="menu-label">
-											<!-- <span class="label label-rounded label-primary">6
-										</span> -->
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-
-					<li class="menu-item menu-item-submenu
-					{{ (request()->segment(2) == 'customers') ? 'menu-item-active menu-item-open' : '' }}
-					{{ (request()->segment(2) == 'bulletin') ? 'menu-item-active menu-item-open' : '' }}
-					" aria-haspopup="true" data-menu-toggle="hover">
-						<a class="menu-link menu-toggle">
-							<i class="menu-icon fas fa-users"></i>
-							<span class="menu-text">Müşteriler</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="menu-submenu">
-							<i class="menu-arrow"></i>
-							<ul class="menu-subnav">
-
-								<li class="menu-item {{ (request()->segment(2) == 'customers') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="" class="menu-link">
-										<i class="menu-icon fas fa-address-card">
-											<span></span>
-										</i>
-										<span class="menu-text">Müşteri Listesi</span>
-										<span class="menu-label">
-											<!-- <span class="label label-rounded label-primary">6</span> -->
-										</span>
-									</a>
-								</li>
-
-								<li class="menu-item {{ (request()->segment(2) == 'bulletin') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="" class="menu-link">
-										<i class="menu-icon fas fa-envelope">
-											<span></span>
-										</i>
-										<span class="menu-text">E-Bülten Listesi</span>
-										<span class="menu-label">
-											<!-- <span class="label label-rounded label-primary">6</span> -->
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-
-					<li class="menu-item {{ (request()->segment(2) == 'banners') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-						<a href="" class="menu-link menu-toggle">
-							<i class="menu-icon far fa-image"></i>
-							<span class="menu-text">Banner</span>
-						</a>
-					</li>
-
-					<li class="menu-item {{ (request()->segment(2) == 'news') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-						<a href="" class="menu-link menu-toggle">
-							<i class="menu-icon far fa-newspaper"></i>
-							<span class="menu-text">Haberler</span>
-						</a>
-					</li>
-
-					<li class="menu-item {{ (request()->segment(2) == 'pages') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-						<a href="" class="menu-link menu-toggle">
-							<i class="menu-icon far fa-file-alt"></i>
-							<span class="menu-text">Sayfalar</span>
-						</a>
-					</li>
-
-					<li class="menu-item menu-item-submenu 
-					{{ (request()->segment(2) == 'comments') ? 'menu-item-active menu-item-open' : '' }}
-					" aria-haspopup="true" data-menu-toggle="hover">
-						<a class="menu-link menu-toggle">
-							<i class="menu-icon fas fa-comments"></i>
-							<span class="menu-text">Yorum</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="menu-submenu">
-							<i class="menu-arrow"></i>
-							<ul class="menu-subnav">
-
-								<li class="menu-item {{ (request()->segment(3) == 'published') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="" class="menu-link">
-										<i class="menu-icon fas fa-comment">
-											<span></span>
-										</i>
-										<span class="menu-text">Yayınlanmış</span>
-										<span class="menu-label">
-											<!-- <span class="label label-rounded label-primary">6</span> -->
-										</span>
-									</a>
-								</li>
-
-								<li class="menu-item {{ (request()->segment(3) == 'pending') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="" class="menu-link">
-										<i class="menu-icon fas fa-clock">
-											<span></span>
-										</i>
-										<span class="menu-text">Onay Bekleyenler</span>
-										<span class="menu-label">
-											<span class="label label-rounded label-primary"></span>
-										</span>
-									</a>
-								</li>
-
-							</ul>
-						</div>
-					</li>
-
-					<li class="menu-item {{ (request()->segment(2) == 'notifications') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-						<a href="" class="menu-link menu-toggle">
-							<i class="menu-icon far fa-file-alt"></i>
-							<span class="menu-text">Havale/EFT Bildirimleri</span>
-							<span class="menu-label">
-								<span class="label label-rounded label-primary"></span>
-							</span>
-						</a>
-					</li>
-
-					<li class="menu-item {{ (request()->segment(2) == 'rebate') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-						<a href="" class="menu-link menu-toggle">
-							<i class="menu-icon fa fa-undo"></i>
-							<span class="menu-text">Sipariş İade Bildirimleri</span>
-							<span class="menu-label">
-								<span class="label label-rounded label-primary"></span>
-							</span>
-						</a>
-					</li>
-
-					</ul>
+					<!--end::Menu Container-->
 				</div>
-				<!--end::Menu Container-->
+				<!--end::Aside Menu-->
 			</div>
-			<!--end::Aside Menu-->
-		</div>
-		<!--end::Aside-->
-		<!--begin::Wrapper-->
-		<div class="d-flex flex-column flex-row-fluid wrapper pt-20" id="kt_wrapper">
-			<!--begin::Header-->
-			<div id="kt_header" class="header header-fixed">
-				<!--begin::Container-->
-				<div class="container-fluid d-flex align-items-stretch justify-content-between">
-					<!--begin::Header Menu Wrapper-->
-					<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
-						<!--begin::Header Menu-->
-						<div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+			<!--end::Aside-->
+			<!--begin::Wrapper-->
+			<div class="d-flex flex-column flex-row-fluid wrapper pt-20" id="kt_wrapper">
+				<!--begin::Header-->
+				<div id="kt_header" class="header header-fixed">
+					<!--begin::Container-->
+					<div class="container-fluid d-flex align-items-stretch justify-content-between">
+						<!--begin::Header Menu Wrapper-->
+						<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+							<!--begin::Header Menu-->
+							<div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
 
-							<ul class="menu-nav">
-								<li class="menu-item menu-item-submenu menu-item-rel menu-item-active" data-menu-toggle="click" aria-haspopup="true">
-									<h5 class="text-dark font-weight-bold my-1 mr-5">{{'Boltat Muhasebe Sistemi'}}</h5>
-								</li>
+								<ul class="menu-nav">
+									<li class="menu-item menu-item-submenu menu-item-rel menu-item-active" data-menu-toggle="click" aria-haspopup="true">
+										<h5 class="text-dark font-weight-bold my-1 mr-5">{{'Boltat Muhasebe Sistemi'}}</h5>
+									</li>
 
-							</ul>
+								</ul>
 
-						</div>
-						<!--end::Header Menu-->
-					</div>
-					<!--end::Header Menu Wrapper-->
-					<!--begin::Topbar-->
-					<div class="topbar">
-						<!--begin::User-->
-						<div class="topbar-item">
-							<div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
-								<a href="{{ route('logout') }}" class="navi-link">
-									<span class="symbol symbol-20 mr-3">
-										<i class="fas fa-sign-out-alt"></i>
-									</span>
-									<span class="navi-text decoration-none">Çıkış Yap</span>
-								</a>
 							</div>
+							<!--end::Header Menu-->
 						</div>
-						<!--end::User-->
-					</div>
-					<!--end::Topbar-->
-				</div>
-				<!--end::Container-->
-			</div>
-			<!--end::Header-->
-			<!--begin::Content-->
-			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--end::Header Menu Wrapper-->
+						<!--begin::Topbar-->
+						<div class="topbar">
+							<!--begin::User-->
 
-				<!--begin::Entry-->
-				<div class="d-flex flex-column-fluid">
-					<div class="container">
+							<div class="topbar-item">
+								<div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
+									<span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Şube değiştir veya</span>
+									<span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">çıkış yap</span>
+									<span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
+
+										<div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
+											<div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
+												<span class="symbol-label font-size-h5 font-weight-bold"><i class="menu-icon fas fa-cog"></i></span>
+											</div>
+										</div>
+
+										<div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
+											<ul class="navi navi-hover py-4">
+												<li class="navi-item">
+													<a href="" class="navi-link">
+														<span class="symbol symbol-20 mr-3">
+															<i class="fas fa-user-circle"></i>
+														</span>
+														<span class="navi-text">Profili Düzenle</span>
+													</a>
+												</li>
+												<li class="navi-item">
+													<a href="{{route('logout')}}" class="navi-link">
+														<span class="symbol symbol-20 mr-3">
+															<i class="fas fa-sign-out-alt"></i>
+														</span>
+														<span class="navi-text">Çıkış Yap</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</span>
+								</div>
+							</div>
+							<!--end::User-->
+						</div>
+						<!--end::Topbar-->
+					</div>
+					<!--end::Container-->
+				</div>
+				<!--end::Header-->
+				<!--begin::Content-->
+				<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+					<!--begin::Entry-->
+					<div class="d-flex flex-column-fluid">
+						<div class="container">

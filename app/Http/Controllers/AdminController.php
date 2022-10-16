@@ -22,8 +22,9 @@ class AdminController extends Controller
     {
         $request->validate([
             'type' => 'required|integer',
-            'name' => 'required|string|unique:users,username',
+            'name' => 'required|string',
             'surname' => 'required|string',
+            'username' => 'required|string|unique:users,username',
             'email' => 'required|string',
             'password' => 'required|string',
             'repassword' => 'required|string',
@@ -60,6 +61,7 @@ class AdminController extends Controller
             'type' => 'required|integer',
             'name' => 'required|string',
             'surname' => 'required|string',
+            'username' => 'required|string',
             'email' => 'required|string',
             'password' => 'nullable|string',
             'repassword' => 'nullable|string',

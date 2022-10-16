@@ -4,7 +4,7 @@
 <div class="card card-custom">
     <div class="card-header">
         <h3 class="card-title">
-            Yeni Admin Ekle
+            {{ $user->name }} Yöneticisini Güncelle
         </h3>
     </div>
     <form action="{{ route('update-admin', $user->id) }}" method="post" enctype="multipart/form-data">
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary mr-2">Ekle</button>
+            <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
             <button type="reset" class="btn btn-secondary">İptal</button>
         </div>
     </form>
