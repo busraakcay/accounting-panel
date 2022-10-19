@@ -49,7 +49,6 @@ class BranchController extends Controller
         $branch = Branch::findOrFail($id);
         $branch->name = $request->input('name');
         $branch->amount_cash = $request->input('amountCash');
-
         $branch->save();
         return redirect()->route('branch')->with('success', 'Şube başarıyla güncellendi!');
     }

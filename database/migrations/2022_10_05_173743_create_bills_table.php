@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('branch_id')->constrained('branches');
             $table->string('product');
             $table->integer('quantity');
-            $table->integer('unit_price');
+            $table->double('unit_price');
             $table->string('discount_rateof_inc');
             $table->double('discount_inc_amount');
             $table->string('reasonfor_discount_inc');

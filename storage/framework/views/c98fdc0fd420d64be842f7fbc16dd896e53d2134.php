@@ -9,27 +9,28 @@
 	<title>Boltat Panel</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-	<link href="{{ asset('assets/panel/plugins/custom/fullcalendar/fullcalendar.bundle15aa.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('assets/panel/plugins/global/plugins.bundle15aa.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('assets/panel/plugins/custom/prismjs/prismjs.bundle15aa.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('assets/panel/css/style.bundle15aa.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('assets/panel/css/bootstrap-toggle.min.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('assets/panel/css/themes/layout/header/base/light15aa.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('assets/panel/css/themes/layout/header/menu/light15aa.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('assets/panel/css/themes/layout/brand/dark15aa.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('assets/panel/css/themes/layout/aside/dark15aa.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('assets/panel/css/style.css') }}" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/panel/favicon.ico') }}">
+	<link href="<?php echo e(asset('assets/panel/plugins/custom/fullcalendar/fullcalendar.bundle15aa.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo e(asset('assets/panel/plugins/global/plugins.bundle15aa.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo e(asset('assets/panel/plugins/custom/prismjs/prismjs.bundle15aa.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo e(asset('assets/panel/css/style.bundle15aa.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo e(asset('assets/panel/css/bootstrap-toggle.min.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo e(asset('assets/panel/css/themes/layout/header/base/light15aa.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo e(asset('assets/panel/css/themes/layout/header/menu/light15aa.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo e(asset('assets/panel/css/themes/layout/brand/dark15aa.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo e(asset('assets/panel/css/themes/layout/aside/dark15aa.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo e(asset('assets/sweetalert/sweetalert2.min.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo e(asset('assets/panel/css/style.css')); ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('assets/panel/favicon.ico')); ?>">
 
-	<link href="{{ asset('assets/panel/plugins/custom/cropper/cropper.bundle15aa.css') }}" rel="stylesheet" />
+	<link href="<?php echo e(asset('assets/panel/plugins/custom/cropper/cropper.bundle15aa.css')); ?>" rel="stylesheet" />
 
-	<script src="{{ asset('assets/panel/dropzone/dropzone.min.js') }}"></script>
-	<link href="{{ asset('assets/panel/dropzone/basic.min.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('assets/panel/dropzone/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
+	<script src="<?php echo e(asset('assets/panel/dropzone/dropzone.min.js')); ?>"></script>
+	<link href="<?php echo e(asset('assets/panel/dropzone/basic.min.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo e(asset('assets/panel/dropzone/dropzone.min.css')); ?>" rel="stylesheet" type="text/css" />
 
-	<script src="{{asset('assets/panel/js/jquery.min.js')}}"></script>
-	@livewireStyles
+	<script src="<?php echo e(asset('assets/panel/js/jquery.min.js')); ?>"></script>
+	<?php echo \Livewire\Livewire::styles(); ?>
+
 </head>
 
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
@@ -81,8 +82,8 @@
 				<div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
 					<div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
 						<ul class="menu-nav">
-							<li class="menu-item {{ (request()->segment(1) == '') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-								<a href="{{ route('dashboard') }}" class="menu-link">
+							<li class="menu-item <?php echo e((request()->segment(1) == '') ? 'menu-item-active' : ''); ?>" aria-haspopup="true">
+								<a href="<?php echo e(route('dashboard')); ?>" class="menu-link">
 									<i class="menu-icon fas fa-tachometer-alt"></i>
 									<span class="menu-text">Kontrol Paneli</span>
 								</a>
@@ -92,10 +93,14 @@
 								<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
 							</li>
 							<li class="menu-item menu-item-submenu 
-										{{ (request()->segment(1) == 'admin') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(1) == 'branch') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(1) == 'company') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(1) == 'bill-type') ? 'menu-item-active menu-item-open' : '' }}
+										<?php echo e((request()->segment(1) == 'admin') ? 'menu-item-active menu-item-open' : ''); ?>
+
+										<?php echo e((request()->segment(1) == 'branch') ? 'menu-item-active menu-item-open' : ''); ?>
+
+										<?php echo e((request()->segment(1) == 'company') ? 'menu-item-active menu-item-open' : ''); ?>
+
+										<?php echo e((request()->segment(1) == 'bill-type') ? 'menu-item-active menu-item-open' : ''); ?>
+
 										" aria-haspopup="true" data-menu-toggle="hover">
 								<a class="menu-link menu-toggle">
 									<i class="menu-icon fas fa-cogs"></i>
@@ -106,8 +111,8 @@
 									<i class="menu-arrow"></i>
 									<ul class="menu-subnav">
 
-										<li class="menu-item {{ (request()->segment(1) == 'branch') ? 'menu-item-active  menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="{{ route('branch') }}" class="menu-link">
+										<li class="menu-item <?php echo e((request()->segment(1) == 'branch') ? 'menu-item-active  menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+											<a href="<?php echo e(route('branch')); ?>" class="menu-link">
 												<i class="menu-icon fas fa-sharp fa-solid fa-code-branch">
 													<span></span>
 												</i>
@@ -115,20 +120,20 @@
 											</a>
 										</li>
 
-										<li class="menu-item {{ (request()->segment(1) == 'company') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="{{ route('company') }}" class="menu-link menu-toggle">
+										<li class="menu-item <?php echo e((request()->segment(1) == 'company') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+											<a href="<?php echo e(route('company')); ?>" class="menu-link menu-toggle">
 												<i class="menu-icon fas fa-city"></i>
 												<span class="menu-text">Firmalar</span>
 											</a>
 										</li>
-										<li class="menu-item {{ (request()->segment(1) == 'bill-type') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="{{ route('bill-type') }}" class="menu-link menu-toggle">
+										<li class="menu-item <?php echo e((request()->segment(1) == 'bill-type') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+											<a href="<?php echo e(route('bill-type')); ?>" class="menu-link menu-toggle">
 												<i class="menu-icon fas fa-tags"></i>
 												<span class="menu-text">Fatura Türleri</span>
 											</a>
 										</li>
-										<li class="menu-item {{ (request()->segment(1) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="{{ route('admin') }}" class="menu-link menu-toggle">
+										<li class="menu-item <?php echo e((request()->segment(1) == 'admin') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+											<a href="<?php echo e(route('admin')); ?>" class="menu-link menu-toggle">
 												<i class="menu-icon fas fa-user-shield"></i>
 												<span class="menu-text">Kullanıcılar</span>
 											</a>
@@ -144,29 +149,29 @@
 							</li>
 
 
-							<li class="menu-item {{ (request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="{{ route('admin') }}" class="menu-link menu-toggle">
+							<li class="menu-item <?php echo e((request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="<?php echo e(route('admin')); ?>" class="menu-link menu-toggle">
 									<i class="menu-icon fas fa-receipt"></i>
 									<span class="menu-text">Faturalar</span>
 								</a>
 							</li>
 
-							<li class="menu-item {{ (request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="{{ route('income') }}" class="menu-link menu-toggle">
+							<li class="menu-item <?php echo e((request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="<?php echo e(route('income')); ?>" class="menu-link menu-toggle">
 									<i class="menu-icon fas fa-plus"></i>
 									<span class="menu-text">Gelirler</span>
 								</a>
 							</li>
 
-							<li class="menu-item {{ (request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="{{ route('expense') }}" class="menu-link menu-toggle">
+							<li class="menu-item <?php echo e((request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="<?php echo e(route('expense')); ?>" class="menu-link menu-toggle">
 									<i class="menu-icon fas fa-minus"></i>
 									<span class="menu-text">Giderler</span>
 								</a>
 							</li>
 
 
-							<li class="menu-item {{ (request()->segment(2) == 'orders') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+							<li class="menu-item <?php echo e((request()->segment(2) == 'orders') ? 'menu-item-active' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
 								<a href="" class="menu-link menu-toggle">
 									<i class="menu-icon far fa-money-bill-alt"></i>
 									<span class="menu-text">Borçlarım</span>
@@ -193,7 +198,7 @@
 
 								<ul class="menu-nav">
 									<li class="menu-item menu-item-submenu menu-item-rel menu-item-active" data-menu-toggle="click" aria-haspopup="true">
-										<h5 class="text-dark font-weight-bold my-1 mr-5">{{ getBranchName() }} {{' Muhasebe Sistemi'}}</h5>
+										<h5 class="text-dark font-weight-bold my-1 mr-5"><?php echo e(getBranchName()); ?> <?php echo e(' Muhasebe Sistemi'); ?></h5>
 									</li>
 
 								</ul>
@@ -218,18 +223,18 @@
 										</div>
 										<div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right" style="width: 257px">
 											<ul class="navi navi-hover py-4">
-												@foreach ($branches as $branch)
+												<?php $__currentLoopData = $branches; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branch): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 												<li class="navi-item">
-													<a href="{{ route('keepBranch', $branch->id) }}" class="navi-link">
+													<a href="<?php echo e(route('keepBranch', $branch->id)); ?>" class="navi-link">
 														<span class="symbol symbol-20 mr-3">
 															<i class="fas fa-sharp fa-solid fa-code-branch"></i>
 														</span>
-														<span class="navi-text">{{ $branch->name }}</span>
+														<span class="navi-text"><?php echo e($branch->name); ?></span>
 													</a>
 												</li>
-												@endforeach
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 												<li class="navi-item">
-													<a href="{{route('logout')}}" class="navi-link">
+													<a href="<?php echo e(route('logout')); ?>" class="navi-link">
 														<span class="symbol symbol-20 mr-3">
 															<i class="fas fa-sign-out-alt"></i>
 														</span>
@@ -253,4 +258,4 @@
 
 					<!--begin::Entry-->
 					<div class="d-flex flex-column-fluid">
-						<div class="container">
+						<div class="container"><?php /**PATH C:\xampp\htdocs\boltat\resources\views/layouts/header.blade.php ENDPATH**/ ?>

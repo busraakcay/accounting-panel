@@ -6,6 +6,8 @@ use App\Http\Controllers\BillTypeController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\IncomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +48,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/bill-type', [BillTypeController::class, 'index'])->name('bill-type');
     Route::get('bill-type/create', [BillTypeController::class, 'create'])->name('create-bill-type');
     Route::post('bill-type/store', [BillTypeController::class, 'store'])->name('store-bill-type');
+
+
+    Route::get('/income', [IncomeController::class, 'index'])->name('income');
+    Route::get('/expense', [ExpenseController::class, 'index'])->name('expense');
+
+
 
 
     Route::get('/{branchId}', [DashboardController::class, 'keepBranch'])->name('keepBranch');

@@ -25,3 +25,17 @@ if (!function_exists("getBranchName")) {
         return session()->get('branchName');
     }
 }
+
+if (!function_exists("updateCashAmount")) {
+    function updateCashAmount($branchId, $amount, $transactionType)
+    {
+        $branch = Branch::findOrFail($branchId);
+        $branch->name = $branch->name;
+        if ($transactionType == 1) { // 1 ise nakit parayı arttır.
+            $branch->amount_cash = $branch->amount_cash + $amount;
+        } else {
+            $branch->amount_cash = $branch->amount_cash - $amount;
+        }
+        $branch->update();
+    }
+}

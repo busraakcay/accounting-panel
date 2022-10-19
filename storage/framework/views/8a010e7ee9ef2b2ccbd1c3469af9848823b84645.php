@@ -9,13 +9,13 @@
                 </tr>
             </thead>
             <tbody class="datatable-body">
-                @forelse ($branches as $branch)
+                <?php $__empty_1 = true; $__currentLoopData = $branches; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branch): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr class="datatable-row">
-                    <td width="50%" class="datatable-cell" data-label="Ad">{{$branch->name}}</td>
-                    <td width="30%" class="datatable-cell" data-label="Nakit Miktarı">@money($branch->amount_cash)</td>
+                    <td width="50%" class="datatable-cell" data-label="Ad"><?php echo e($branch->name); ?></td>
+                    <td width="30%" class="datatable-cell" data-label="Nakit Miktarı"><?php echo number_format($branch->amount_cash,  2, ',', '.') . ' TL'; ?></td>
                     <td width="20%" class="datatable-cell" data-label="İşlemler">
                         <span>
-                            <a href="{{ route('edit-branch', $branch->id) }}" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
+                            <a href="<?php echo e(route('edit-branch', $branch->id)); ?>" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
                                 <span class="svg-icon svg-icon-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -26,7 +26,7 @@
                                     </svg>
                                 </span>
                             </a>
-                            <a wire:click="deleteConfirm({{ $branch->id }})" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
+                            <a wire:click="deleteConfirm(<?php echo e($branch->id); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
                                 <span class="svg-icon svg-icon-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -40,17 +40,17 @@
                         </span>
                     </td>
                 </tr>
-                @empty
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <tr class="datatable-row">
                     <td width="100%" class="text-left datatable-cell">
                         <h6><i>Herhangi bir kayıt bulunamadı.</i></h6>
                     </td>
                 </tr>
-                @endforelse
+                <?php endif; ?>
             </tbody>
         </table>
         <div class='container mt-5'>
-            <span class='d-flex justify-content-center'>{{$branches->links()}}</span>
+            <span class='d-flex justify-content-center'><?php echo e($branches->links()); ?></span>
         </div>
     </div>
 </div>
@@ -70,4 +70,4 @@
     window.addEventListener('swal:deleteError', function(e) {
         Swal.fire(e.detail)
     })
-</script>
+</script><?php /**PATH C:\xampp\htdocs\boltat\resources\views/livewire/branch-table.blade.php ENDPATH**/ ?>
