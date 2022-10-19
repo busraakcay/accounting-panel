@@ -2,6 +2,7 @@
 //php artisan make:controller PhotoController --resource
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -16,14 +17,25 @@ class DashboardController extends Controller
         return view('dashboard.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function keepBranch(Request $request, $branchId)
     {
-        //
+        try {
+            if (isset($branchId) || $branchId == null) {
+                $branch = Branch::where('id', $branchId)->first();
+                $request->session()->put('branchName', $branch->name);
+                $request->session()->put('branchId', $branch->id);
+                $request->session()->save();
+                return redirect()->back();
+            } else {
+                $branch = Branch::where('id', 1)->first();
+                $request->session()->put('branchName', $branch->name);
+                $request->session()->put('branchId', $branch->id);
+                $request->session()->save();
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('dashboard')->with('error', $e->getMessage());
+        }
     }
 
     /**

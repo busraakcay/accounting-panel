@@ -81,8 +81,8 @@
 				<div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
 					<div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
 						<ul class="menu-nav">
-							<li class="menu-item {{ (request()->segment(1) == 'admin') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-								<a href="" class="menu-link">
+							<li class="menu-item {{ (request()->segment(1) == '') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+								<a href="{{ route('dashboard') }}" class="menu-link">
 									<i class="menu-icon fas fa-tachometer-alt"></i>
 									<span class="menu-text">Kontrol Paneli</span>
 								</a>
@@ -95,6 +95,7 @@
 										{{ (request()->segment(1) == 'admin') ? 'menu-item-active menu-item-open' : '' }}
 										{{ (request()->segment(1) == 'branch') ? 'menu-item-active menu-item-open' : '' }}
 										{{ (request()->segment(1) == 'company') ? 'menu-item-active menu-item-open' : '' }}
+										{{ (request()->segment(1) == 'bill-type') ? 'menu-item-active menu-item-open' : '' }}
 										" aria-haspopup="true" data-menu-toggle="hover">
 								<a class="menu-link menu-toggle">
 									<i class="menu-icon fas fa-cogs"></i>
@@ -120,8 +121,8 @@
 												<span class="menu-text">Firmalar</span>
 											</a>
 										</li>
-										<li class="menu-item {{ (request()->segment(1) == 'bill_type') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="" class="menu-link menu-toggle">
+										<li class="menu-item {{ (request()->segment(1) == 'bill-type') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+											<a href="{{ route('bill-type') }}" class="menu-link menu-toggle">
 												<i class="menu-icon fas fa-tags"></i>
 												<span class="menu-text">Fatura Türleri</span>
 											</a>
@@ -143,9 +144,6 @@
 							</li>
 
 
-
-
-
 							<li class="menu-item {{ (request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
 								<a href="{{ route('admin') }}" class="menu-link menu-toggle">
 									<i class="menu-icon fas fa-receipt"></i>
@@ -153,6 +151,19 @@
 								</a>
 							</li>
 
+							<li class="menu-item {{ (request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="{{ route('admin') }}" class="menu-link menu-toggle">
+									<i class="menu-icon fas fa-plus"></i>
+									<span class="menu-text">Gelir Ekle</span>
+								</a>
+							</li>
+
+							<li class="menu-item {{ (request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="{{ route('admin') }}" class="menu-link menu-toggle">
+									<i class="menu-icon fas fa-minus"></i>
+									<span class="menu-text">Gider Ekle</span>
+								</a>
+							</li>
 
 
 							<li class="menu-item {{ (request()->segment(2) == 'orders') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
@@ -182,7 +193,7 @@
 
 								<ul class="menu-nav">
 									<li class="menu-item menu-item-submenu menu-item-rel menu-item-active" data-menu-toggle="click" aria-haspopup="true">
-										<h5 class="text-dark font-weight-bold my-1 mr-5">{{'Boltat Muhasebe Sistemi'}}</h5>
+										<h5 class="text-dark font-weight-bold my-1 mr-5">{{ getBranchName() }} {{' Muhasebe Sistemi'}}</h5>
 									</li>
 
 								</ul>
@@ -200,23 +211,23 @@
 									<span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Şube değiştir veya</span>
 									<span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">çıkış yap</span>
 									<span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
-
 										<div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
 											<div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
 												<span class="symbol-label font-size-h5 font-weight-bold"><i class="menu-icon fas fa-cog"></i></span>
 											</div>
 										</div>
-
-										<div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
+										<div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right" style="width: 257px">
 											<ul class="navi navi-hover py-4">
+												@foreach ($branches as $branch)
 												<li class="navi-item">
-													<a href="" class="navi-link">
+													<a href="{{ route('keepBranch', $branch->id) }}" class="navi-link">
 														<span class="symbol symbol-20 mr-3">
-															<i class="fas fa-user-circle"></i>
+															<i class="fas fa-sharp fa-solid fa-code-branch"></i>
 														</span>
-														<span class="navi-text">Profili Düzenle</span>
+														<span class="navi-text">{{ $branch->name }}</span>
 													</a>
 												</li>
+												@endforeach
 												<li class="navi-item">
 													<a href="{{route('logout')}}" class="navi-link">
 														<span class="symbol symbol-20 mr-3">

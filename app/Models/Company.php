@@ -15,4 +15,9 @@ class Company extends Model
         'name',
         'description',
     ];
+
+    public function bills()
+    {
+        return $this->hasMany(Bill::class, 'company_id', 'id');
+    }
 }

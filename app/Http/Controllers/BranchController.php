@@ -54,15 +54,4 @@ class BranchController extends Controller
         return redirect()->route('branch')->with('success', 'Şube başarıyla güncellendi!');
     }
 
-
-    public function destroy($id)
-    {
-        $branch = Branch::findOrFail($id);
-        $branch->delete();
-        if (!Branch::where('id', $id)->exists()) {
-            return redirect()->route('branch')->with('success', 'Şube başarıyla silindi!');
-        } else {
-            return redirect()->back()->with('error', 'Şube silinirken bir hata oluştu.');
-        }
-    }
 }

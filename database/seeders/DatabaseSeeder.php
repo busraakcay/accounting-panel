@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             BranchSeeder::class,
             CompanySeeder::class,
+            ExpenseTypeSeeder::class,
+            IncomeTypeSeeder::class,
         ]);
     }
 }

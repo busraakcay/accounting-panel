@@ -90,15 +90,4 @@ class AdminController extends Controller
         return redirect()->route('admin')->with('success', 'Yönetici başarıyla güncellendi!');
     }
 
-
-    public function destroy($id)
-    {
-        $user = User::findOrFail($id);
-        $user->delete();
-        if (!User::where('id', $id)->exists()) {
-            return redirect()->route('admin')->with('success', 'Yönetici başarıyla silindi!');
-        } else {
-            return redirect()->back()->with('error', 'Yönetici silinirken bir hata oluştu.');
-        }
-    }
 }

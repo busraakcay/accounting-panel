@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('expenses', function (Blueprint $table) {
+        Schema::create('paid_debts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('type_id')->constrained('expense_types');
-            $table->foreignId('branch_id')->constrained('branches');
-            $table->string('name');
-            $table->double('amount');
-            $table->longText('description');
+            $table->foreignId('debt_id')->constrained('debts');
+            $table->datetime('paid_date')->nullable();
+            $table->double('paid_amount');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expenses');
+        Schema::dropIfExists('paid_debts');
     }
 };

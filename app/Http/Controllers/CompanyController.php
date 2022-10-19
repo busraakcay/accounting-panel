@@ -54,16 +54,4 @@ class CompanyController extends Controller
         return redirect()->route('company')->with('success', 'Firma başarıyla güncellendi!');
     }
 
-
-    public function destroy($id)
-    {
-        $company = Company::findOrFail($id);
-        $company->delete();
-        if (!Company::where('id', $id)->exists()) {
-            return redirect()->route('company')->with('success', 'Firma başarıyla silindi!');
-        } else {
-            return redirect()->back()->with('error', 'Firma silinirken bir hata oluştu.');
-        }
-    }
-
 }

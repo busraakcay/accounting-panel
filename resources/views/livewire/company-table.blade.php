@@ -21,9 +21,6 @@
                 <tr class="datatable-row">
                     <td width="30%" class="datatable-cell" data-label="Ad">{{$company->name}}</td>
                     <td width="60%" class="datatable-cell" data-label="Açıklama">{{ Str::limit($company->description, 255, "...")}}</td>
-                    <form action="{{ route('delete-company', $company->id) }}" id="deleteForm-{{ $company->id }}" method="post" class="hidden">
-                        @csrf @method('delete')
-                    </form>
                     <td width="10%" class="datatable-cell" data-label="İşlemler">
                         <span>
                             <a href="{{ route('edit-company', $company->id) }}" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
@@ -37,7 +34,7 @@
                                     </svg>
                                 </span>
                             </a>
-                            <a onclick="sure(this.id);" id="{{$company->id}}" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
+                            <a wire:click="deleteConfirm({{ $company->id }})" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
                                 <span class="svg-icon svg-icon-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -48,24 +45,6 @@
                                     </svg>
                                 </span>
                             </a>
-                            <script>
-                                function sure(id) {
-                                    Swal.fire({
-                                        title: "Emin misiniz?",
-                                        text: "Bu işlemi geri alamayacaksınız.",
-                                        icon: 'warning',
-                                        showCancelButton: true,
-                                        confirmButtonColor: '#3085d6',
-                                        cancelButtonColor: '#d33',
-                                        cancelButtonText: "İptal",
-                                        confirmButtonText: "Onayla"
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            document.forms['deleteForm-' + id].submit();
-                                        }
-                                    })
-                                }
-                            </script>
                         </span>
                     </td>
                 </tr>
@@ -83,3 +62,20 @@
         </div>
     </div>
 </div>
+<script>
+    window.addEventListener('swal:confirm', function(e) {
+        Swal.fire(e.detail).then((result) => {
+            if (result.isConfirmed) {
+                window.livewire.emit('delete', e.detail.id);
+            }
+        });
+    })
+
+    window.addEventListener('swal:deleted', function(e) {
+        Swal.fire(e.detail)
+    })
+
+    window.addEventListener('swal:deleteError', function(e) {
+        Swal.fire(e.detail)
+    })
+</script>

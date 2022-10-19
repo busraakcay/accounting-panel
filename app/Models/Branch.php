@@ -15,4 +15,24 @@ class Branch extends Model
         'name',
         'amount_cash',
     ];
+
+    public function bills()
+    {
+        return $this->hasMany(Bill::class, 'branch_id', 'id');
+    }
+
+    public function incomes()
+    {
+        return $this->hasMany(Income::class, 'branch_id', 'id');
+    }
+
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class, 'branch_id', 'id');
+    }
+
+    public function debts()
+    {
+        return $this->hasMany(Debt::class, 'branch_id', 'id');
+    }
 }

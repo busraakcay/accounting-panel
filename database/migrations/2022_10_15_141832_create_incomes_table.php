@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('type')->constrained('income_types');
+            $table->foreignId('type_id')->constrained('income_types');
             $table->foreignId('branch_id')->constrained('branches');
+            $table->string('name');
+            $table->double('amount');
+            $table->longText('description');
             $table->timestamps();
         });
     }
