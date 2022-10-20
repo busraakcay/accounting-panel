@@ -33,28 +33,18 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/edit/{id}', [AdminController::class, 'edit'])->name('edit-admin');
     Route::put('admin/update/{id}', [AdminController::class, 'update'])->name('update-admin');
 
-    Route::get('/branch', [BranchController::class, 'index'])->name('branch');
-    Route::get('branch/create', [BranchController::class, 'create'])->name('create-branch');
-    Route::post('branch/store', [BranchController::class, 'store'])->name('store-branch');
-    Route::get('branch/edit/{id}', [BranchController::class, 'edit'])->name('edit-branch');
-    Route::put('branch/update/{id}', [BranchController::class, 'update'])->name('update-branch');
-
-    Route::get('/company', [CompanyController::class, 'index'])->name('company');
-    Route::get('company/create', [CompanyController::class, 'create'])->name('create-company');
-    Route::post('company/store', [CompanyController::class, 'store'])->name('store-company');
-    Route::get('company/edit/{id}', [CompanyController::class, 'edit'])->name('edit-company');
-    Route::put('company/update/{id}', [CompanyController::class, 'update'])->name('update-company');
-
     Route::get('/bill-type', [BillTypeController::class, 'index'])->name('bill-type');
     Route::get('bill-type/create', [BillTypeController::class, 'create'])->name('create-bill-type');
     Route::post('bill-type/store', [BillTypeController::class, 'store'])->name('store-bill-type');
 
 
+    Route::get('/branch', [BranchController::class, 'index'])->name('branch');
+
+    Route::get('/company', [CompanyController::class, 'index'])->name('company');
+
     Route::get('/income', [IncomeController::class, 'index'])->name('income');
+    
     Route::get('/expense', [ExpenseController::class, 'index'])->name('expense');
-
-
-
 
     Route::get('/{branchId}', [DashboardController::class, 'keepBranch'])->name('keepBranch');
 

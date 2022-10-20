@@ -1,8 +1,8 @@
-<div class="modal fade createIncome" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+<div class="modal fade createExpense" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Gelir Ekle</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Gider Ekle</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -36,15 +36,15 @@ unset($__errorArgs, $__bag); ?></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="incomeType">Tür</label>
-                        <select class="form-control" wire:model="incomeType">
+                        <label for="expenseType">Tür</label>
+                        <select class="form-control" wire:model="expenseType">
                             <option value="" selected hidden>Seçiniz</option>
-                            <?php $__currentLoopData = $incomeTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $incomeType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($incomeType->id); ?>"><?php echo e($incomeType->name); ?></option>
+                            <?php $__currentLoopData = $expenseTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $expenseType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($expenseType->id); ?>"><?php echo e($expenseType->name); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </select>
-                        <span class="text-danger"> <?php $__errorArgs = ['incomeType'];
+                        <span class="text-danger"> <?php $__errorArgs = ['expenseType'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -75,4 +75,4 @@ unset($__errorArgs, $__bag); ?></span>
             </div>
         </div>
     </div>
-</div><?php /**PATH C:\xampp\htdocs\boltat\resources\views/modals/income/create.blade.php ENDPATH**/ ?>
+</div><?php /**PATH C:\xampp\htdocs\boltat\resources\views/modals/expense/create.blade.php ENDPATH**/ ?>

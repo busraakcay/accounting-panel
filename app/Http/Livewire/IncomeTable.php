@@ -12,6 +12,7 @@ class IncomeTable extends Component
     use WithPagination;
     public $search;
     public $name, $amount, $incomeType, $description;
+    public $orderByType = null;
     public $upd_name, $upd_amount, $upd_incomeType, $upd_incomeId, $upd_description;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = array("delete");
@@ -19,7 +20,9 @@ class IncomeTable extends Component
     public function render()
     {
         return view('livewire.income-table', [
-            "incomes" => Income::where('name', 'like', '%' . trim($this->search) . '%')->paginate(20),
+            "incomes" => Income::when($this->orderByType, function ($query) {
+                $query->where('type_id', $this->orderByType);
+            })->where('name', 'like', '%' . trim($this->search) . '%')->paginate(20),
             "incomeTypes" => IncomeType::get(),
         ]);
     }
@@ -93,7 +96,7 @@ class IncomeTable extends Component
 
         $income = Income::findOrFail($id);
         $oldIncomeAmount = $income->amount;
-    
+
         $update = $income->update([
             'name' => $this->upd_name,
             'amount' => $this->upd_amount,

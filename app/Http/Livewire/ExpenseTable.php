@@ -12,6 +12,7 @@ class ExpenseTable extends Component
     use WithPagination;
     public $search;
     public $name, $amount, $expenseType, $description;
+    public $orderByType = null;
     public $upd_name, $upd_amount, $upd_expenseType, $upd_expenseId, $upd_description;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = array("delete");
@@ -19,7 +20,9 @@ class ExpenseTable extends Component
     public function render()
     {
         return view('livewire.expense-table', [
-            "expenses" => Expense::where('name', 'like', '%' . trim($this->search) . '%')->paginate(20),
+            "expenses" => Expense::when($this->orderByType, function ($query) {
+                $query->where('type_id', $this->orderByType);
+            })->where('name', 'like', '%' . trim($this->search) . '%')->paginate(20),
             "expenseTypes" => ExpenseType::get(),
         ]);
     }
@@ -93,7 +96,7 @@ class ExpenseTable extends Component
 
         $expense = Expense::findOrFail($id);
         $oldExpenseAmount = $expense->amount;
-    
+
         $update = $expense->update([
             'name' => $this->upd_name,
             'amount' => $this->upd_amount,
@@ -153,5 +156,4 @@ class ExpenseTable extends Component
             ]);
         }
     }
-
 }

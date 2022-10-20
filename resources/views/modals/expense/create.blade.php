@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label for="expenseType">Tür</label>
                         <select class="form-control" wire:model="expenseType">
-                            <option value="">Seçiniz</option>
+                            <option value="" selected hidden>Seçiniz</option>
                             @foreach ($expenseTypes as $expenseType)
                             <option value="{{ $expenseType->id }}">{{ $expenseType->name }}</option>
                             @endforeach

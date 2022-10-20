@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('branch_id')->constrained('branches');
             $table->string('name');
             $table->double('amount');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

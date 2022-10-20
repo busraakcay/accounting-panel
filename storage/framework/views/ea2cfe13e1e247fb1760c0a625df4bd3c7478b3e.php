@@ -2,18 +2,18 @@
     <div class="card card-custom  gutter-b">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <div class="card-title">
-                <h3 class="card-label">Gelirler</h3>
+                <h3 class="card-label">Giderler</h3>
             </div>
             <div class="card-toolbar">
-                <a wire:click="OpenCreateIncomeModal()" class="btn btn-primary font-weight-bolder">
-                    Gelir Ekle</a>
+                <a wire:click="OpenCreateExpenseModal()" class="btn btn-primary font-weight-bolder">
+                    Gider Ekle</a>
             </div>
         </div>
         <div class="card-body">
-            <div class="row">
+        <div class="row">
                 <div class="col-6">
                     <div class="input-icon">
-                        <input type="text" class="form-control" wire:model.debounce.350ms="search" placeholder="Gelir Ara...">
+                        <input type="text" class="form-control" wire:model.debounce.350ms="search" placeholder="Gider Ara...">
                         <span>
                             <i class="fa fa-search text-muted"></i>
                         </span>
@@ -23,14 +23,13 @@
                     <div class="form-group">
                         <select class="form-control" wire:model="orderByType">
                             <option value="" selected>Tüm Türler</option>
-                            <?php $__currentLoopData = $incomeTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $incomeType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($incomeType->id); ?>"><?php echo e($incomeType->name); ?></option>
+                            <?php $__currentLoopData = $expenseTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $expenseType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($expenseType->id); ?>"><?php echo e($expenseType->name); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
                 </div>
             </div>
-
             <div class="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded">
                 <table id="place" class="table-stack datatable-table">
                     <thead class="datatable-head">
@@ -43,15 +42,15 @@
                         </tr>
                     </thead>
                     <tbody class="datatable-body">
-                        <?php $__empty_1 = true; $__currentLoopData = $incomes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $income): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <?php $__empty_1 = true; $__currentLoopData = $expenses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $expense): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr class="datatable-row">
-                            <td width="20%" class="datatable-cell" data-label="Ad"><?php echo e($income->name); ?></td>
-                            <td width="20%" class="datatable-cell" data-label="Miktar"><?php echo number_format($income->amount,  2, ',', '.') . ' TL'; ?></td>
-                            <td width="20%" class="datatable-cell" data-label="Tür"><?php echo e($income->incomeType->name); ?></td>
-                            <td width="30%" class="datatable-cell" data-label="Açıklama"><?php echo e(Str::limit($income->description, 255, "...")); ?></td>
+                            <td width="20%" class="datatable-cell" data-label="Ad"><?php echo e($expense->name); ?></td>
+                            <td width="20%" class="datatable-cell" data-label="Miktar"><?php echo number_format($expense->amount,  2, ',', '.') . ' TL'; ?></td>
+                            <td width="20%" class="datatable-cell" data-label="Tür"><?php echo e($expense->expenseType->name); ?></td>
+                            <td width="30%" class="datatable-cell" data-label="Açıklama"><?php echo e(Str::limit($expense->description, 255, "...")); ?></td>
                             <td width="10%" class="datatable-cell" data-label="İşlemler">
                                 <span>
-                                    <a wire:click="OpenEditIncomeModal(<?php echo e($income->id); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
+                                    <a wire:click="OpenEditExpenseModal(<?php echo e($expense->id); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
                                         <span class="svg-icon svg-icon-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -62,7 +61,7 @@
                                             </svg>
                                         </span>
                                     </a>
-                                    <a wire:click="deleteConfirm(<?php echo e($income->id); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
+                                    <a wire:click="deleteConfirm(<?php echo e($expense->id); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
                                         <span class="svg-icon svg-icon-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -86,31 +85,31 @@
                     </tbody>
                 </table>
                 <div class='container mt-5'>
-                    <span class='d-flex justify-content-center'><?php echo e($incomes->links()); ?></span>
+                    <span class='d-flex justify-content-center'><?php echo e($expenses->links()); ?></span>
                 </div>
             </div>
         </div>
         <script>
-            window.addEventListener('OpenCreateIncomeModal', function() {
-                $('.createIncome').find('span').html('');
-                $('.createIncome').find('form')[0].reset();
-                $('.createIncome').modal('show');
+            window.addEventListener('OpenCreateExpenseModal', function() {
+                $('.createExpense').find('span').html('');
+                $('.createExpense').find('form')[0].reset();
+                $('.createExpense').modal('show');
             });
-            window.addEventListener('CloseCreateIncomeModal', function(e) {
-                $('.createIncome').find('span').html('');
-                $('.createIncome').find('form')[0].reset();
-                $('.createIncome').modal('hide');
+            window.addEventListener('CloseCreateExpenseModal', function(e) {
+                $('.createExpense').find('span').html('');
+                $('.createExpense').find('form')[0].reset();
+                $('.createExpense').modal('hide');
                 Swal.fire(e.detail)
             });
 
-            window.addEventListener('OpenEditIncomeModal', function(event) {
-                $('.editIncome').find('span').html('');
-                $('.editIncome').modal('show');
+            window.addEventListener('OpenEditExpenseModal', function(event) {
+                $('.editExpense').find('span').html('');
+                $('.editExpense').modal('show');
             });
-            window.addEventListener('CloseEditIncomeModal', function(event) {
-                $('.editIncome').find('span').html('');
-                $('.editIncome').find('form')[0].reset();
-                $('.editIncome').modal('hide');
+            window.addEventListener('CloseEditExpenseModal', function(event) {
+                $('.editExpense').find('span').html('');
+                $('.editExpense').find('form')[0].reset();
+                $('.editExpense').modal('hide');
                 Swal.fire(event.detail)
             });
 
@@ -132,6 +131,6 @@
             })
         </script>
     </div>
-    <?php echo $__env->make('modals.income.create', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <?php echo $__env->make('modals.income.edit', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-</div><?php /**PATH C:\xampp\htdocs\boltat\resources\views/livewire/income-table.blade.php ENDPATH**/ ?>
+    <?php echo $__env->make('modals.expense.create', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('modals.expense.edit', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+</div><?php /**PATH C:\xampp\htdocs\boltat\resources\views/livewire/expense-table.blade.php ENDPATH**/ ?>

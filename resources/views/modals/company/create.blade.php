@@ -1,8 +1,8 @@
-<div class="modal fade createIncome" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+<div class="modal fade createCompany" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Gelir Ekle</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Firma Ekle</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,24 +13,6 @@
                         <label for="name">Ad</label>
                         <input type="text" class="form-control" placeholder="Ad" wire:model="name">
                         <span class="text-danger"> @error('name') {{ $message }}@enderror</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="amount">Miktar</label>
-                        <input type="text" class="form-control" placeholder="Miktar" wire:model="amount">
-                        <span class="text-danger"> @error('amount') {{ $message }}@enderror</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="incomeType">Tür</label>
-                        <select class="form-control" wire:model="incomeType">
-                            <option value="" selected hidden>Seçiniz</option>
-                            @foreach ($incomeTypes as $incomeType)
-                            <option value="{{ $incomeType->id }}">{{ $incomeType->name }}</option>
-                            @endforeach
-
-                        </select>
-                        <span class="text-danger"> @error('incomeType') {{ $message }}@enderror</span>
                     </div>
 
                     <div class="form-group">

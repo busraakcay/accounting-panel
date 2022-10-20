@@ -10,12 +10,24 @@
             </div>
         </div>
         <div class="card-body">
-            <div class="pb-5">
-                <div class="input-icon mb-5">
-                    <input type="text" class="form-control" wire:model.debounce.350ms="search" placeholder="Gider Ara...">
-                    <span>
-                        <i class="fa fa-search text-muted"></i>
-                    </span>
+        <div class="row">
+                <div class="col-6">
+                    <div class="input-icon">
+                        <input type="text" class="form-control" wire:model.debounce.350ms="search" placeholder="Gider Ara...">
+                        <span>
+                            <i class="fa fa-search text-muted"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="dropdown bootstrap-select form-control col-6">
+                    <div class="form-group">
+                        <select class="form-control" wire:model="orderByType">
+                            <option value="" selected>Tüm Türler</option>
+                            @foreach ($expenseTypes as $expenseType)
+                            <option value="{{ $expenseType->id }}">{{ $expenseType->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded">
