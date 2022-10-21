@@ -16,7 +16,7 @@
                     <div class="form-group row">
                         <label class="col-3">Fatura Türü</label>
                         <div class="col-8">
-                            <select class="form-control" name="billType" id="billType">
+                            <select class="form-control customSelect2Box" name="billType" id="billType">
                                 <option value="1">Gelir</option>
                                 <option value="2">Gider</option>
                             </select>

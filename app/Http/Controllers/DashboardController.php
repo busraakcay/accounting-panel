@@ -2,7 +2,10 @@
 //php artisan make:controller PhotoController --resource
 namespace App\Http\Controllers;
 
+use App\Models\Bill;
 use App\Models\Branch;
+use App\Models\Company;
+use App\Models\Debt;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,7 +17,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $branchCount = count(Branch::get());
+        $companyCount = count(Company::get());
+        $billCount = count(Bill::get());
+        $debtCount = count(Debt::get());
+        return view('dashboard.index', compact('branchCount', 'companyCount', 'billCount', 'debtCount'));
     }
 
 

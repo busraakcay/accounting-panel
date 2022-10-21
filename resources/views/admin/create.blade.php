@@ -35,7 +35,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label>Yönetici Tipi<span class="text-danger">*</span></label>
-                        <select name="type" class="form-control">
+                        <select name="type" class="form-control customSelect2Box">
                             <option selected disabled hidden>Seçiniz</option>
                             <option value="1">Root</option>
                             <option value="2">Admin</option>

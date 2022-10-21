@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BillController;
 use App\Http\Controllers\BillTypeController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DebtController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +47,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/income', [IncomeController::class, 'index'])->name('income');
     
     Route::get('/expense', [ExpenseController::class, 'index'])->name('expense');
+
+    Route::get('/bill', [BillController::class, 'index'])->name('bill');
+    Route::get('bill/create', [BillController::class, 'create'])->name('create-bill');
+    Route::post('bill/store', [BillController::class, 'store'])->name('store-bill');
+    Route::get('bill/edit/{id}', [BillController::class, 'edit'])->name('edit-bill');
+    Route::put('bill/update/{id}', [BillController::class, 'update'])->name('update-bill');
+
+
+    Route::get('/debt', [DebtController::class, 'index'])->name('debt');
 
     Route::get('/{branchId}', [DashboardController::class, 'keepBranch'])->name('keepBranch');
 

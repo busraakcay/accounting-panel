@@ -141,38 +141,36 @@
 									</ul>
 								</div>
 
-							<li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
-								<a class="menu-link menu-toggle">
-									<i class="menu-icon fas fa-chart-line"></i>
-									<span class="menu-text">Analiz ve Raporlar</span>
+							<li class="menu-item <?php echo e((request()->segment(1) == 'report') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="" class="menu-link menu-toggle">
+									<i class="menu-icon fas fa-chart-bar"></i>
+									<span class="menu-text">Raporlar</span>
 								</a>
 							</li>
 
-
-							<li class="menu-item <?php echo e((request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="<?php echo e(route('admin')); ?>" class="menu-link menu-toggle">
-									<i class="menu-icon fas fa-receipt"></i>
+							<li class="menu-item <?php echo e((request()->segment(1) == 'bill') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="<?php echo e(route('bill')); ?>" class="menu-link menu-toggle">
+									<i class="menu-icon fas fa-file-invoice"></i>
 									<span class="menu-text">Faturalar</span>
 								</a>
 							</li>
 
-							<li class="menu-item <?php echo e((request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+							<li class="menu-item <?php echo e((request()->segment(1) == 'income') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
 								<a href="<?php echo e(route('income')); ?>" class="menu-link menu-toggle">
 									<i class="menu-icon fas fa-plus"></i>
 									<span class="menu-text">Gelirler</span>
 								</a>
 							</li>
 
-							<li class="menu-item <?php echo e((request()->segment(2) == 'admin') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+							<li class="menu-item <?php echo e((request()->segment(1) == 'expense') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
 								<a href="<?php echo e(route('expense')); ?>" class="menu-link menu-toggle">
 									<i class="menu-icon fas fa-minus"></i>
 									<span class="menu-text">Giderler</span>
 								</a>
 							</li>
 
-
-							<li class="menu-item <?php echo e((request()->segment(2) == 'orders') ? 'menu-item-active' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="" class="menu-link menu-toggle">
+							<li class="menu-item <?php echo e((request()->segment(1) == 'debt') ? 'menu-item-active' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="<?php echo e(route('debt')); ?>" class="menu-link menu-toggle">
 									<i class="menu-icon far fa-money-bill-alt"></i>
 									<span class="menu-text">Borçlarım</span>
 								</a>

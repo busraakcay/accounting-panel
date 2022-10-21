@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-xl-3">
-        <a href="">
+        <a href="{{ route('branch') }}">
             <div class="card card-custom bg-info card-stretch gutter-b">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -12,11 +12,11 @@
                                 Şubelerim
                             </h6>
                             <span class="h3 mb-0 text-white">
-                               
+                                {{ $branchCount }}
                             </span>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-list text-white"></i>
+                            <i class="fas fa-sharp fa-solid fa-code-branch text-white"></i>
                         </div>
                     </div>
                 </div>
@@ -24,20 +24,20 @@
         </a>
     </div>
     <div class="col-xl-3">
-        <a href="">
+        <a href="{{ route('company') }}">
             <div class="card card-custom bg-success card-stretch gutter-b">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col">
                             <h6 class="card-title text-uppercase text-white mb-2">
-                                Anlaşmalı Firmalarım
+                                Firmalarım
                             </h6>
                             <span class="h3 mb-0 text-white">
-                               
+                                {{ $companyCount }}
                             </span>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-tags text-white"></i>
+                            <i class="fas fa-city text-white"></i>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
         </a>
     </div>
     <div class="col-xl-3">
-        <a href="">
+        <a href="{{ route('bill') }}">
             <div class="card card-custom bg-warning card-stretch gutter-b">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -54,11 +54,11 @@
                                 Faturalarım
                             </h6>
                             <span class="h3 mb-0 text-white">
-                                
+                                {{ $billCount }}
                             </span>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-users text-white"></i>
+                            <i class="fas fa-file-invoice text-white"></i>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
         </a>
     </div>
     <div class="col-xl-3">
-        <a href="">
+        <a href="{{ route('debt') }}">
             <div class="card card-custom bg-danger card-stretch gutter-b">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -75,11 +75,11 @@
                                 Borçlarım
                             </h6>
                             <span class="h3 mb-0 text-white">
-                                
+                                {{ $debtCount }}
                             </span>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-shopping-cart text-white"></i>
+                            <i class="far fa-money-bill-alt text-white"></i>
                         </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
             <span class="card-label font-weight-bolder text-dark ml-5">Ödemesi Yaklaşan Borçlarım</span>
         </h3>
         <div class="card-toolbar">
-            <a href="" class="btn btn-info font-weight-bolder font-size-sm">Tüm Borçları Görüntüle</a>
+            <a href="{{ route('debt') }}" class="btn btn-info font-weight-bolder font-size-sm">Tüm Borçları Görüntüle</a>
         </div>
     </div>
     <div class="card-body py-0">

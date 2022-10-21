@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('type_id')->constrained('income_types');
-            $table->foreignId('branch_id')->constrained('branches');
+            $table->foreignId('type_id')->nullable()->constrained('income_types')->onUpdate('cascade')->nullOnDelete();
+            $table->foreignId('branch_id')->nullable()->constrained('branches')->onUpdate('cascade')->nullOnDelete();
             $table->string('name');
             $table->double('amount');
             $table->longText('description')->nullable();

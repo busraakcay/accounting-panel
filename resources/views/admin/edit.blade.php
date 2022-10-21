@@ -36,7 +36,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label>Yönetici Tipi<span class="text-danger">*</span></label>
-                        <select name="type" class="form-control">
+                        <select name="type" class="form-control customSelect2Box">
                             <option value="1" {{$user->type == 1 ? 'selected' : ''}}>Root</option>
                             <option value="2" {{$user->type == 2 ? 'selected' : ''}}>Admin</option>
                         </select>

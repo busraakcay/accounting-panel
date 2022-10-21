@@ -15,19 +15,21 @@ return new class extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained('companies');
-            $table->foreignId('branch_id')->constrained('branches');
-            $table->string('product');
+            $table->foreignId('company_id')->nullable()->constrained('companies')->onUpdate('cascade')->nullOnDelete();
+            $table->foreignId('branch_id')->constrained('branches')->onUpdate('cascade')->onDelete('cascade');
+            $table->tinyInteger('bill_type');
+            $table->string('product_name');
             $table->integer('quantity');
+            $table->string('quantity_type');
             $table->double('unit_price');
-            $table->string('discount_rateof_inc');
+            $table->double('discount_rateof_inc');
             $table->double('discount_inc_amount');
             $table->string('reasonfor_discount_inc');
-            $table->string('vat_rate');
+            $table->double('vat_rate');
             $table->double('vat_amount');
             $table->string('other_taxes');
             $table->double('total_amount');
-            $table->datetime('bill_date')->nullable();
+            $table->datetime('bill_date');
             $table->timestamps();
         });
     }
