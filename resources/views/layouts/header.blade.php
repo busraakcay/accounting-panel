@@ -20,7 +20,7 @@
 	<link href="{{ asset('assets/panel/css/themes/layout/aside/dark15aa.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/panel/css/style.css') }}" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/panel/favicon.ico') }}">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/panel/logo.png') }}">
 
 	<link href="{{ asset('assets/panel/plugins/custom/cropper/cropper.bundle15aa.css') }}" rel="stylesheet" />
 
@@ -61,8 +61,8 @@
 		<div class="d-flex flex-row flex-column-fluid page">
 			<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
 				<div class="brand flex-column-auto" id="kt_brand">
-					<a href="" class="brand-logo">
-						<i class="menu-icon fab fa-cpanel fa-5x" id="logoIcon" aria-hidden="true"></i>
+					<a href="{{ route('dashboard') }}" class="brand-logo mt-5">
+						<img src="{{ asset('assets/panel/logo.png') }}" class="max-h-100px mt-5" alt="" />
 					</a>
 					<script type="text/javascript">
 					</script>
