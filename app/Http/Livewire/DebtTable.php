@@ -13,9 +13,10 @@ use Livewire\WithPagination;
 class DebtTable extends Component
 {
     use WithPagination;
-    public $paidAmount, $debtId, $billId;
+    public $paidAmount, $debtId, $billId, $productName;
     public $search;
     public $orderByCompany = null;
+    public $filterByPaid = null;
     protected $paginationTheme = 'bootstrap';
 
     public function render()
@@ -23,16 +24,19 @@ class DebtTable extends Component
         return view('livewire.debt-table', [
             "debts" => Bill::where('bill_type', 2)->when($this->orderByCompany, function ($query) {
                 $query->where('company_id', $this->orderByCompany);
-            })->where('product_name', 'like', '%' . trim($this->search) . '%')->orderBy('bill_date', 'desc')->paginate(20),
+            })
+                ->where('product_name', 'like', '%' . trim($this->search) . '%')->orderBy('bill_date', 'desc')->orderBy('id', 'desc')->paginate(20),
             "companies" => Company::get(),
         ]);
     }
 
     public function OpenEditDebtModal($debtId, $billId)
     {
+        $bill = Bill::findOrFail($billId);
         $this->paidAmount = '';
         $this->debtId = $debtId;
         $this->billId = $billId;
+        $this->productName = $bill->product_name;
         $this->dispatchBrowserEvent('OpenEditDebtModal', [
             'id' => $debtId
         ]);

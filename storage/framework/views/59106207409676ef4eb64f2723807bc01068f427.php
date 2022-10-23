@@ -3,15 +3,15 @@
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('income-table')->html();
-} elseif ($_instance->childHasBeenRendered('Sptx8O6')) {
-    $componentId = $_instance->getRenderedChildComponentId('Sptx8O6');
-    $componentTag = $_instance->getRenderedChildComponentTagName('Sptx8O6');
+} elseif ($_instance->childHasBeenRendered('Xb1or13')) {
+    $componentId = $_instance->getRenderedChildComponentId('Xb1or13');
+    $componentTag = $_instance->getRenderedChildComponentTagName('Xb1or13');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('Sptx8O6');
+    $_instance->preserveRenderedChild('Xb1or13');
 } else {
     $response = \Livewire\Livewire::mount('income-table');
     $html = $response->html();
-    $_instance->logRenderedChild('Sptx8O6', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('Xb1or13', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

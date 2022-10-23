@@ -21,13 +21,10 @@
 	<link href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/panel/css/style.css') }}" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/panel/logo.png') }}">
-
 	<link href="{{ asset('assets/panel/plugins/custom/cropper/cropper.bundle15aa.css') }}" rel="stylesheet" />
-
 	<script src="{{ asset('assets/panel/dropzone/dropzone.min.js') }}"></script>
 	<link href="{{ asset('assets/panel/dropzone/basic.min.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/panel/dropzone/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
-
 	<script src="{{asset('assets/panel/js/jquery.min.js')}}"></script>
 	@livewireStyles
 </head>
@@ -39,9 +36,6 @@
 		</a>
 		<div class="d-flex align-items-center">
 			<button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
-				<span></span>
-			</button>
-			<button class="btn p-0 burger-icon ml-4" id="kt_header_mobile_toggle">
 				<span></span>
 			</button>
 			<button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
@@ -102,6 +96,13 @@
 								</a>
 							</li>
 
+							<li class="menu-item {{ (request()->segment(1) == 'debt') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="{{ route('debt') }}" class="menu-link menu-toggle">
+									<i class="menu-icon far fa-money-bill-alt"></i>
+									<span class="menu-text">Borçlarım</span>
+								</a>
+							</li>
+
 							<li class="menu-item {{ (request()->segment(1) == 'income') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
 								<a href="{{ route('income') }}" class="menu-link menu-toggle">
 									<i class="menu-icon fas fa-plus"></i>
@@ -116,10 +117,10 @@
 								</a>
 							</li>
 
-							<li class="menu-item {{ (request()->segment(1) == 'debt') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="{{ route('debt') }}" class="menu-link menu-toggle">
-									<i class="menu-icon far fa-money-bill-alt"></i>
-									<span class="menu-text">Borçlarım</span>
+							<li class="menu-item {{ (request()->segment(1) == 'bill-type') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="{{ route('bill-type') }}" class="menu-link menu-toggle">
+									<i class="menu-icon fas fa-tags"></i>
+									<span class="menu-text">Gelir/Gider Türleri</span>
 								</a>
 							</li>
 

@@ -3,6 +3,8 @@
 use App\Models\Bill;
 use App\Models\Branch;
 use App\Models\Debt;
+use App\Models\Expense;
+use App\Models\Income;
 use App\Models\PaidDebt;
 
 if (!function_exists("checkPasswords")) {
@@ -51,18 +53,28 @@ if (!function_exists("paidDebt")) {
         return $paidDebtSum;
     }
 }
+
 if (!function_exists("remainDebt")) {
     function remainDebt($debtId)
     {
         $debt = Debt::findOrFail($debtId);
         $bill = Bill::where('id', $debt->bill_id)->first();
         $calcDiff = $bill->total_amount - paidDebt($debtId);
-        if ($calcDiff >= 0) {
+        if ($calcDiff > 0) {
             return $calcDiff;
         } else {
             $debt->is_paid = 1;
             $debt->save();
             return 0;
         }
+    }
+}
+
+if (!function_exists("calculateDayMoney")) {
+    function calculateDayMoney()
+    {
+        $incomes = Income::get()->sum('amount');
+        $expenses = Expense::get()->sum('amount');
+        return $incomes - $expenses;
     }
 }

@@ -6,6 +6,8 @@ use App\Models\Bill;
 use App\Models\Branch;
 use App\Models\Company;
 use App\Models\Debt;
+use App\Models\Expense;
+use App\Models\Income;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -20,8 +22,10 @@ class DashboardController extends Controller
         $branchCount = count(Branch::get());
         $companyCount = count(Company::get());
         $billCount = count(Bill::get());
-        $debtCount = count(Debt::get());
-        return view('dashboard.index', compact('branchCount', 'companyCount', 'billCount', 'debtCount'));
+        $debtCount = count(Debt::where('is_paid', 0)->get());
+        $incomeCount = count(Income::get());
+        $expenseCount = count(Expense::get());
+        return view('dashboard.index', compact('branchCount', 'companyCount', 'billCount', 'debtCount', 'incomeCount', 'expenseCount'));
     }
 
 
@@ -31,12 +35,14 @@ class DashboardController extends Controller
             if (isset($branchId) || $branchId == null) {
                 $branch = Branch::where('id', $branchId)->first();
                 $request->session()->put('branchName', $branch->name);
+                $request->session()->put('branchCash', $branch->amount_cash);
                 $request->session()->put('branchId', $branch->id);
                 $request->session()->save();
                 return redirect()->back();
             } else {
                 $branch = Branch::where('id', 1)->first();
                 $request->session()->put('branchName', $branch->name);
+                $request->session()->put('branchCash', $branch->amount_cash);
                 $request->session()->put('branchId', $branch->id);
                 $request->session()->save();
             }

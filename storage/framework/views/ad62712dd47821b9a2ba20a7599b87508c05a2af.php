@@ -1,6 +1,6 @@
 <div class="card-body">
     <div class="row">
-        <div class="col-6">
+        <div class="col-5">
             <div class="input-icon">
                 <input type="text" class="form-control" wire:model.debounce.350ms="search" placeholder="Borç Ara...">
                 <span>
@@ -8,13 +8,22 @@
                 </span>
             </div>
         </div>
-        <div class="dropdown bootstrap-select form-control col-6">
+        <div class="dropdown bootstrap-select form-control col-3 mr-5">
             <div class="form-group">
                 <select class="form-control" wire:model="orderByCompany">
                     <option value="" selected>Tüm Firmalar</option>
                     <?php $__currentLoopData = $companies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($company->id); ?>"><?php echo e($company->name); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+            </div>
+        </div>
+        <div class="dropdown bootstrap-select form-control col-3">
+            <div class="form-group">
+                <select class="form-control" wire:model="filterByPaid">
+                    <option value="" selected>Tüm Borçlar</option>
+                    <option value="1" selected>Ödenmemiş Borçlar</option>
+                    <option value="2" selected>Ödenmiş Borçlar</option>
                 </select>
             </div>
         </div>
@@ -44,7 +53,7 @@
                     <td width="11%" class="datatable-cell" data-label="Ödenen Borç"><?php echo number_format(paidDebt($bill->debt->id),  2, ',', '.') . ' TL'; ?></td>
                     <td width="11%" class="datatable-cell" data-label="Kalan Borç"><?php echo number_format(remainDebt($bill->debt->id),  2, ',', '.') . ' TL'; ?></td>
                     <td width="11%" class="datatable-cell" data-label="İşlemler">
-                        <?php if($bill->debt->is_paid == 0): ?>
+                        <?php if(remainDebt($bill->debt->id) != 0): ?>
                         <span>
                             <a wire:click="OpenEditDebtModal(<?php echo e($bill->debt->id); ?>, <?php echo e($bill->id); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
                                 <span class="svg-icon svg-icon-md">

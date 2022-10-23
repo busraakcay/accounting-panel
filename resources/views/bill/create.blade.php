@@ -39,7 +39,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="billDate">Fatura Tarihi</label>
-                        <input value="{{ old('billDate') }}" type="date" name="billDate" class="form-control" value="@php echo date('Y-m-d'); @endphp" />
+                        <input type="date" name="billDate" class="form-control" value="@php echo date('Y-m-d'); @endphp" />
                     </div>
                 </div>
             </div>

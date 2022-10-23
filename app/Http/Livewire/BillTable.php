@@ -21,7 +21,7 @@ class BillTable extends Component
         return view('livewire.bill-table', [
             "bills" => Bill::when($this->orderByCompany, function ($query) {
                 $query->where('company_id', $this->orderByCompany);
-            })->where('product_name', 'like', '%' . trim($this->search) . '%')->orderBy('bill_date', 'desc')->paginate(20),
+            })->where('product_name', 'like', '%' . trim($this->search) . '%')->orderBy('bill_date', 'desc')->orderBy('id', 'desc')->paginate(20),
             "companies" => Company::get(),
         ]);
     }

@@ -4,11 +4,11 @@
     <div class="card card-custom  gutter-b">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <div class="card-title">
-                <h3 class="card-label">Fatura Tipleri</h3>
+                <h3 class="card-label">Gelir/Gider Türleri</h3>
             </div>
             <div class="card-toolbar">
                 <a href="{{ route('create-bill-type') }}" class="btn btn-primary font-weight-bolder">
-                    Fatura Tipi Ekle</a>
+                    Yeni Tür Ekle</a>
             </div>
         </div>
         @livewire('bill-type-table')

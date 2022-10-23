@@ -11,7 +11,7 @@
                 <form wire:submit.prevent="paidAmountUpdate">
                     <input type="hidden" wire:model="debtId">
                     <div class="form-group">
-                        <label for="paidAmount">Ödenen Miktar</label>
+                        <label for="paidAmount"><b>{{ $productName }}</b> için ödenen miktar</label>
                         <input type="text" class="form-control" placeholder="Ödenen miktarı giriniz" wire:model="paidAmount">
                         <span class="text-danger"> @error('paidAmount') {{ $message }}@enderror</span>
                     </div>
