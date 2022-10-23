@@ -12,7 +12,7 @@
         <div class="card-body">
             <div class="pb-5">
                 <div class="input-icon mb-5">
-                    <input type="text" class="form-control" wire:model.debounce.350ms="search" placeholder="Kategori Ara...">
+                    <input type="text" class="form-control" wire:model.debounce.350ms="search" placeholder="Firma Ara...">
                     <span>
                         <i class="fa fa-search text-muted"></i>
                     </span>

@@ -22,15 +22,19 @@ class BillTypeController extends Controller
     {
         if ($request->billType == "1") {
             foreach ($request->option_group as $option) {
-                $billType = new IncomeType();
-                $billType->name = $option["name"];
-                $billType->save();
+                if ($option["name"] != null) {
+                    $billType = new IncomeType();
+                    $billType->name = $option["name"];
+                    $billType->save();
+                }
             }
         } else {
             foreach ($request->option_group as $option) {
-                $billType = new ExpenseType();
-                $billType->name = $option["name"];
-                $billType->save();
+                if ($option["name"] != null) {
+                    $billType = new ExpenseType();
+                    $billType->name = $option["name"];
+                    $billType->save();
+                }
             }
         }
         return redirect()->route('bill-type')->with('success', 'Fatura tipi başarıyla eklendi!');

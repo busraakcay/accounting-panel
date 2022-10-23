@@ -61,8 +61,8 @@
 		<div class="d-flex flex-row flex-column-fluid page">
 			<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
 				<div class="brand flex-column-auto" id="kt_brand">
-					<a href="{{ route('dashboard') }}" class="brand-logo mt-5">
-						<img src="{{ asset('assets/panel/logo.png') }}" class="max-h-100px mt-5" alt="" />
+					<a href="{{ route('dashboard') }}" class="brand-logo">
+						<img src="{{ asset('assets/panel/logo.png') }}" class="img-fluid" alt="" />
 					</a>
 					<script type="text/javascript">
 					</script>

@@ -90577,6 +90577,9 @@ body {
     -ms-flex-pack: flex-begin;
     justify-content: flex-begin;
 }
+.brand .brand-logo img{
+    height:60px
+}
 .aside-minimize:not(.aside-minimize-hover) .brand .brand-logo img {
     display: none;
 }

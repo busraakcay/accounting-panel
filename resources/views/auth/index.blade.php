@@ -37,11 +37,11 @@
 
 	<div class="d-flex flex-column flex-root">
 		<div class="login login-3 login-signin-on d-flex flex-row-fluid" id="kt_login">
-			<div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid" style="background-image: url({{asset('assets/panel/metronic/metronic/theme/html/demo1/dist/assets/media/bg/bg-1.jpg')}});">
+			<div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid" style="background-image: url({{asset('assets/panel/metronic/metronic/theme/html/demo1/dist/assets/media/bg/bg-2.jpg')}});">
 				<div class="login-form text-center text-white p-7 position-relative overflow-hidden">
 					<div class="d-flex flex-center mb-15">
 						<a>
-							<img src="{{asset('assets/panel/metronic/metronic/theme/html/demo1/dist/assets/media/logos/logo-letter-9.png')}}" class="max-h-100px" alt="" />
+							<img src="{{ asset('assets/panel/logo.png') }}" class="img-fluid" alt="" />
 						</a>
 					</div>
 					<div class="login-signin">
@@ -53,10 +53,10 @@
 							@csrf
 							@method('post')
 							<div class="form-group">
-								<input class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 mb-5" type="text" placeholder="Kullanıcı Adı" name="username" autocomplete="off" />
+								<input class="form-control h-auto text-dark placeholder-dark opacity-70 rounded-pill border-0 bg-light py-4 px-8 mb-5" type="text" placeholder="Kullanıcı Adı" name="username" autocomplete="off" />
 							</div>
 							<div class="form-group">
-								<input class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 mb-5" type="password" placeholder="Şifre" name="password" />
+								<input class="form-control h-auto text-dark placeholder-dark opacity-70 rounded-pill border-0 py-4 px-8 mb-5" type="password" placeholder="Şifre" name="password" />
 							</div>
 							<div class="form-group text-center mt-10">
 								<button id="kt_login_signin_submit" class="btn btn-pill btn-outline-white font-weight-bold opacity-90 px-15 py-3">Giriş Yap</button>
