@@ -87,54 +87,6 @@
 									<span class="menu-text">Kontrol Paneli</span>
 								</a>
 							</li>
-							<li class="menu-section">
-								<h4 class="menu-text">Yönetim</h4>
-								<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-							</li>
-							<li class="menu-item menu-item-submenu 
-										{{ (request()->segment(1) == 'admin') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(1) == 'branch') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(1) == 'company') ? 'menu-item-active menu-item-open' : '' }}
-										{{ (request()->segment(1) == 'bill-type') ? 'menu-item-active menu-item-open' : '' }}
-										" aria-haspopup="true" data-menu-toggle="hover">
-								<a class="menu-link menu-toggle">
-									<i class="menu-icon fas fa-cogs"></i>
-									<span class="menu-text">Ayarlar</span>
-									<i class="menu-arrow"></i>
-								</a>
-								<div class="menu-submenu">
-									<i class="menu-arrow"></i>
-									<ul class="menu-subnav">
-
-										<li class="menu-item {{ (request()->segment(1) == 'branch') ? 'menu-item-active  menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="{{ route('branch') }}" class="menu-link">
-												<i class="menu-icon fas fa-sharp fa-solid fa-code-branch">
-													<span></span>
-												</i>
-												<span class="menu-text">Şubeler</span>
-											</a>
-										</li>
-
-										<li class="menu-item {{ (request()->segment(1) == 'company') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="{{ route('company') }}" class="menu-link menu-toggle">
-												<i class="menu-icon fas fa-city"></i>
-												<span class="menu-text">Firmalar</span>
-											</a>
-										</li>
-										<li class="menu-item {{ (request()->segment(1) == 'bill-type') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="{{ route('bill-type') }}" class="menu-link menu-toggle">
-												<i class="menu-icon fas fa-tags"></i>
-												<span class="menu-text">Fatura Türleri</span>
-											</a>
-										</li>
-										<li class="menu-item {{ (request()->segment(1) == 'admin') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-											<a href="{{ route('admin') }}" class="menu-link menu-toggle">
-												<i class="menu-icon fas fa-user-shield"></i>
-												<span class="menu-text">Kullanıcılar</span>
-											</a>
-										</li>
-									</ul>
-								</div>
 
 							<li class="menu-item {{ (request()->segment(1) == 'report') ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
 								<a href="" class="menu-link menu-toggle">
@@ -226,6 +178,16 @@
 													</a>
 												</li>
 												@endforeach
+
+												<li class="navi-item">
+													<a href="{{ route('admin') }}" class="navi-link">
+														<span class="symbol symbol-20 mr-3">
+															<i class="fas fa-user"></i>
+														</span>
+														<span class="menu-text">Kullanıcılar</span>
+													</a>
+												</li>
+
 												<li class="navi-item">
 													<a href="{{route('logout')}}" class="navi-link">
 														<span class="symbol symbol-20 mr-3">

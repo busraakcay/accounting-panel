@@ -79,6 +79,7 @@
                                 <tr class="datatable-row">
                                     <td width="70%" class="datatable-cell" data-label="Ad"><?php echo e($expenseTypes->name); ?></td>
                                     <td width="30%" class="datatable-cell" data-label="İşlemler">
+                                        <?php if($expenseTypes->id != 1): ?>
                                         <span>
                                             <a wire:click="OpenEditBillTypeModal(<?php echo e($expenseTypes->id); ?>, <?php echo e('2'); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
                                                 <span class="svg-icon svg-icon-md">
@@ -103,6 +104,7 @@
                                                 </span>
                                             </a>
                                         </span>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

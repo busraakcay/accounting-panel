@@ -23,9 +23,9 @@
                     <div class="form-group">
                         <select class="form-control" wire:model="orderByType">
                             <option value="" selected>Tüm Türler</option>
-                            @foreach ($expenseTypes as $expenseType)
-                            <option value="{{ $expenseType->id }}">{{ $expenseType->name }}</option>
-                            @endforeach
+                            <?php $__currentLoopData = $expenseTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $expenseType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($expenseType->id); ?>"><?php echo e($expenseType->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
                 </div>
@@ -42,15 +42,15 @@
                         </tr>
                     </thead>
                     <tbody class="datatable-body">
-                        @forelse ($expenses as $expense)
+                        <?php $__empty_1 = true; $__currentLoopData = $expenses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $expense): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr class="datatable-row">
-                            <td width="20%" class="datatable-cell" data-label="Ad">{{$expense->name}}</td>
-                            <td width="20%" class="datatable-cell" data-label="Toplam Tutar">@money($expense->amount)</td>
-                            <td width="20%" class="datatable-cell" data-label="Tür">{{$expense->expenseType->name}}</td>
-                            <td width="30%" class="datatable-cell" data-label="Açıklama">{{ Str::limit($expense->description, 255, "...")}}</td>
+                            <td width="20%" class="datatable-cell" data-label="Ad"><?php echo e($expense->name); ?></td>
+                            <td width="20%" class="datatable-cell" data-label="Toplam Tutar"><?php echo number_format($expense->amount,  2, ',', '.') . ' TL'; ?></td>
+                            <td width="20%" class="datatable-cell" data-label="Tür"><?php echo e($expense->expenseType->name); ?></td>
+                            <td width="30%" class="datatable-cell" data-label="Açıklama"><?php echo e(Str::limit($expense->description, 255, "...")); ?></td>
                             <td width="10%" class="datatable-cell" data-label="İşlemler">
                                 <span>
-                                    <a wire:click="OpenEditExpenseModal({{$expense->id}})" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
+                                    <a wire:click="OpenEditExpenseModal(<?php echo e($expense->id); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
                                         <span class="svg-icon svg-icon-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -61,8 +61,8 @@
                                             </svg>
                                         </span>
                                     </a>
-                                    @if($expense->type_id != 1)
-                                    <a wire:click="deleteConfirm({{ $expense->id }})" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
+                                    <?php if($expense->type_id != 1): ?>
+                                    <a wire:click="deleteConfirm(<?php echo e($expense->id); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
                                         <span class="svg-icon svg-icon-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -73,21 +73,21 @@
                                             </svg>
                                         </span>
                                     </a>
-                                    @endif
+                                    <?php endif; ?>
                                 </span>
                             </td>
                         </tr>
-                        @empty
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <tr class="datatable-row">
                             <td width="100%" class="text-left datatable-cell">
                                 <h6><i>Herhangi bir kayıt bulunamadı.</i></h6>
                             </td>
                         </tr>
-                        @endforelse
+                        <?php endif; ?>
                     </tbody>
                 </table>
                 <div class='container mt-5'>
-                    <span class='d-flex justify-content-center'>{{$expenses->links()}}</span>
+                    <span class='d-flex justify-content-center'><?php echo e($expenses->links()); ?></span>
                 </div>
             </div>
         </div>
@@ -133,6 +133,6 @@
             })
         </script>
     </div>
-    @include('modals.expense.create')
-    @include('modals.expense.edit')
-</div>
+    <?php echo $__env->make('modals.expense.create', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('modals.expense.edit', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+</div><?php /**PATH C:\xampp\htdocs\boltat\resources\views/livewire/expense-table.blade.php ENDPATH**/ ?>

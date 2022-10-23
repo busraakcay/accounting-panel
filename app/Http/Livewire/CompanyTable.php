@@ -34,10 +34,8 @@ class CompanyTable extends Component
     {
         $this->validate([
             'name' => 'required|string',
-            'description' => 'string',
         ], [
             'name.required' => 'Ad alanı zorunludur.',
-            'description.required' => 'Açıklama alanı zorunludur.',
         ]);
 
         $save = Company::insert([
@@ -73,12 +71,10 @@ class CompanyTable extends Component
 
         $this->validate([
             'upd_name' => 'required|string',
-            'upd_description' => 'string',
         ], [
             'upd_name.required' => 'Ad alanı zorunludur.',
-            'upd_description.required' => 'Açıklama alanı zorunludur.',
         ]);
-    
+
         $update = Company::find($id)->update([
             'name' => $this->upd_name,
             'description' => $this->upd_description,
@@ -121,7 +117,7 @@ class CompanyTable extends Component
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
-        }else{
+        } else {
             $this->dispatchBrowserEvent('swal:deleteError', [
                 'title' => "Firma Silinemedi",
                 'text' => "Firma silinirken bir hata oluştu",

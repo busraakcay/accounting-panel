@@ -23,8 +23,8 @@ unset($__errorArgs, $__bag); ?></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="amount">Miktar</label>
-                        <input type="text" class="form-control" placeholder="Miktar" wire:model="amount">
+                        <label for="amount">Toplam Tutar</label>
+                        <input type="text" class="form-control" placeholder="Toplam Tutar" wire:model="amount">
                         <span class="text-danger"> <?php $__errorArgs = ['amount'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

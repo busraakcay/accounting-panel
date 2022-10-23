@@ -36,7 +36,7 @@
                     <thead class="datatable-head">
                         <tr class="datatable-row">
                             <th width="20%" class="datatable-cell datatable-toggle-detail">Ad</th>
-                            <th width="20%" class="datatable-cell datatable-toggle-detail">Miktar</th>
+                            <th width="20%" class="datatable-cell datatable-toggle-detail">Toplam Tutar</th>
                             <th width="20%" class="datatable-cell datatable-toggle-detail">Tür</th>
                             <th width="30%" class="datatable-cell datatable-toggle-detail">Açıklama</th>
                             <th width="10%" class="datatable-cell datatable-toggle-detail">İşlemler</th>
@@ -46,7 +46,7 @@
                         <?php $__empty_1 = true; $__currentLoopData = $incomes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $income): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr class="datatable-row">
                             <td width="20%" class="datatable-cell" data-label="Ad"><?php echo e($income->name); ?></td>
-                            <td width="20%" class="datatable-cell" data-label="Miktar"><?php echo number_format($income->amount,  2, ',', '.') . ' TL'; ?></td>
+                            <td width="20%" class="datatable-cell" data-label="Toplam Tutar"><?php echo number_format($income->amount,  2, ',', '.') . ' TL'; ?></td>
                             <td width="20%" class="datatable-cell" data-label="Tür"><?php echo e($income->incomeType->name); ?></td>
                             <td width="30%" class="datatable-cell" data-label="Açıklama"><?php echo e(Str::limit($income->description, 255, "...")); ?></td>
                             <td width="10%" class="datatable-cell" data-label="İşlemler">

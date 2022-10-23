@@ -103,15 +103,14 @@
         <div class="table-responsive">
             <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
                 <thead class="datatable-head">
-                    <tr class="datatable-row" style="left: 0px;">
-                        <th class="datatable-cell datatable-toggle-detail"><span></span></th>
-                        <th data-field="Sipariş Numarası" class="datatable-cell datatable-cell-sort"><span style="width: 80px;">Sipariş No</span></th>
-                        <th data-field="Sipariş Sahibi" class="datatable-cell datatable-cell-sort"><span style="width: 110px;">Sipariş Sahibi</span></th>
-                        <th data-field="Sipariş Tarihi" class="datatable-cell datatable-cell-sort"><span style="width: 125px;">Sipariş Tarihi</span></th>
-                        <th data-field="Kargo Şirketi" class="datatable-cell datatable-cell-sort"><span style="width: 115px;">Kargo Şirketi</span></th>
-                        <th data-field="Status" class="datatable-cell datatable-cell-sort"><span style="width: 140px;">Sipariş Durumu</span></th>
-                        <th data-field="Ödeme Yöntemi" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 150px;">Ödeme Yöntemi</span></th>
-                        <th data-field="Sipariş Tutarı" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 130px;">Sipariş Tutarı</span></th>
+                    <tr class="datatable-row">
+                        <th width="12%" class="datatable-cell datatable-toggle-detail">Firma</th>
+                        <th width="12%" class="datatable-cell datatable-toggle-detail">Mal Hizmet</th>
+                        <th width="12%" class="datatable-cell datatable-toggle-detail">Fatura Tarihi</th>
+                        <th width="12%" class="datatable-cell datatable-toggle-detail">Miktar</th>
+                        <th width="12%" class="datatable-cell datatable-toggle-detail">Toplam Borç</th>
+                        <th width="12%" class="datatable-cell datatable-toggle-detail">Ödenen Borç</th>
+                        <th width="12%" class="datatable-cell datatable-toggle-detail">Kalan Borç</th>
                     </tr>
                 </thead>
                 <tbody>

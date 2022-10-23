@@ -16,6 +16,7 @@ class ExpenseTypeSeeder extends Seeder
     public function run()
     {
         $expense_types = [
+            ['name' => 'Fatura'],
             ['name' => 'Hammadde'],
             ['name' => 'İşçilik'],
             ['name' => 'SGK'],

@@ -10,6 +10,7 @@
             <div class="modal-body">
                 <form wire:submit.prevent="update">
                     <input type="hidden" wire:model="upd_expenseId">
+                    @if($this->upd_expenseType != 1)
                     <div class="form-group">
                         <label for="upd_name">Ad</label>
                         <input type="text" class="form-control" placeholder="Ad" wire:model="upd_name">
@@ -17,8 +18,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="upd_amount">Miktar</label>
-                        <input type="text" class="form-control" placeholder="Miktar" wire:model="upd_amount">
+                        <label for="upd_amount">Toplam Tutar</label>
+                        <input type="text" class="form-control" placeholder="Toplam Tutar" wire:model="upd_amount">
                         <span class="text-danger"> @error('upd_amount') {{ $message }}@enderror</span>
                     </div>
 
@@ -28,10 +29,10 @@
                             @foreach ($expenseTypes as $expenseType)
                             <option value="{{ $expenseType->id }}" {{ $this->upd_expenseType == $expenseType->id ? 'selected' : '' }}>{{ $expenseType->name }}</option>
                             @endforeach
-
                         </select>
                         <span class="text-danger"> @error('upd_expenseType') {{ $message }}@enderror</span>
                     </div>
+                    @endif
 
                     <div class="form-group">
                         <label for="upd_type">Açıklama</label>

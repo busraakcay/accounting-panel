@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('type_id')->nullable()->constrained('expense_types')->onUpdate('cascade')->nullOnDelete();
             $table->foreignId('branch_id')->constrained('branches')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('bill_id')->nullable()->constrained('bills')->onUpdate('cascade')->nullOnDelete()->nullable();
+            $table->foreignId('bill_id')->constrained('bills')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->double('amount');
             $table->longText('description')->nullable();

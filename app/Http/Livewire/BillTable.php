@@ -67,6 +67,7 @@ class BillTable extends Component
     public function delete($id)
     {
         $bill = Bill::findOrFail($id);
+        updateCashAmount(session()->get('branchId'), $bill->total_amount, 1);
         $delete = $bill->delete();
         if ($delete) {
             $this->dispatchBrowserEvent('swal:deleted', [

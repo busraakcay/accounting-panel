@@ -7,22 +7,25 @@
                 <h3 class="card-label">Faturalar</h3>
             </div>
             <div class="card-toolbar">
-                <a href="<?php echo e(route('create-bill')); ?>" class="btn btn-primary font-weight-bolder">
+                <a href="<?php echo e(route('create-bill')); ?>" class="btn btn-primary font-weight-bolder mr-2">
                     Fatura Ekle</a>
+                <a href="<?php echo e(route('bill-type')); ?>" class="btn btn-warning font-weight-bolder">
+                    Fatura Türü Ekle</a>
+
             </div>
         </div>
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('bill-table')->html();
-} elseif ($_instance->childHasBeenRendered('1Z4isvN')) {
-    $componentId = $_instance->getRenderedChildComponentId('1Z4isvN');
-    $componentTag = $_instance->getRenderedChildComponentTagName('1Z4isvN');
+} elseif ($_instance->childHasBeenRendered('3zYl7IF')) {
+    $componentId = $_instance->getRenderedChildComponentId('3zYl7IF');
+    $componentTag = $_instance->getRenderedChildComponentTagName('3zYl7IF');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('1Z4isvN');
+    $_instance->preserveRenderedChild('3zYl7IF');
 } else {
     $response = \Livewire\Livewire::mount('bill-table');
     $html = $response->html();
-    $_instance->logRenderedChild('1Z4isvN', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('3zYl7IF', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

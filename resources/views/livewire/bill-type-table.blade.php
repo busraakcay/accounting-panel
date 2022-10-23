@@ -79,6 +79,7 @@
                                 <tr class="datatable-row">
                                     <td width="70%" class="datatable-cell" data-label="Ad">{{$expenseTypes->name}}</td>
                                     <td width="30%" class="datatable-cell" data-label="İşlemler">
+                                        @if($expenseTypes->id != 1)
                                         <span>
                                             <a wire:click="OpenEditBillTypeModal({{$expenseTypes->id}}, {{ '2' }})" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
                                                 <span class="svg-icon svg-icon-md">
@@ -103,6 +104,7 @@
                                                 </span>
                                             </a>
                                         </span>
+                                        @endif
                                     </td>
                                 </tr>
                                 @empty

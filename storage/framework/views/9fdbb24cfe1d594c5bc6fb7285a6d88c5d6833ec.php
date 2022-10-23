@@ -1,15 +1,16 @@
-<div class="modal fade editIncome" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+<div class="modal fade editExpense" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Gelir Güncelle</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Gider Güncelle</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form wire:submit.prevent="update">
-                    <input type="hidden" wire:model="upd_incomeId">
+                    <input type="hidden" wire:model="upd_expenseId">
+                    <?php if($this->upd_expenseType != 1): ?>
                     <div class="form-group">
                         <label for="upd_name">Ad</label>
                         <input type="text" class="form-control" placeholder="Ad" wire:model="upd_name">
@@ -37,14 +38,13 @@ unset($__errorArgs, $__bag); ?></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="upd_incomeType">Tür</label>
-                        <select class="form-control" wire:model="upd_incomeType">
-                            <?php $__currentLoopData = $incomeTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $incomeType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($incomeType->id); ?>" <?php echo e($this->upd_incomeType == $incomeType->id ? 'selected' : ''); ?>><?php echo e($incomeType->name); ?></option>
+                        <label for="upd_expenseType">Tür</label>
+                        <select class="form-control" wire:model="upd_expenseType">
+                            <?php $__currentLoopData = $expenseTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $expenseType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($expenseType->id); ?>" <?php echo e($this->upd_expenseType == $expenseType->id ? 'selected' : ''); ?>><?php echo e($expenseType->name); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                         </select>
-                        <span class="text-danger"> <?php $__errorArgs = ['upd_incomeType'];
+                        <span class="text-danger"> <?php $__errorArgs = ['upd_expenseType'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -53,6 +53,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?></span>
                     </div>
+                    <?php endif; ?>
 
                     <div class="form-group">
                         <label for="upd_type">Açıklama</label>
@@ -75,4 +76,4 @@ unset($__errorArgs, $__bag); ?></span>
             </div>
         </div>
     </div>
-</div><?php /**PATH C:\xampp\htdocs\boltat\resources\views/modals/income/edit.blade.php ENDPATH**/ ?>
+</div><?php /**PATH C:\xampp\htdocs\boltat\resources\views/modals/expense/edit.blade.php ENDPATH**/ ?>

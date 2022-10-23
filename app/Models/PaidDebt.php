@@ -13,10 +13,6 @@ class PaidDebt extends Model
 
     protected $guarded = [];
 
-    protected $casts = [
-        'paid_date' => 'datetime'
-    ];
-
     public function debt()
     {
         return $this->belongsTo(Debt::class, 'debt_id');

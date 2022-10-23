@@ -7,8 +7,11 @@
                 <h3 class="card-label">Faturalar</h3>
             </div>
             <div class="card-toolbar">
-                <a href="{{ route('create-bill') }}" class="btn btn-primary font-weight-bolder">
+                <a href="{{ route('create-bill') }}" class="btn btn-primary font-weight-bolder mr-2">
                     Fatura Ekle</a>
+                <a href="{{ route('bill-type') }}" class="btn btn-warning font-weight-bolder">
+                    Fatura Türü Ekle</a>
+
             </div>
         </div>
         @livewire('bill-table')

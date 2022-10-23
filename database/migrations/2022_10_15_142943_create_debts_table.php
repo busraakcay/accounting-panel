@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('bill_id')->constrained('bills')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('branch_id')->constrained('branches')->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('is_paid')->default(0);
             $table->timestamps();
         });
     }

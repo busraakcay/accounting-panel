@@ -16,8 +16,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="amount">Miktar</label>
-                        <input type="text" class="form-control" placeholder="Miktar" wire:model="amount">
+                        <label for="amount">Toplam Tutar</label>
+                        <input type="text" class="form-control" placeholder="Toplam Tutar" wire:model="amount">
                         <span class="text-danger"> @error('amount') {{ $message }}@enderror</span>
                     </div>
 

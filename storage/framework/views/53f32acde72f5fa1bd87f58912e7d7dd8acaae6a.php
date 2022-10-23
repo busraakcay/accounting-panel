@@ -1,19 +1,18 @@
-<div class="modal fade editIncome" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+<div class="modal fade createExpense" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Gelir Güncelle</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Gider Ekle</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form wire:submit.prevent="update">
-                    <input type="hidden" wire:model="upd_incomeId">
+                <form wire:submit.prevent="save">
                     <div class="form-group">
-                        <label for="upd_name">Ad</label>
-                        <input type="text" class="form-control" placeholder="Ad" wire:model="upd_name">
-                        <span class="text-danger"> <?php $__errorArgs = ['upd_name'];
+                        <label for="name">Ad</label>
+                        <input type="text" class="form-control" placeholder="Ad" wire:model="name">
+                        <span class="text-danger"> <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -24,9 +23,9 @@ unset($__errorArgs, $__bag); ?></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="upd_amount">Toplam Tutar</label>
-                        <input type="text" class="form-control" placeholder="Toplam Tutar" wire:model="upd_amount">
-                        <span class="text-danger"> <?php $__errorArgs = ['upd_amount'];
+                        <label for="amount">Toplam Tutar</label>
+                        <input type="text" class="form-control" placeholder="Toplam Tutar" wire:model="amount">
+                        <span class="text-danger"> <?php $__errorArgs = ['amount'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -37,14 +36,15 @@ unset($__errorArgs, $__bag); ?></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="upd_incomeType">Tür</label>
-                        <select class="form-control" wire:model="upd_incomeType">
-                            <?php $__currentLoopData = $incomeTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $incomeType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($incomeType->id); ?>" <?php echo e($this->upd_incomeType == $incomeType->id ? 'selected' : ''); ?>><?php echo e($incomeType->name); ?></option>
+                        <label for="expenseType">Tür</label>
+                        <select class="form-control" wire:model="expenseType">
+                            <option value="" selected hidden>Seçiniz</option>
+                            <?php $__currentLoopData = $expenseTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $expenseType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($expenseType->id); ?>"><?php echo e($expenseType->name); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </select>
-                        <span class="text-danger"> <?php $__errorArgs = ['upd_incomeType'];
+                        <span class="text-danger"> <?php $__errorArgs = ['expenseType'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -55,9 +55,9 @@ unset($__errorArgs, $__bag); ?></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="upd_type">Açıklama</label>
-                        <textarea class="form-control" rows="3" wire:model="upd_description"></textarea>
-                        <span class="text-danger"> <?php $__errorArgs = ['upd_description'];
+                        <label for="type">Açıklama</label>
+                        <textarea class="form-control" rows="3" wire:model="description"></textarea>
+                        <span class="text-danger"> <?php $__errorArgs = ['description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -75,4 +75,4 @@ unset($__errorArgs, $__bag); ?></span>
             </div>
         </div>
     </div>
-</div><?php /**PATH C:\xampp\htdocs\boltat\resources\views/modals/income/edit.blade.php ENDPATH**/ ?>
+</div><?php /**PATH C:\xampp\htdocs\boltat\resources\views/modals/expense/create.blade.php ENDPATH**/ ?>

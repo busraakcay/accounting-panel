@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('reasonfor_discount_inc');
             $table->double('vat_rate');
             $table->double('vat_amount');
-            $table->string('other_taxes');
+            $table->string('other_taxes')->nullable();
             $table->double('total_amount');
             $table->datetime('bill_date');
             $table->timestamps();

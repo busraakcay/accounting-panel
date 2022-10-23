@@ -25,7 +25,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="productName">Mal Hizmet</label>
-                        <input type="text" class="form-control" placeholder="Ürün adı" name="productName">
+                        <input value="{{ old('productName') }}" type="text" class="form-control" placeholder="Ürün adı" name="productName">
                     </div>
                 </div>
             </div>
@@ -33,13 +33,13 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="unitPrice">Birim Fiyat</label>
-                        <input type="text" class="form-control" placeholder="Ürünün birim fiyatı" name="unitPrice">
+                        <input value="{{ old('unitPrice') }}" type="text" class="form-control" placeholder="Ürünün birim fiyatı" name="unitPrice">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="billDate">Fatura Tarihi</label>
-                        <input type="date" name="billDate" class="form-control" value="@php echo date('Y-m-d'); @endphp" />
+                        <input value="{{ old('billDate') }}" type="date" name="billDate" class="form-control" value="@php echo date('Y-m-d'); @endphp" />
                     </div>
                 </div>
             </div>
@@ -47,13 +47,13 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="quantity">Miktar</label>
-                        <input type="text" class="form-control" placeholder="Ürün miktarı" name="quantity">
+                        <input value="{{ old('quantity') }}" type="text" class="form-control" placeholder="Ürün miktarı" name="quantity">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="quantityType">Miktar Tipi</label>
-                        <input type="text" class="form-control" placeholder="Ör: kg, gr, adet, vs." name="quantityType">
+                        <input value="{{ old('quantityType') }}" type="text" class="form-control" placeholder="Ör: kg, gr, adet, vs." name="quantityType">
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">%</div>
                             </div>
-                            <input type="text" class="form-control" placeholder="KDV Oranı" name="vatRate">
+                            <input value="{{ old('vatRate') }}" type="text" class="form-control" placeholder="KDV Oranı" name="vatRate">
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <label for="vatAmount">KDV Tutarı</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="KDV Tutarı" name="vatAmount">
+                            <input value="{{ old('vatAmount') }}" type="text" class="form-control" placeholder="KDV Tutarı" name="vatAmount">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">TL</div>
                             </div>
@@ -89,7 +89,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">%</div>
                             </div>
-                            <input type="text" class="form-control" placeholder="İskonto Oranı" name="discountRateofInc">
+                            <input value="{{ old('discountRateofInc') }}" type="text" class="form-control" placeholder="İskonto Oranı" name="discountRateofInc">
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                     <div class="form-group">
                         <label for="discountIncAmount">İskonto Tutarı</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="İskonto Tutarı" name="discountIncAmount">
+                            <input value="{{ old('discountIncAmount') }}" type="text" class="form-control" placeholder="İskonto Tutarı" name="discountIncAmount">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">TL</div>
                             </div>
@@ -109,13 +109,13 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="reasonforDiscountInc">İskonto Nedeni</label>
-                        <input type="text" class="form-control" placeholder="İskonto Nedeni" name="reasonforDiscountInc">
+                        <input value="{{ old('reasonforDiscountInc') }}" type="text" class="form-control" placeholder="İskonto Nedeni" name="reasonforDiscountInc">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="otherTaxes">Diğer Vergiler</label>
-                        <input type="text" class="form-control" placeholder="Diğer Vergiler" name="otherTaxes">
+                        <input value="{{ old('otherTaxes') }}" type="text" class="form-control" placeholder="Diğer Vergiler" name="otherTaxes">
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="totalAmount">Mal Hizmet Tutarı</label>
-                        <input type="text" class="form-control" placeholder="Mal Hizmet Tutarı" name="totalAmount">
+                        <input value="{{ old('totalAmount') }}" type="text" class="form-control" placeholder="Mal Hizmet Tutarı" name="totalAmount">
                     </div>
                 </div>
             </div>
