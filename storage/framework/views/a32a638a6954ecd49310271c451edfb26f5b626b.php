@@ -27,7 +27,7 @@
 	<link href="<?php echo e(asset('assets/panel/css/themes/layout/aside/dark15aa.css')); ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo e(asset('assets/sweetalert/sweetalert2.min.css')); ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo e(asset('assets/panel/css/style.css')); ?>" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('assets/panel/favicon.ico')); ?>">
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('assets/panel/logo.png')); ?>">
 	<?php echo $__env->make('partials.alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 

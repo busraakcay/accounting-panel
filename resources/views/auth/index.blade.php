@@ -27,7 +27,7 @@
 	<link href="{{ asset('assets/panel/css/themes/layout/aside/dark15aa.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/panel/css/style.css') }}" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/panel/favicon.ico')}}">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/panel/logo.png') }}">
 	@include('partials.alert')
 
 
