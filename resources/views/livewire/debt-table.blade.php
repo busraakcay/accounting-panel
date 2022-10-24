@@ -50,12 +50,12 @@
                     <td width="11%" class="datatable-cell" data-label="Fatura Tarihi">{{$bill->bill_date->format('d.m.Y')}}</td>
                     <td width="11%" class="datatable-cell" data-label="Miktar">{{$bill->quantity}} {{$bill->quantity_type}}</td>
                     <td width="11%" class="datatable-cell" data-label="Toplam Borç">@money($bill->total_amount)</td>
-                    <td width="11%" class="datatable-cell" data-label="Ödenen Borç">@money(paidDebt($bill->debt->id))</td>
-                    <td width="11%" class="datatable-cell" data-label="Kalan Borç">@money(remainDebt($bill->debt->id))</td>
+                    <td width="11%" class="datatable-cell" data-label="Ödenen Borç">@money(paidDebt($bill->id))</td>
+                    <td width="11%" class="datatable-cell" data-label="Kalan Borç">@money(remainDebt($bill->id))</td>
                     <td width="11%" class="datatable-cell" data-label="İşlemler">
-                        @if(remainDebt($bill->debt->id) != 0)
+                        @if(remainDebt($bill->id) != 0)
                         <span>
-                            <a wire:click="OpenEditDebtModal({{$bill->debt->id}}, {{ $bill->id }})" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
+                            <a wire:click="OpenEditDebtModal({{ $bill->id }})" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
                                 <span class="svg-icon svg-icon-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

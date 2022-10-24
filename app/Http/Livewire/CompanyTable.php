@@ -47,6 +47,7 @@ class CompanyTable extends Component
             $this->dispatchBrowserEvent('CloseCreateCompanyModal', [
                 'title' => "İşlem Başarılı",
                 'text' => "Yeni firma eklendi.",
+                'timer'  => 800,
                 'icon'  =>  'success',
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
@@ -84,6 +85,7 @@ class CompanyTable extends Component
             $this->dispatchBrowserEvent('CloseEditCompanyModal', [
                 'title' => "İşlem Başarılı",
                 'text' => "Firma başarıyla güncellendi.",
+                'timer'  => 800,
                 'icon'  =>  'success',
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
@@ -97,6 +99,7 @@ class CompanyTable extends Component
             'title' => "Emin misiniz?",
             'text' => "Bu işlemi geri alamayacaksınız.",
             'icon'  =>  'warning',
+            'timer'  => 800,
             'showCancelButton'  =>  true,
             'confirmButtonColor'  =>  '#3085d6',
             'cancelButtonColor'  =>  '#d33',
@@ -114,6 +117,7 @@ class CompanyTable extends Component
                 'title' => "Firma Silindi",
                 'text' => "Firma başarıyla silindi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
@@ -122,6 +126,7 @@ class CompanyTable extends Component
                 'title' => "Firma Silinemedi",
                 'text' => "Firma silinirken bir hata oluştu",
                 'icon'  =>  'error',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);

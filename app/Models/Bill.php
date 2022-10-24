@@ -33,9 +33,8 @@ class Bill extends Model
         return $this->belongsTo(Branch::class, 'branch_id');
     }
 
-    public function debt()
+    public function paidDebts()
     {
-        return $this->hasOne(Debt::class, 'bill_id', 'id');
+        return $this->hasMany(PaidDebt::class, 'id', 'bill_id');
     }
-
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('company_id')->nullable()->constrained('companies')->onUpdate('cascade')->nullOnDelete();
             $table->foreignId('branch_id')->constrained('branches')->onUpdate('cascade')->onDelete('cascade');
             $table->tinyInteger('bill_type');
+            $table->boolean('is_paid');
             $table->string('product_name');
             $table->integer('quantity');
             $table->string('quantity_type');

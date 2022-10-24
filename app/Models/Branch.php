@@ -31,8 +31,4 @@ class Branch extends Model
         return $this->hasMany(Expense::class, 'branch_id', 'id');
     }
 
-    public function debts()
-    {
-        return $this->hasMany(Debt::class, 'branch_id', 'id');
-    }
 }

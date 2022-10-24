@@ -69,6 +69,7 @@ class BillTypeTable extends Component
             'title' => "Emin misiniz?",
             'text' => "Bu işlemi geri alamayacaksınız.",
             'icon'  =>  'warning',
+            'timer'  => 800,
             'showCancelButton'  =>  true,
             'confirmButtonColor'  =>  '#3085d6',
             'cancelButtonColor'  =>  '#d33',
@@ -91,6 +92,7 @@ class BillTypeTable extends Component
                 'title' => "Fatura Türü Silindi",
                 'text' => "Fatura Türü başarıyla silindi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
@@ -99,6 +101,7 @@ class BillTypeTable extends Component
                 'title' => "Fatura Türü Silinemedi",
                 'text' => "Fatura Türü silinirken bir hata oluştu",
                 'icon'  =>  'error',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);

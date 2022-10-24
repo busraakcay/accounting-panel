@@ -46,25 +46,24 @@ if (!function_exists("updateCashAmount")) {
 }
 
 if (!function_exists("paidDebt")) {
-    function paidDebt($debtId)
+    function paidDebt($billId)
     {
-        $paidDebt = PaidDebt::where('debt_id', $debtId)->get();
+        $paidDebt = PaidDebt::where('bill_id', $billId)->get();
         $paidDebtSum = $paidDebt->sum('paid_amount');
         return $paidDebtSum;
     }
 }
 
 if (!function_exists("remainDebt")) {
-    function remainDebt($debtId)
+    function remainDebt($billId)
     {
-        $debt = Debt::findOrFail($debtId);
-        $bill = Bill::where('id', $debt->bill_id)->first();
-        $calcDiff = $bill->total_amount - paidDebt($debtId);
+        $bill = Bill::findOrFail($billId);
+        $calcDiff = $bill->total_amount - paidDebt($billId);
         if ($calcDiff > 0) {
             return $calcDiff;
         } else {
-            $debt->is_paid = 1;
-            $debt->save();
+            $bill->is_paid = 1;
+            $bill->save();
             return 0;
         }
     }

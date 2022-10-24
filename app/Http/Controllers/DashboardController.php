@@ -22,10 +22,11 @@ class DashboardController extends Controller
         $branchCount = count(Branch::get());
         $companyCount = count(Company::get());
         $billCount = count(Bill::get());
-        $debtCount = count(Debt::where('is_paid', 0)->get());
+        $debtCount = count(Bill::where('bill_type', 2)->where('is_paid', 0)->get());
         $incomeCount = count(Income::get());
         $expenseCount = count(Expense::get());
-        return view('dashboard.index', compact('branchCount', 'companyCount', 'billCount', 'debtCount', 'incomeCount', 'expenseCount'));
+        $cashAmount = Branch::where('id', session()->get('branchId'))->first()->amount_cash;
+        return view('dashboard.index', compact('branchCount', 'companyCount', 'billCount', 'debtCount', 'incomeCount', 'expenseCount', 'cashAmount'));
     }
 
 
@@ -35,14 +36,12 @@ class DashboardController extends Controller
             if (isset($branchId) || $branchId == null) {
                 $branch = Branch::where('id', $branchId)->first();
                 $request->session()->put('branchName', $branch->name);
-                $request->session()->put('branchCash', $branch->amount_cash);
                 $request->session()->put('branchId', $branch->id);
                 $request->session()->save();
                 return redirect()->back();
             } else {
                 $branch = Branch::where('id', 1)->first();
                 $request->session()->put('branchName', $branch->name);
-                $request->session()->put('branchCash', $branch->amount_cash);
                 $request->session()->put('branchId', $branch->id);
                 $request->session()->save();
             }

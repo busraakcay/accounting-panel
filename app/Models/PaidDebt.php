@@ -13,8 +13,4 @@ class PaidDebt extends Model
 
     protected $guarded = [];
 
-    public function debt()
-    {
-        return $this->belongsTo(Debt::class, 'debt_id');
-    }
 }

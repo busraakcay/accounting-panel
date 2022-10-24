@@ -25,6 +25,7 @@ class AdminTable extends Component
             'title' => "Emin misiniz?",
             'text' => "Bu işlemi geri alamayacaksınız.",
             'icon'  =>  'warning',
+            'timer'  => 800,
             'showCancelButton'  =>  true,
             'confirmButtonColor'  =>  '#3085d6',
             'cancelButtonColor'  =>  '#d33',
@@ -42,6 +43,7 @@ class AdminTable extends Component
                 'title' => "Şube Silindi",
                 'text' => "Şube başarıyla silindi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
@@ -50,6 +52,7 @@ class AdminTable extends Component
                 'title' => "Şube Silinemedi",
                 'text' => "Şube silinirken bir hata oluştu",
                 'icon'  =>  'error',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);

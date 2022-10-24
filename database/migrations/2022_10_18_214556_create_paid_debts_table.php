@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('paid_debts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('debt_id')->constrained('debts')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('bill_id')->constrained('bills')->onUpdate('cascade')->onDelete('cascade');
             $table->double('paid_amount');
             $table->timestamps();
         });

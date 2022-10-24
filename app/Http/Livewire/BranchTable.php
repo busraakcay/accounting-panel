@@ -48,6 +48,7 @@ class BranchTable extends Component
                 'title' => "İşlem Başarılı",
                 'text' => "Yeni şube eklendi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
@@ -76,7 +77,7 @@ class BranchTable extends Component
             'upd_name.required' => 'Ad alanı zorunludur.',
             'upd_amount.required' => 'Miktar alanı zorunludur.',
         ]);
-    
+
         $update = Branch::find($id)->update([
             'name' => $this->upd_name,
             'amount_cash' => $this->upd_amount,
@@ -87,6 +88,7 @@ class BranchTable extends Component
                 'title' => "İşlem Başarılı",
                 'text' => "Şube başarıyla güncellendi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
@@ -99,6 +101,7 @@ class BranchTable extends Component
             'title' => "Emin misiniz?",
             'text' => "Bu işlemi geri alamayacaksınız.",
             'icon'  =>  'warning',
+            'timer'  => 800,
             'showCancelButton'  =>  true,
             'confirmButtonColor'  =>  '#3085d6',
             'cancelButtonColor'  =>  '#d33',
@@ -116,14 +119,16 @@ class BranchTable extends Component
                 'title' => "Şube Silindi",
                 'text' => "Şube başarıyla silindi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
-        }else{
+        } else {
             $this->dispatchBrowserEvent('swal:deleteError', [
                 'title' => "Şube Silinemedi",
                 'text' => "Şube silinirken bir hata oluştu",
                 'icon'  =>  'error',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);

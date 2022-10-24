@@ -30,7 +30,7 @@
                             Kasam
                         </h6>
                         <span class="h3 mb-0 text-white">
-                            <?php echo e(number_format(session()->get('branchCash'),  2, ',', '.')); ?> <b>₺</b>
+                            <?php echo e(number_format($cashAmount,  2, ',', '.')); ?> <b>₺</b>
                         </span>
                     </div>
                     <div class="col-auto">

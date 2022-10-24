@@ -50,12 +50,12 @@
                     <td width="11%" class="datatable-cell" data-label="Fatura Tarihi"><?php echo e($bill->bill_date->format('d.m.Y')); ?></td>
                     <td width="11%" class="datatable-cell" data-label="Miktar"><?php echo e($bill->quantity); ?> <?php echo e($bill->quantity_type); ?></td>
                     <td width="11%" class="datatable-cell" data-label="Toplam Borç"><?php echo number_format($bill->total_amount,  2, ',', '.') . ' TL'; ?></td>
-                    <td width="11%" class="datatable-cell" data-label="Ödenen Borç"><?php echo number_format(paidDebt($bill->debt->id),  2, ',', '.') . ' TL'; ?></td>
-                    <td width="11%" class="datatable-cell" data-label="Kalan Borç"><?php echo number_format(remainDebt($bill->debt->id),  2, ',', '.') . ' TL'; ?></td>
+                    <td width="11%" class="datatable-cell" data-label="Ödenen Borç"><?php echo number_format(paidDebt($bill->id),  2, ',', '.') . ' TL'; ?></td>
+                    <td width="11%" class="datatable-cell" data-label="Kalan Borç"><?php echo number_format(remainDebt($bill->id),  2, ',', '.') . ' TL'; ?></td>
                     <td width="11%" class="datatable-cell" data-label="İşlemler">
-                        <?php if(remainDebt($bill->debt->id) != 0): ?>
+                        <?php if(remainDebt($bill->id) != 0): ?>
                         <span>
-                            <a wire:click="OpenEditDebtModal(<?php echo e($bill->debt->id); ?>, <?php echo e($bill->id); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
+                            <a wire:click="OpenEditDebtModal(<?php echo e($bill->id); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
                                 <span class="svg-icon svg-icon-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

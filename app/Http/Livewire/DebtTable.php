@@ -13,7 +13,7 @@ use Livewire\WithPagination;
 class DebtTable extends Component
 {
     use WithPagination;
-    public $paidAmount, $debtId, $billId, $productName;
+    public $paidAmount, $billId, $productName;
     public $search;
     public $orderByCompany = null;
     public $filterByPaid = null;
@@ -22,23 +22,30 @@ class DebtTable extends Component
     public function render()
     {
         return view('livewire.debt-table', [
-            "debts" => Bill::where('bill_type', 2)->when($this->orderByCompany, function ($query) {
-                $query->where('company_id', $this->orderByCompany);
-            })
+            "debts" => Bill::where('bill_type', 2)
+                ->when($this->orderByCompany, function ($query) {
+                    $query->where('company_id', $this->orderByCompany);
+                })
+                ->when($this->filterByPaid, function ($query) {
+                    if ($this->filterByPaid == 1) {
+                        $query->where('is_paid', 0);
+                    } else {
+                        $query->where('is_paid', 1);
+                    }
+                })
                 ->where('product_name', 'like', '%' . trim($this->search) . '%')->orderBy('bill_date', 'desc')->orderBy('id', 'desc')->paginate(20),
             "companies" => Company::get(),
         ]);
     }
 
-    public function OpenEditDebtModal($debtId, $billId)
+    public function OpenEditDebtModal($billId)
     {
         $bill = Bill::findOrFail($billId);
         $this->paidAmount = '';
-        $this->debtId = $debtId;
         $this->billId = $billId;
         $this->productName = $bill->product_name;
         $this->dispatchBrowserEvent('OpenEditDebtModal', [
-            'id' => $debtId
+            'id' => $billId
         ]);
     }
 
@@ -51,7 +58,7 @@ class DebtTable extends Component
 
         $paidAmountSave = PaidDebt::insert([
             'paid_amount' => $this->paidAmount,
-            'debt_id' => $this->debtId,
+            'bill_id' => $bill->id,
         ]);
 
         Expense::insert([
@@ -67,6 +74,7 @@ class DebtTable extends Component
             $this->dispatchBrowserEvent('CloseEditDebtModal', [
                 'title' => "İşlem Başarılı",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);

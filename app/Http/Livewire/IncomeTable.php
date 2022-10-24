@@ -62,6 +62,7 @@ class IncomeTable extends Component
                 'title' => "İşlem Başarılı",
                 'text' => "Yeni gelir eklendi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
@@ -112,6 +113,7 @@ class IncomeTable extends Component
                 'title' => "İşlem Başarılı",
                 'text' => "Gelir başarıyla güncellendi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
@@ -124,6 +126,7 @@ class IncomeTable extends Component
             'title' => "Emin misiniz?",
             'text' => "Bu işlemi geri alamayacaksınız.",
             'icon'  =>  'warning',
+            'timer'  => 800,
             'showCancelButton'  =>  true,
             'confirmButtonColor'  =>  '#3085d6',
             'cancelButtonColor'  =>  '#d33',
@@ -143,6 +146,7 @@ class IncomeTable extends Component
                 'title' => "Gelir Silindi",
                 'text' => "Gelir başarıyla silindi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
@@ -151,6 +155,7 @@ class IncomeTable extends Component
                 'title' => "Gelir Silinemedi",
                 'text' => "Gelir silinirken bir hata oluştu",
                 'icon'  =>  'error',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);

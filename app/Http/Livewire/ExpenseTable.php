@@ -62,6 +62,7 @@ class ExpenseTable extends Component
                 'title' => "İşlem Başarılı",
                 'text' => "Yeni gider eklendi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
@@ -112,6 +113,7 @@ class ExpenseTable extends Component
                 'title' => "İşlem Başarılı",
                 'text' => "Gider başarıyla güncellendi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
@@ -124,6 +126,7 @@ class ExpenseTable extends Component
             'title' => "Emin misiniz?",
             'text' => "Bu işlemi geri alamayacaksınız.",
             'icon'  =>  'warning',
+            'timer'  => 800,
             'showCancelButton'  =>  true,
             'confirmButtonColor'  =>  '#3085d6',
             'cancelButtonColor'  =>  '#d33',
@@ -143,6 +146,7 @@ class ExpenseTable extends Component
                 'title' => "Gider Silindi",
                 'text' => "Gider başarıyla silindi.",
                 'icon'  =>  'success',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);
@@ -151,6 +155,7 @@ class ExpenseTable extends Component
                 'title' => "Gider Silinemedi",
                 'text' => "Gider silinirken bir hata oluştu",
                 'icon'  =>  'error',
+                'timer'  => 800,
                 'showConfirmButton'  => false,
                 'showCancelButton'  =>  false,
             ]);

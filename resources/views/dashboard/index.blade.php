@@ -30,7 +30,7 @@
                             Kasam
                         </h6>
                         <span class="h3 mb-0 text-white">
-                            {{ number_format(session()->get('branchCash'),  2, ',', '.') }} <b>₺</b>
+                            {{ number_format($cashAmount,  2, ',', '.') }} <b>₺</b>
                         </span>
                     </div>
                     <div class="col-auto">
