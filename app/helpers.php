@@ -71,14 +71,6 @@ if (!function_exists("remainDebt")) {
     }
 }
 
-if (!function_exists("calculateProfitLoss")) {
-    function calculateProfitLoss()
-    {
-        $incomes = Income::get()->sum('amount');
-        $expenses = Expense::get()->sum('amount');
-        return $incomes - $expenses;
-    }
-}
 
 if (!function_exists("getProducts")) {
     function getProducts($billId)

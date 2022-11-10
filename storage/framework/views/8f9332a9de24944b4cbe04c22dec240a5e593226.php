@@ -131,6 +131,21 @@
             </div>
         </a>
     </div>
+    <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('dashboard-mounthly-report')->html();
+} elseif ($_instance->childHasBeenRendered('estSeK2')) {
+    $componentId = $_instance->getRenderedChildComponentId('estSeK2');
+    $componentTag = $_instance->getRenderedChildComponentTagName('estSeK2');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('estSeK2');
+} else {
+    $response = \Livewire\Livewire::mount('dashboard-mounthly-report');
+    $html = $response->html();
+    $_instance->logRenderedChild('estSeK2', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
 </div>
 
 <?php $__env->stopSection(); ?>

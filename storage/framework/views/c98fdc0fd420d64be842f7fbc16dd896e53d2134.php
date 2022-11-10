@@ -83,13 +83,6 @@
 								</a>
 							</li>
 
-							<li class="menu-item <?php echo e((request()->segment(1) == 'report') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="" class="menu-link menu-toggle">
-									<i class="menu-icon fas fa-chart-bar"></i>
-									<span class="menu-text">Raporlar</span>
-								</a>
-							</li>
-
 							<li class="menu-item <?php echo e((request()->segment(1) == 'bill') ? 'menu-item-active menu-item-open' : ''); ?>" aria-haspopup="true" data-menu-toggle="hover">
 								<a href="<?php echo e(route('bill')); ?>" class="menu-link menu-toggle">
 									<i class="menu-icon fas fa-file-invoice"></i>

@@ -126,6 +126,7 @@
             </div>
         </a>
     </div>
+    @livewire('dashboard-mounthly-report')
 </div>
 
 @endsection
