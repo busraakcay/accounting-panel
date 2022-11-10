@@ -62,14 +62,14 @@ class BillController extends Controller
             $makeExpenseName = $bill->company->name . " Fatura (" . $bill->bill_date->format('d.m.Y') . ")";
             $saveExpense = Expense::insert([
                 'name' => $makeExpenseName,
-                'amount' => $request->input('input_totalAmount'),
+                'amount' => $request->input('input_paidAmount'),
                 'type_id' => 1,
                 'bill_id' => $bill->id,
                 'date' => date("Y-m-d"),
                 'branch_id' => session()->get('branchId'),
             ]);
             if ($saveExpense) {
-                updateCashAmount(session()->get('branchId'), $request->input('input_totalAmount'), 0);
+                updateCashAmount(session()->get('branchId'), $request->input('input_paidAmount'), 0);
             }
         } else {
             $bill->is_paid = 0;
@@ -164,7 +164,7 @@ class BillController extends Controller
             $expenseAmount = $expense->amount;
             $saveExpense = Expense::where('bill_id', $id)->update([
                 'name' => $makeExpenseName,
-                'amount' => $request->input('totalAmount'),
+                'amount' => $request->input('input_paidAmount'),
                 'type_id' => 1,
                 'bill_id' => $id,
                 'date' => date("Y-m-d"),
@@ -172,7 +172,7 @@ class BillController extends Controller
             ]);
             if ($saveExpense) {
                 updateCashAmount(session()->get('branchId'), $expenseAmount, 1);
-                updateCashAmount(session()->get('branchId'), $request->input('totalAmount'), 0);
+                updateCashAmount(session()->get('branchId'), $request->input('input_paidAmount'), 0);
             }
         } else {
             $bill->is_paid = 0;
