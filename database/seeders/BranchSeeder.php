@@ -17,7 +17,6 @@ class BranchSeeder extends Seeder
         $branches = [
             ['name' => 'Fahrünnisa Hatun Kyk Kız Öğrenci Yurdu', 'amount_cash' => 15000],
             ['name' => 'Boltat Yemek', 'amount_cash' => 15000],
-            ['name' => 'Boltat Şube 2', 'amount_cash' => 15000],
         ];
 
         DB::table('branches')->insert($branches);

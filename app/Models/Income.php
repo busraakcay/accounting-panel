@@ -14,6 +14,10 @@ class Income extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'date' => 'datetime'
+    ];
+
     protected static function booted()
     {
         static::addGlobalScope(new BranchScope);

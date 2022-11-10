@@ -31,11 +31,12 @@ class BranchTable extends Component
     public function save()
     {
         $this->validate([
-            'name' => 'required|string',
+            'name' => 'required',
             'amount' => 'required|numeric',
         ], [
             'name.required' => 'Ad alanı zorunludur.',
             'amount.required' => 'Miktar alanı zorunludur.',
+            'amount.numeric' => 'Miktar alanı sayı olmalıdır.',
         ]);
 
         $save = Branch::insert([
@@ -71,11 +72,12 @@ class BranchTable extends Component
         $id = $this->upd_branchId;
 
         $this->validate([
-            'upd_name' => 'required|string',
+            'upd_name' => 'required',
             'upd_amount' => 'required|numeric',
         ], [
             'upd_name.required' => 'Ad alanı zorunludur.',
             'upd_amount.required' => 'Miktar alanı zorunludur.',
+            'upd_amount.numeric' => 'Miktar alanı sayı olmalıdır.',
         ]);
 
         $update = Branch::find($id)->update([
@@ -101,7 +103,6 @@ class BranchTable extends Component
             'title' => "Emin misiniz?",
             'text' => "Bu işlemi geri alamayacaksınız.",
             'icon'  =>  'warning',
-            'timer'  => 800,
             'showCancelButton'  =>  true,
             'confirmButtonColor'  =>  '#3085d6',
             'cancelButtonColor'  =>  '#d33',

@@ -11,8 +11,23 @@ class BillTable extends Component
 {
     use WithPagination;
     public $search;
-    public $productName, $companyName, $quantity, $quantityType, $unitPrice, $discountRateofInc, $discountIncAmount, $reasonforDiscountInc, $vatRate, $vatAmount, $otherTaxes, $totalAmount, $billDate, $billType;
+    public $productName,
+        $billId,
+        $companyName,
+        $quantity,
+        $quantityType, $unitPrice,
+        $discountRateofInc, $discountIncAmount,
+        $reasonforDiscountInc, $vatRate, $vatAmount, $otherTaxes,
+        $totalAmount, $billDate, $billType,
+        $billTotalAmount,
+        $totalDiscountIncAmount,
+        $totalVATAmount,
+        $totalAmountWithTaxes,
+        $totalPaidAmount;
     public $orderByCompany = null;
+    public $orderByBillType = null;
+    public $startDate;
+    public $finishDate;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = array("delete");
 
@@ -21,7 +36,23 @@ class BillTable extends Component
         return view('livewire.bill-table', [
             "bills" => Bill::when($this->orderByCompany, function ($query) {
                 $query->where('company_id', $this->orderByCompany);
-            })->where('product_name', 'like', '%' . trim($this->search) . '%')->orderBy('bill_date', 'desc')->orderBy('id', 'desc')->paginate(20),
+            })
+                ->when($this->orderByBillType, function ($query) {
+                    $query->where('bill_type', $this->orderByBillType);
+                })
+                ->when($this->startDate, function ($query) {
+                    $query->whereBetween('bill_date', [
+                        $this->startDate,
+                        $this->finishDate
+                    ]);
+                })
+                ->when($this->finishDate, function ($query) {
+                    $query->whereBetween('bill_date', [
+                        $this->startDate,
+                        $this->finishDate
+                    ]);
+                })
+                ->orderBy('bill_date', 'desc')->orderBy('id', 'desc')->paginate(20),
             "companies" => Company::get(),
         ]);
     }
@@ -29,21 +60,15 @@ class BillTable extends Component
     public function OpenBillViewModal($id)
     {
         $bill = Bill::find($id);
+        $this->billId = $bill->id;
         $this->companyName = $bill->company->name;
         $this->billType = $bill->bill_type;
-        $this->productName = $bill->product_name;
-        $this->quantity = $bill->quantity;
-        $this->quantityType = $bill->quantity_type;
-        $this->unitPrice = $bill->unit_price;
-        $this->discountRateofInc = $bill->discount_rateof_inc;
-        $this->discountIncAmount = $bill->discount_inc_amount;
-        $this->reasonforDiscountInc = $bill->reasonfor_discount_inc;
-        $this->vatRate = $bill->vat_rate;
-        $this->vatAmount = $bill->vat_amount;
-        $this->otherTaxes = $bill->other_taxes;
-        $this->totalAmount = $bill->total_amount;
         $this->billDate = $bill->bill_date->format('d.m.Y');
-        $this->billId = $bill->id;
+        $this->billTotalAmount = $bill->total_amount;
+        $this->totalDiscountIncAmount = $bill->total_discount_inc_amount;
+        $this->totalVATAmount = $bill->total_vat_amount;
+        $this->totalAmountWithTaxes = $bill->total_amount_with_taxes;
+        $this->totalPaidAmount = $bill->total_paid_amount;
         $this->dispatchBrowserEvent('OpenBillViewModal', [
             'id' => $id
         ]);
@@ -55,7 +80,6 @@ class BillTable extends Component
             'title' => "Emin misiniz?",
             'text' => "Bu işlemi geri alamayacaksınız.",
             'icon'  =>  'warning',
-            'timer'  => 800,
             'showCancelButton'  =>  true,
             'confirmButtonColor'  =>  '#3085d6',
             'cancelButtonColor'  =>  '#d33',

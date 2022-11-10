@@ -3,25 +3,6 @@
 
 <div class="row">
     <div class="col-xl-6">
-        <div class="card card-custom bg-danger card-stretch gutter-b">
-            <div class="card-body">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h6 class="card-title text-uppercase text-white mb-2">
-                            Anlık Kâr Zarar
-                        </h6>
-                        <span class="h3 mb-0 text-white">
-                            <?php echo e(number_format(calculateDayMoney(),  2, ',', '.')); ?> <b>₺</b>
-                        </span>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-sharp fa-solid fa-calculator text-white"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-6">
         <div class="card card-custom bg-info card-stretch gutter-b">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -39,28 +20,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-xl-6">
-        <a href="<?php echo e(route('branch')); ?>">
-            <div class="card card-custom bg-primary card-stretch gutter-b">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h6 class="card-title text-uppercase text-white mb-2">
-                                Şubelerim
-                            </h6>
-                            <span class="h3 mb-0 text-white">
-                                <?php echo e($branchCount); ?>
-
-                            </span>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-sharp fa-solid fa-code-branch text-white"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
     </div>
     <div class="col-xl-6">
         <a href="<?php echo e(route('company')); ?>">

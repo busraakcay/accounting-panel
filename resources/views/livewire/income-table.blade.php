@@ -11,6 +11,16 @@
         </div>
         <div class="card-body">
             <div class="row">
+                <div class="form-group col-6">
+                    <label for="startDate">Başlangıç Tarihi Seç</label>
+                    <input type="date" wire:model.debounce.300ms="startDate" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label for="finishDate">Bitiş Tarihi Seç</label>
+                    <input type="date" wire:model.debounce.300ms="finishDate" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-6">
                     <div class="input-icon">
                         <input type="text" class="form-control" wire:model.debounce.350ms="search" placeholder="Gelir Ara...">
@@ -19,7 +29,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="dropdown bootstrap-select form-control col-6">
+                <div class="dropdown bootstrap-select col-6">
                     <div class="form-group">
                         <select class="form-control" wire:model="orderByType">
                             <option value="" selected>Tüm Türler</option>

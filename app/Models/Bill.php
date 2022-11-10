@@ -37,4 +37,9 @@ class Bill extends Model
     {
         return $this->hasMany(PaidDebt::class, 'id', 'bill_id');
     }
+    
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'id', 'bill_id');
+    }
 }

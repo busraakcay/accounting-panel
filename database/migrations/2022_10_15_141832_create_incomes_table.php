@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('branch_id')->nullable()->constrained('branches')->onUpdate('cascade')->nullOnDelete();
             $table->string('name');
             $table->double('amount');
+            $table->datetime('date');
             $table->longText('description')->nullable();
             $table->timestamps();
         });

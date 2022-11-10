@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Bill;
 use App\Models\Branch;
 use App\Models\Company;
-use App\Models\Debt;
 use App\Models\Expense;
 use App\Models\Income;
 use Illuminate\Http\Request;
@@ -19,14 +18,17 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $branchCount = count(Branch::get());
         $companyCount = count(Company::get());
         $billCount = count(Bill::get());
         $debtCount = count(Bill::where('bill_type', 2)->where('is_paid', 0)->get());
         $incomeCount = count(Income::get());
         $expenseCount = count(Expense::get());
-        $cashAmount = Branch::where('id', session()->get('branchId'))->first()->amount_cash;
-        return view('dashboard.index', compact('branchCount', 'companyCount', 'billCount', 'debtCount', 'incomeCount', 'expenseCount', 'cashAmount'));
+        if (session()->get('branchId') != null) {
+            $cashAmount = Branch::where('id', session()->get('branchId'))->first()->amount_cash;
+        } else {
+            $cashAmount = Branch::where('id', 1)->first()->amount_cash;
+        }
+        return view('dashboard.index', compact('companyCount', 'billCount', 'debtCount', 'incomeCount', 'expenseCount', 'cashAmount'));
     }
 
 

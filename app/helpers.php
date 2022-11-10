@@ -2,10 +2,10 @@
 
 use App\Models\Bill;
 use App\Models\Branch;
-use App\Models\Debt;
 use App\Models\Expense;
 use App\Models\Income;
 use App\Models\PaidDebt;
+use App\Models\Product;
 
 if (!function_exists("checkPasswords")) {
     function checkPasswords($password, $repassword)
@@ -61,6 +61,8 @@ if (!function_exists("remainDebt")) {
         $calcDiff = $bill->total_amount - paidDebt($billId);
         if ($calcDiff > 0) {
             return $calcDiff;
+        } elseif ($calcDiff == 0) {
+            return 0;
         } else {
             $bill->is_paid = 1;
             $bill->save();
@@ -69,11 +71,19 @@ if (!function_exists("remainDebt")) {
     }
 }
 
-if (!function_exists("calculateDayMoney")) {
-    function calculateDayMoney()
+if (!function_exists("calculateProfitLoss")) {
+    function calculateProfitLoss()
     {
         $incomes = Income::get()->sum('amount');
         $expenses = Expense::get()->sum('amount');
         return $incomes - $expenses;
+    }
+}
+
+if (!function_exists("getProducts")) {
+    function getProducts($billId)
+    {
+        $products = Product::where('bill_id', $billId)->get();
+        return $products;
     }
 }

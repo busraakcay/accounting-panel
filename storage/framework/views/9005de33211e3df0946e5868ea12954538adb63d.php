@@ -1,14 +1,17 @@
 <div class="card-body">
+
     <div class="row">
-        <div class="col-6">
-            <div class="input-icon">
-                <input type="text" class="form-control" wire:model.debounce.350ms="search" placeholder="Fatura Ara...">
-                <span>
-                    <i class="fa fa-search text-muted"></i>
-                </span>
-            </div>
+        <div class="form-group col-6">
+            <label for="startDate">Başlangıç Tarihi Seç</label>
+            <input type="date"wire:model.debounce.300ms="startDate" class="form-control"/>
         </div>
-        <div class="dropdown bootstrap-select form-control col-6">
+        <div class="form-group col-6">
+            <label for="finishDate">Bitiş Tarihi Seç</label>
+            <input type="date"wire:model.debounce.300ms="finishDate" class="form-control"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="dropdown bootstrap-select col-6">
             <div class="form-group">
                 <select class="form-control" wire:model="orderByCompany">
                     <option value="" selected>Tüm Firmalar</option>
@@ -18,17 +21,23 @@
                 </select>
             </div>
         </div>
+        <div class="dropdown bootstrap-select col-6">
+            <div class="form-group">
+                <select class="form-control" wire:model="orderByBillType">
+                    <option value="" selected>Tüm Fatura Türleri</option>
+                    <option value="1">Nakit</option>
+                    <option value="2">Vadeli</option>
+                </select>
+            </div>
+        </div>
     </div>
     <div class="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded">
         <table id="place" class="table-stack datatable-table">
             <thead class="datatable-head">
                 <tr class="datatable-row">
-                    <th width="11%" class="datatable-cell datatable-toggle-detail">Mal Hizmet</th>
-                    <th width="11%" class="datatable-cell datatable-toggle-detail">Miktar</th>
-                    <th width="11%" class="datatable-cell datatable-toggle-detail">Birim Fiyat</th>
                     <th width="11%" class="datatable-cell datatable-toggle-detail">Firma</th>
                     <th width="11%" class="datatable-cell datatable-toggle-detail">Tarih</th>
-                    
+
                     <th width="11%" class="datatable-cell datatable-toggle-detail">Fatura Tipi</th>
                     <th width="11%" class="datatable-cell datatable-toggle-detail">Toplam Tutar</th>
                     <th width="11%" class="datatable-cell datatable-toggle-detail">İşlemler</th>
@@ -37,12 +46,9 @@
             <tbody class="datatable-body">
                 <?php $__empty_1 = true; $__currentLoopData = $bills; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bill): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr class="datatable-row">
-                    <td width="11%" class="datatable-cell" data-label="Mal Hizmet"><?php echo e($bill->product_name); ?></td>
-                    <td width="11%" class="datatable-cell" data-label="Miktar"><?php echo e($bill->quantity); ?><?php echo e(' '); ?><?php echo e($bill->quantity_type); ?></td>
-                    <td width="11%" class="datatable-cell" data-label="Birim Fiyat"><?php echo number_format($bill->unit_price,  2, ',', '.') . ' TL'; ?></td>
+
                     <td width="11%" class="datatable-cell" data-label="Firma"><?php echo e(Str::limit($bill->company->name, 25, "...")); ?></td>
                     <td width="11%" class="datatable-cell" data-label="Tarih"><?php echo e($bill->bill_date->format('d.m.Y')); ?></td>
-                    
                     <td width="11%" class="datatable-cell" data-label="Fatura Tipi"><?php echo e($bill->bill_type == 1 ? 'Nakit' : 'Vadeli'); ?></td>
 
                     <td width="11%" class="datatable-cell" data-label="Toplam Tutar"><?php echo number_format($bill->total_amount,  2, ',', '.') . ' TL'; ?></td>
@@ -61,7 +67,7 @@
                                     <!--end::Svg Icon-->
                                 </span>
                             </a>
-                            <a href="<?php echo e(route('edit-bill', $bill->id)); ?>" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
+                            <a href="<?php echo e(route('edit-bill', $bill->id)); ?>" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Güncelle">
                                 <span class="svg-icon svg-icon-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

@@ -22,17 +22,17 @@ class BillTypeController extends Controller
     {
         if ($request->billType == "1") {
             foreach ($request->option_group as $option) {
-                if ($option["name"] != null) {
+                if ($option["description"] != null) {
                     $billType = new IncomeType();
-                    $billType->name = $option["name"];
+                    $billType->name = $option["description"];
                     $billType->save();
                 }
             }
         } else {
             foreach ($request->option_group as $option) {
-                if ($option["name"] != null) {
+                if ($option["description"] != null) {
                     $billType = new ExpenseType();
-                    $billType->name = $option["name"];
+                    $billType->name = $option["description"];
                     $billType->save();
                 }
             }

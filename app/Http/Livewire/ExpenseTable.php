@@ -14,6 +14,8 @@ class ExpenseTable extends Component
     public $name, $amount, $expenseType, $description;
     public $orderByType = null;
     public $upd_name, $upd_amount, $upd_expenseType, $upd_expenseId, $upd_description;
+    public $startDate;
+    public $finishDate;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = array("delete");
 
@@ -22,7 +24,18 @@ class ExpenseTable extends Component
         return view('livewire.expense-table', [
             "expenses" => Expense::when($this->orderByType, function ($query) {
                 $query->where('type_id', $this->orderByType);
-            })->where('name', 'like', '%' . trim($this->search) . '%')->paginate(20),
+            })->when($this->startDate, function ($query) {
+                $query->whereBetween('date', [
+                    $this->startDate,
+                    $this->finishDate
+                ]);
+            })
+                ->when($this->finishDate, function ($query) {
+                    $query->whereBetween('date', [
+                        $this->startDate,
+                        $this->finishDate
+                    ]);
+                })->where('name', 'like', '%' . trim($this->search) . '%')->orderBy('id', 'desc')->paginate(20),
             "expenseTypes" => ExpenseType::get(),
         ]);
     }
@@ -39,13 +52,14 @@ class ExpenseTable extends Component
     public function save()
     {
         $this->validate([
-            'name' => 'required|string',
+            'name' => 'required',
             'amount' => 'required|numeric',
             'expenseType' => 'required',
         ], [
             'name.required' => 'Ad alanı zorunludur.',
             'amount.required' => 'Miktar alanı zorunludur.',
             'expenseType.required' => 'Tür seçimi zorunludur.',
+            'amount.numeric' => 'Miktar alanı sayı olmalıdır.',
         ]);
 
         $save = Expense::insert([
@@ -53,6 +67,7 @@ class ExpenseTable extends Component
             'amount' => $this->amount,
             'type_id' => $this->expenseType,
             'branch_id' => session()->get('branchId'),
+            'date' => date("Y-m-d"),
             'description' => $this->description,
         ]);
 
@@ -86,13 +101,14 @@ class ExpenseTable extends Component
     {
         $id = $this->upd_expenseId;
         $this->validate([
-            'upd_name' => 'required|string',
+            'upd_name' => 'required',
             'upd_amount' => 'required|numeric',
             'upd_expenseType' => 'required',
         ], [
             'upd_name.required' => 'Ad alanı zorunludur.',
             'upd_amount.required' => 'Miktar alanı zorunludur.',
             'upd_expenseType.required' => 'Tür seçimi zorunludur.',
+            'upd_amount.numeric' => 'Miktar alanı sayı olmalıdır.',
         ]);
 
         $expense = Expense::findOrFail($id);
@@ -103,6 +119,7 @@ class ExpenseTable extends Component
             'amount' => $this->upd_amount,
             'type_id' => $this->upd_expenseType,
             'branch_id' => session()->get('branchId'),
+            'date' => date("Y-m-d"),
             'description' => $this->upd_description,
         ]);
 
@@ -126,7 +143,6 @@ class ExpenseTable extends Component
             'title' => "Emin misiniz?",
             'text' => "Bu işlemi geri alamayacaksınız.",
             'icon'  =>  'warning',
-            'timer'  => 800,
             'showCancelButton'  =>  true,
             'confirmButtonColor'  =>  '#3085d6',
             'cancelButtonColor'  =>  '#d33',

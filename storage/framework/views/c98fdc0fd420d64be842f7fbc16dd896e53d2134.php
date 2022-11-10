@@ -174,12 +174,21 @@
 												<li class="navi-item">
 													<a href="<?php echo e(route('keepBranch', $branch->id)); ?>" class="navi-link">
 														<span class="symbol symbol-20 mr-3">
-															<i class="fas fa-sharp fa-solid fa-code-branch"></i>
+															<i class="fas fa-sharp fa-solid fa-chevron-right"></i>
 														</span>
 														<span class="navi-text"><?php echo e($branch->name); ?></span>
 													</a>
 												</li>
 												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+												<li class="navi-item">
+													<a href="<?php echo e(route('branch')); ?>" class="navi-link">
+														<span class="symbol symbol-20 mr-3">
+															<i class="fas fa-sharp fa-solid fa-code-branch"></i>
+														</span>
+														<span class="menu-text">Şubelerim</span>
+													</a>
+												</li>
 
 												<li class="navi-item">
 													<a href="<?php echo e(route('admin')); ?>" class="navi-link">
@@ -189,6 +198,7 @@
 														<span class="menu-text">Kullanıcılar</span>
 													</a>
 												</li>
+
 
 												<li class="navi-item">
 													<a href="<?php echo e(route('logout')); ?>" class="navi-link">

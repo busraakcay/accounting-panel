@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Bill;
 use App\Models\Company;
-use App\Models\Debt;
 use App\Models\Expense;
 use App\Models\PaidDebt;
 use Livewire\Component;
@@ -33,7 +32,14 @@ class DebtTable extends Component
                         $query->where('is_paid', 1);
                     }
                 })
-                ->where('product_name', 'like', '%' . trim($this->search) . '%')->orderBy('bill_date', 'desc')->orderBy('id', 'desc')->paginate(20),
+                ->where('total_amount', '>=', trim($this->search))
+                ->orderBy('bill_date', 'desc')->orderBy('id', 'desc')->paginate(20),
+            "totalDebt" =>  Bill::where('bill_type', 2)->when($this->orderByCompany, function ($query) {
+                $query->where('company_id', $this->orderByCompany);
+            })->sum("total_amount"),
+            "paidDebt" => PaidDebt::when($this->orderByCompany, function ($query) {
+                $query->where('company_id', $this->orderByCompany);
+            })->sum('paid_amount'),
             "companies" => Company::get(),
         ]);
     }
@@ -54,19 +60,25 @@ class DebtTable extends Component
         $bill = Bill::findOrFail($this->billId);
         $this->validate([
             'paidAmount' => 'required|numeric',
+        ], [
+            'paidAmount.required' => 'Bu alan zorunludur.',
+            'paidAmount.numeric' => 'Bu alan sayı olmalıdır.',
         ]);
 
         $paidAmountSave = PaidDebt::insert([
             'paid_amount' => $this->paidAmount,
+            'company_id' => $bill->company_id,
             'bill_id' => $bill->id,
         ]);
-
+        $makeExpenseName = $bill->company->name . " Fatura (" . $bill->bill_date->format('d.m.Y') . ")";
         Expense::insert([
-            'name' => $bill->product_name,
+            'name' => $makeExpenseName,
             'amount' => $this->paidAmount,
             'type_id' => 1,
             'bill_id' => $bill->id,
             'branch_id' => session()->get('branchId'),
+            'date' => date("Y-m-d"),
+            'description' => date("d.m.Y") . " tarihinde ödendi."
         ]);
 
         if ($paidAmountSave) {

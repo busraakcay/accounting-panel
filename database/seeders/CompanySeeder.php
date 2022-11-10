@@ -19,7 +19,6 @@ class CompanySeeder extends Seeder
             ['name' => 'Ülker', 'description' => 'Kantin'],
             ['name' => 'Eti', 'description' => 'Kantin'],
             ['name' => 'İçim', 'description' => 'Süt ve süt ürünleri'],
-            ['name' => 'Tat', 'description' => ''],
         ];
 
         DB::table('companies')->insert($companies);

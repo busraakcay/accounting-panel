@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 
 <div class="card card-custom">
     <div class="card-header">
@@ -7,8 +7,8 @@
             Yeni Gelir/Gider Türü Ekle
         </h3>
     </div>
-    <form class="form repeater" id="kt_form" action="{{ route('store-bill-type') }}" method="post" enctype="multipart/form-data">
-        @csrf
+    <form class="form repeater" id="kt_form" action="<?php echo e(route('store-bill-type')); ?>" method="post" enctype="multipart/form-data">
+        <?php echo csrf_field(); ?>
         <div class="card-body">
             <div class="row">
                 <div class="col-xl-2"></div>
@@ -54,4 +54,5 @@
     </form>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\boltat\resources\views/bill-type/create.blade.php ENDPATH**/ ?>

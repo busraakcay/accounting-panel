@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col-5">
             <div class="input-icon">
-                <input type="text" class="form-control" wire:model.debounce.350ms="search" placeholder="Borç Ara...">
+                <input type="text" class="form-control" wire:model.debounce.350ms="search" placeholder="Belirli bir fiyattan büyük borç ara....">
                 <span>
                     <i class="fa fa-search text-muted"></i>
                 </span>
             </div>
         </div>
-        <div class="dropdown bootstrap-select form-control col-3 mr-5">
+        <div class="dropdown bootstrap-select col-3">
             <div class="form-group">
                 <select class="form-control" wire:model="orderByCompany">
                     <option value="" selected>Tüm Firmalar</option>
@@ -18,7 +18,7 @@
                 </select>
             </div>
         </div>
-        <div class="dropdown bootstrap-select form-control col-3">
+        <div class="dropdown bootstrap-select col-3">
             <div class="form-group">
                 <select class="form-control" wire:model="filterByPaid">
                     <option value="" selected>Tüm Borçlar</option>
@@ -33,12 +33,10 @@
             <thead class="datatable-head">
                 <tr class="datatable-row">
                     <th width="11%" class="datatable-cell datatable-toggle-detail">Firma</th>
-                    <th width="11%" class="datatable-cell datatable-toggle-detail">Mal Hizmet</th>
                     <th width="11%" class="datatable-cell datatable-toggle-detail">Fatura Tarihi</th>
-                    <th width="11%" class="datatable-cell datatable-toggle-detail">Miktar</th>
                     <th width="11%" class="datatable-cell datatable-toggle-detail">Toplam Borç</th>
-                    <th width="11%" class="datatable-cell datatable-toggle-detail">Ödenen Borç</th>
-                    <th width="11%" class="datatable-cell datatable-toggle-detail">Kalan Borç</th>
+                    <th width="11%" class="datatable-cell datatable-toggle-detail">Tahsilat</th>
+                    <th width="11%" class="datatable-cell datatable-toggle-detail">Kalan Bakiye</th>
                     <th width="11%" class="datatable-cell datatable-toggle-detail">İşlemler</th>
                 </tr>
             </thead>
@@ -46,12 +44,10 @@
                 @forelse ($debts as $bill)
                 <tr class="datatable-row">
                     <td width="11%" class="datatable-cell" data-label="Firma">{{$bill->company->name}}</td>
-                    <td width="11%" class="datatable-cell" data-label="Mal Hizmet">{{$bill->product_name}}</td>
                     <td width="11%" class="datatable-cell" data-label="Fatura Tarihi">{{$bill->bill_date->format('d.m.Y')}}</td>
-                    <td width="11%" class="datatable-cell" data-label="Miktar">{{$bill->quantity}} {{$bill->quantity_type}}</td>
                     <td width="11%" class="datatable-cell" data-label="Toplam Borç">@money($bill->total_amount)</td>
-                    <td width="11%" class="datatable-cell" data-label="Ödenen Borç">@money(paidDebt($bill->id))</td>
-                    <td width="11%" class="datatable-cell" data-label="Kalan Borç">@money(remainDebt($bill->id))</td>
+                    <td width="11%" class="datatable-cell" data-label="Tahsilat">@money(paidDebt($bill->id))</td>
+                    <td width="11%" class="datatable-cell" data-label="Kalan Bakiye">@money(remainDebt($bill->id))</td>
                     <td width="11%" class="datatable-cell" data-label="İşlemler">
                         @if(remainDebt($bill->id) != 0)
                         <span>
@@ -89,6 +85,24 @@
         </div>
     </div>
     @include('modals.debt-pay')
+    <div class="col-5 mt-5 float-right">
+        <table class="mt-5 float-right">
+            <tbody>
+                <tr>
+                    <th class="pr-5 pt-4" scope="row">Toplam Borç Tutarı</th>
+                    <td class="pt-4 float-right">@money($totalDebt)</td>
+                </tr>
+                <tr>
+                    <th class="pr-5 pt-4" scope="row">Toplam Tahsilat Tutarı</th>
+                    <td class="pt-4 float-right">@money($paidDebt)</td>
+                </tr>
+                <tr>
+                    <th class="pr-5 pt-4" scope="row">Kalan Bakiye Tutarı</th>
+                    <td class="pt-4 float-right">@money($totalDebt - $paidDebt)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <script>
     window.addEventListener('OpenEditDebtModal', function(event) {

@@ -882,6 +882,8 @@ $.fn.repeater = function (fig) {
                     var newName = groupName + '[' + index + '][' + name + ']' +
                         ($input.is(':checkbox') || $input.attr('multiple') ? '[]' : '');
 
+                    $('#repeaterIndex').val(index);
+
                     $input.attr('name', newName);
 
                     $foreachRepeaterInItem(repeaters, $item, function (nestedFig) {
@@ -1029,7 +1031,7 @@ $.fn.repeater = function (fig) {
       $('#cat-id').val(window.id);
             },
             hide: function (deleteElement) {
-                if(confirm('Varyasyonu Silmek İstediğinize Emin Misiniz ?')) {
+                if(true) {
                   window.id--;
                     $('#cat-id').val(window.id);
                   $(this).slideUp(deleteElement);

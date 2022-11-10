@@ -25,7 +25,6 @@ class AdminTable extends Component
             'title' => "Emin misiniz?",
             'text' => "Bu işlemi geri alamayacaksınız.",
             'icon'  =>  'warning',
-            'timer'  => 800,
             'showCancelButton'  =>  true,
             'confirmButtonColor'  =>  '#3085d6',
             'cancelButtonColor'  =>  '#d33',
