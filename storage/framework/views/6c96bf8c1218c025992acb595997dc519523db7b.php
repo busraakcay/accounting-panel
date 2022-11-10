@@ -2,10 +2,10 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="card card-custom">
-    <div class="card-header">
-        <h3 class="card-title">
-            Yeni Fatura Ekle
-        </h3>
+    <div class="card-header flex-wrap border-0 pt-6 pb-0">
+        <div class="card-title">
+            <h3 class="card-label">Yeni Fatura Ekle</h3>
+        </div>
     </div>
     <form class="form repeater" id="kt_form" action="<?php echo e(route('store-bill')); ?>" method="post" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
@@ -41,32 +41,31 @@
                 </div>
                 <div class="col-6 mt-5">
                     <tbody>
-                        <table class="table borderless table-striped mt-3">
+                        <table class="table borderless mt-3">
                             <tr>
                                 <th scope="row">Mal Hizmet Toplam Tutarı</th>
-                                <td><span id="totalAmount">0.00</span> TL</td>
+                                <td class="text-right py-3"><span id="totalAmount">0.00</span> TL</td>
                             </tr>
                             <tr>
                                 <th scope="row">Toplam İskonto</th>
-                                <td><span id="totalDiscount">0.00</span> TL</td>
+                                <td class="text-right py-3"><span id="totalDiscount">0.00</span> TL</td>
                             </tr>
                             <tr>
                                 <th scope="row">Hesaplanan KDV</th>
-                                <td><span id="totalVAT">0.00</span> TL</td>
+                                <td class="text-right py-3"><span id="totalVAT">0.00</span> TL</td>
                             </tr>
                             <tr>
                                 <th scope="row">Vergiler Dahil Toplam Tutar</th>
-                                <td><span id="totalAmountWithTaxes">0.00</span> TL</td>
+                                <td class="text-right py-3"><span id="totalAmountWithTaxes">0.00</span> TL</td>
                             </tr>
                             <tr>
                                 <th scope="row">Ödenecek Tutar</th>
-                                <td><span id="paidAmount">0.00</span> TL</td>
+                                <td class="text-right py-3"><span id="paidAmount">0.00</span> TL</td>
                             </tr>
                         </table>
                     </tbody>
                 </div>
             </div>
-            <input type="hidden" id="counterValue" value="0">
             <div id="options" class="mb-5">
                 <div data-repeater-list="option_group">
                     <div data-repeater-item>
