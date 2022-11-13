@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DebtController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,7 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/company', [CompanyController::class, 'index'])->name('company');
 
     Route::get('/income', [IncomeController::class, 'index'])->name('income');
-    
+
     Route::get('/expense', [ExpenseController::class, 'index'])->name('expense');
 
     Route::get('/bill', [BillController::class, 'index'])->name('bill');
@@ -57,6 +58,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/debt', [DebtController::class, 'index'])->name('debt');
 
-    Route::get('/{branchId}', [DashboardController::class, 'keepBranch'])->name('keepBranch');
+    Route::get('/product/create/{billId}', [ProductController::class, 'create'])->name('product-create');
+    Route::post('/product/store/{billId}', [ProductController::class, 'store'])->name('product-store');
+    Route::get('/product/edit/{id}/{billId}', [ProductController::class, 'edit'])->name('product-edit');
+    Route::put('/product/update/{id}/{billId}', [ProductController::class, 'update'])->name('product-update');
+    Route::delete('/product/destroy/{id}/{billId}', [ProductController::class, 'destroy'])->name('product-destroy');
 
+    Route::get('/{branchId}', [DashboardController::class, 'keepBranch'])->name('keepBranch');
 });

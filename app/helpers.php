@@ -79,3 +79,44 @@ if (!function_exists("getProducts")) {
         return $products;
     }
 }
+
+if (!function_exists("calculateBillTotal")) {
+    function calculateBillTotal($billId)
+    {
+        $products = Product::where('bill_id', $billId)->get();
+        $totalAmount = $products->sum('total_amount');
+        $totalDiscountIncAmount = $products->sum('discount_inc_amount');
+        $totalVATAmount = $products->sum('vat_amount');
+        $totalAmountWithTaxes = $totalAmount + $totalVATAmount;
+        $totalPaidAmount = $totalAmountWithTaxes - $totalDiscountIncAmount;
+
+        $bill = Bill::findOrFail($billId);
+        $bill->total_amount = $totalAmount;
+        $bill->total_discount_inc_amount = $totalDiscountIncAmount;
+        $bill->total_vat_amount = $totalVATAmount;
+        $bill->total_amount_with_taxes = $totalAmountWithTaxes;
+        $bill->total_paid_amount = $totalPaidAmount;
+        $bill->update();
+
+        if ($bill->bill_type == 1) {
+            $makeExpenseName = $bill->company->name . " Fatura (" . $bill->bill_date->format('d.m.Y') . ")";
+            $expense = Expense::where('bill_id', $billId)->first();
+            $expenseAmount = $expense->amount;
+            $saveExpense = Expense::where('bill_id', $billId)->update([
+                'name' => $makeExpenseName,
+                'amount' => $totalPaidAmount,
+                'type_id' => 1,
+                'bill_id' => $billId,
+                'date' => date("Y-m-d"),
+                'branch_id' => session()->get('branchId'),
+            ]);
+            if ($saveExpense) {
+                updateCashAmount(session()->get('branchId'), $expenseAmount, 1);
+                updateCashAmount(session()->get('branchId'), $totalPaidAmount, 0);
+            }
+        } else {
+            $bill->is_paid = 0;
+            $bill->save();
+        }
+    }
+}

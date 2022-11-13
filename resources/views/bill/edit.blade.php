@@ -6,7 +6,7 @@
             <h3 class="card-label">Fatura Güncelle</h3>
         </div>
         <div class="card-toolbar">
-            <a href="" class="btn btn-primary font-weight-bolder mr-2">
+            <a href="{{ route('product-create', $bill->id) }}" class="btn btn-primary font-weight-bolder mr-2">
                 Faturaya Yeni Ürün Ekle</a>
         </div>
     </div>
@@ -96,9 +96,12 @@
                                     <td width="13%" class="datatable-cell" data-label="İskonto Nedeni">{{$product->reasonfor_discount_inc}}</td>
                                     <td width="13%" class="datatable-cell" data-label="KDV Tutarı">@money($product->vat_amount)</td>
                                     <td width="13%" class="datatable-cell" data-label="Toplam Tutar">@money($product->total_amount)</td>
+                                    <form action="{{ route('product-destroy', [$product->id, $bill->id]) }}" id="deleteForm-{{ $product->id }}" method="post" class="hidden">
+                                        @csrf @method('delete')
+                                    </form>
                                     <td width="13%" class="datatable-cell" data-label="İşlemler">
                                         <span>
-                                            <a href="" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
+                                            <a href="{{ route('product-edit', [$product->id, $bill->id]) }}" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
                                                 <span class="svg-icon svg-icon-md">
                                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -109,7 +112,8 @@
                                                     </svg>
                                                 </span>
                                             </a>
-                                            <a href="" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
+
+                                            <a onclick="sure(this.id);" id="{{ $product->id }}" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
                                                 <span class="svg-icon svg-icon-md">
                                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -121,6 +125,24 @@
                                                 </span>
                                             </a>
                                         </span>
+                                        <script>
+                                            function sure(id) {
+                                                Swal.fire({
+                                                    title: "Ürünü silmek istediğinize emin misiniz?",
+                                                    text: "Bu işlemi geri alamayacaksınız.",
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#3085d6',
+                                                    cancelButtonColor: '#d33',
+                                                    cancelButtonText: "İptal",
+                                                    confirmButtonText: "Evet, sil"
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        document.forms['deleteForm-' + id].submit();
+                                                    }
+                                                })
+                                            }
+                                        </script>
                                     </td>
                                 </tr>
                                 @empty

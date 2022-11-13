@@ -134,15 +134,15 @@
     <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('dashboard-mounthly-report')->html();
-} elseif ($_instance->childHasBeenRendered('estSeK2')) {
-    $componentId = $_instance->getRenderedChildComponentId('estSeK2');
-    $componentTag = $_instance->getRenderedChildComponentTagName('estSeK2');
+} elseif ($_instance->childHasBeenRendered('GG0XTq7')) {
+    $componentId = $_instance->getRenderedChildComponentId('GG0XTq7');
+    $componentTag = $_instance->getRenderedChildComponentTagName('GG0XTq7');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('estSeK2');
+    $_instance->preserveRenderedChild('GG0XTq7');
 } else {
     $response = \Livewire\Livewire::mount('dashboard-mounthly-report');
     $html = $response->html();
-    $_instance->logRenderedChild('estSeK2', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('GG0XTq7', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

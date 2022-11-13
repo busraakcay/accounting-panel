@@ -6,7 +6,7 @@
             <h3 class="card-label">Fatura Güncelle</h3>
         </div>
         <div class="card-toolbar">
-            <a href="" class="btn btn-primary font-weight-bolder mr-2">
+            <a href="<?php echo e(route('product-create', $bill->id)); ?>" class="btn btn-primary font-weight-bolder mr-2">
                 Faturaya Yeni Ürün Ekle</a>
         </div>
     </div>
@@ -96,9 +96,12 @@
                                     <td width="13%" class="datatable-cell" data-label="İskonto Nedeni"><?php echo e($product->reasonfor_discount_inc); ?></td>
                                     <td width="13%" class="datatable-cell" data-label="KDV Tutarı"><?php echo number_format($product->vat_amount,  2, ',', '.') . ' TL'; ?></td>
                                     <td width="13%" class="datatable-cell" data-label="Toplam Tutar"><?php echo number_format($product->total_amount,  2, ',', '.') . ' TL'; ?></td>
+                                    <form action="<?php echo e(route('product-destroy', [$product->id, $bill->id])); ?>" id="deleteForm-<?php echo e($product->id); ?>" method="post" class="hidden">
+                                        <?php echo csrf_field(); ?> <?php echo method_field('delete'); ?>
+                                    </form>
                                     <td width="13%" class="datatable-cell" data-label="İşlemler">
                                         <span>
-                                            <a href="" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
+                                            <a href="<?php echo e(route('product-edit', [$product->id, $bill->id])); ?>" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Güncelle">
                                                 <span class="svg-icon svg-icon-md">
                                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -109,7 +112,8 @@
                                                     </svg>
                                                 </span>
                                             </a>
-                                            <a href="" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
+
+                                            <a onclick="sure(this.id);" id="<?php echo e($product->id); ?>" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Sil">
                                                 <span class="svg-icon svg-icon-md">
                                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -121,6 +125,24 @@
                                                 </span>
                                             </a>
                                         </span>
+                                        <script>
+                                            function sure(id) {
+                                                Swal.fire({
+                                                    title: "Ürünü silmek istediğinize emin misiniz?",
+                                                    text: "Bu işlemi geri alamayacaksınız.",
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#3085d6',
+                                                    cancelButtonColor: '#d33',
+                                                    cancelButtonText: "İptal",
+                                                    confirmButtonText: "Evet, sil"
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        document.forms['deleteForm-' + id].submit();
+                                                    }
+                                                })
+                                            }
+                                        </script>
                                     </td>
                                 </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
