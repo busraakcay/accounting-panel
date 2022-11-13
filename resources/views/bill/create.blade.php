@@ -203,7 +203,7 @@
                                     let discountRateofInc = document.getElementsByName("option_group[" + i + "]" + "[discountRateofInc]")[0].value;
                                     let price = unitPrice * quantity;
                                     let discount = price * discountRateofInc / 100;
-                                    let vat = price * (1 + (vatRate / 100));
+                                    let vat = (price - discount) * (1 + (vatRate / 100));
                                     document.getElementsByName("option_group[" + i + "]" + "[totalAmount]")[0].value = price.toFixed(2);
                                     document.getElementsByName("option_group[" + i + "]" + "[discountIncAmount]")[0].value = discount.toFixed(2);
                                     document.getElementsByName("option_group[" + i + "]" + "[vatAmount]")[0].value = (vat - price).toFixed(2);

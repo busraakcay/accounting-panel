@@ -108,6 +108,11 @@ class BillController extends Controller
                     return redirect()->back()->with('error', $th->getMessage());
                 }
             } else {
+                $setBill = Bill::findOrFail($bill->id);
+                if ($setBill->bill_type == 1) {
+                    updateCashAmount(session()->get('branchId'), $bill->total_amount, 1);
+                }
+                $setBill->delete();
                 return redirect()->back()->with('error', "Form bilgilerinde eksiklik bulunmaktadır.");
             }
         }
