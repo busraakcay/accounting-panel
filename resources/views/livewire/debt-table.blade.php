@@ -45,7 +45,7 @@
                 <tr class="datatable-row">
                     <td width="11%" class="datatable-cell" data-label="Firma">{{$bill->company->name}}</td>
                     <td width="11%" class="datatable-cell" data-label="Fatura Tarihi">{{$bill->bill_date->format('d.m.Y')}}</td>
-                    <td width="11%" class="datatable-cell" data-label="Toplam Borç">@money($bill->total_amount)</td>
+                    <td width="11%" class="datatable-cell" data-label="Toplam Borç">@money($bill->total_paid_amount)</td>
                     <td width="11%" class="datatable-cell" data-label="Tahsilat">@money(paidDebt($bill->id))</td>
                     <td width="11%" class="datatable-cell" data-label="Kalan Bakiye">@money(remainDebt($bill->id))</td>
                     <td width="11%" class="datatable-cell" data-label="İşlemler">

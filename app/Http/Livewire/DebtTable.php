@@ -12,7 +12,7 @@ use Livewire\WithPagination;
 class DebtTable extends Component
 {
     use WithPagination;
-    public $paidAmount, $billId, $productName;
+    public $paidAmount, $billId, $companyName;
     public $search;
     public $orderByCompany = null;
     public $filterByPaid = null;
@@ -32,11 +32,11 @@ class DebtTable extends Component
                         $query->where('is_paid', 1);
                     }
                 })
-                ->where('total_amount', '>=', trim($this->search))
+                ->where('total_paid_amount', '>=', trim($this->search))
                 ->orderBy('bill_date', 'desc')->orderBy('id', 'desc')->paginate(20),
             "totalDebt" =>  Bill::where('bill_type', 2)->when($this->orderByCompany, function ($query) {
                 $query->where('company_id', $this->orderByCompany);
-            })->sum("total_amount"),
+            })->sum("total_paid_amount"),
             "paidDebt" => PaidDebt::when($this->orderByCompany, function ($query) {
                 $query->where('company_id', $this->orderByCompany);
             })->sum('paid_amount'),
@@ -49,7 +49,7 @@ class DebtTable extends Component
         $bill = Bill::findOrFail($billId);
         $this->paidAmount = '';
         $this->billId = $billId;
-        $this->productName = $bill->product_name;
+        $this->companyName = $bill->company->name;
         $this->dispatchBrowserEvent('OpenEditDebtModal', [
             'id' => $billId
         ]);

@@ -58,7 +58,7 @@ if (!function_exists("remainDebt")) {
     function remainDebt($billId)
     {
         $bill = Bill::findOrFail($billId);
-        $calcDiff = $bill->total_amount - paidDebt($billId);
+        $calcDiff = $bill->total_paid_amount - paidDebt($billId);
         if ($calcDiff > 0) {
             return $calcDiff;
         } elseif ($calcDiff == 0) {

@@ -50,7 +50,7 @@
                     <td width="11%" class="datatable-cell" data-label="Tarih">{{$bill->bill_date->format('d.m.Y')}}</td>
                     <td width="11%" class="datatable-cell" data-label="Fatura Tipi">{{ $bill->bill_type == 1 ? 'Nakit' : 'Vadeli' }}</td>
 
-                    <td width="11%" class="datatable-cell" data-label="Toplam Tutar">@money($bill->total_amount)</td>
+                    <td width="11%" class="datatable-cell" data-label="Toplam Tutar">@money($bill->total_paid_amount)</td>
                     <td width="11%" class="datatable-cell" data-label="İşlemler">
                         <span>
                             <a wire:click="OpenBillViewModal({{$bill->id}})" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Görüntüle">

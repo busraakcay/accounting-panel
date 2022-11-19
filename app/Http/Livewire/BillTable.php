@@ -93,7 +93,7 @@ class BillTable extends Component
     {
         $bill = Bill::findOrFail($id);
         if ($bill->bill_type == 1) {
-            updateCashAmount(session()->get('branchId'), $bill->total_amount, 1);
+            updateCashAmount(session()->get('branchId'), $bill->total_paid_amount, 1);
         }
         $delete = $bill->delete();
         if ($delete) {

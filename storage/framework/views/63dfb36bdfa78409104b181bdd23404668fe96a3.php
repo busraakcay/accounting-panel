@@ -11,7 +11,7 @@
                 <form wire:submit.prevent="paidAmountUpdate">
                     <input type="hidden" wire:model="debtId">
                     <div class="form-group">
-                        <label for="paidAmount"><b><?php echo e($productName); ?></b> için ödenen miktar</label>
+                        <label for="paidAmount"><b><?php echo e($companyName); ?></b> için ödenen miktar</label>
                         <input type="text" class="form-control" placeholder="Ödenen miktarı giriniz" wire:model="paidAmount">
                         <span class="text-danger"> <?php $__errorArgs = ['paidAmount'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

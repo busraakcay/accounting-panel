@@ -50,7 +50,7 @@
                     <td width="11%" class="datatable-cell" data-label="Tarih"><?php echo e($bill->bill_date->format('d.m.Y')); ?></td>
                     <td width="11%" class="datatable-cell" data-label="Fatura Tipi"><?php echo e($bill->bill_type == 1 ? 'Nakit' : 'Vadeli'); ?></td>
 
-                    <td width="11%" class="datatable-cell" data-label="Toplam Tutar"><?php echo number_format($bill->total_amount,  2, ',', '.') . ' TL'; ?></td>
+                    <td width="11%" class="datatable-cell" data-label="Toplam Tutar"><?php echo number_format($bill->total_paid_amount,  2, ',', '.') . ' TL'; ?></td>
                     <td width="11%" class="datatable-cell" data-label="İşlemler">
                         <span>
                             <a wire:click="OpenBillViewModal(<?php echo e($bill->id); ?>)" class="btn btn-sm btn-light btn-text-primary btn-icon" title="Görüntüle">

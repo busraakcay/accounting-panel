@@ -45,7 +45,7 @@
                 <tr class="datatable-row">
                     <td width="11%" class="datatable-cell" data-label="Firma"><?php echo e($bill->company->name); ?></td>
                     <td width="11%" class="datatable-cell" data-label="Fatura Tarihi"><?php echo e($bill->bill_date->format('d.m.Y')); ?></td>
-                    <td width="11%" class="datatable-cell" data-label="Toplam Borç"><?php echo number_format($bill->total_amount,  2, ',', '.') . ' TL'; ?></td>
+                    <td width="11%" class="datatable-cell" data-label="Toplam Borç"><?php echo number_format($bill->total_paid_amount,  2, ',', '.') . ' TL'; ?></td>
                     <td width="11%" class="datatable-cell" data-label="Tahsilat"><?php echo number_format(paidDebt($bill->id),  2, ',', '.') . ' TL'; ?></td>
                     <td width="11%" class="datatable-cell" data-label="Kalan Bakiye"><?php echo number_format(remainDebt($bill->id),  2, ',', '.') . ' TL'; ?></td>
                     <td width="11%" class="datatable-cell" data-label="İşlemler">
