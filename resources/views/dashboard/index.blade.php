@@ -11,7 +11,7 @@
                             Kasam
                         </h6>
                         <span class="h3 mb-0 text-white">
-                            {{ number_format($cashAmount,  2, ',', '.') }} <b>₺</b>
+                            <b style="font-size:25px">{{ number_format($cashAmount,  2, ',', '.') }} ₺</b>
                         </span>
                     </div>
                     <div class="col-auto">
@@ -23,7 +23,7 @@
     </div>
     <div class="col-xl-6">
         <a href="{{ route('company') }}">
-            <div class="card card-custom bg-warning card-stretch gutter-b">
+            <div class="card card-custom bg-success card-stretch gutter-b">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col">
@@ -86,7 +86,7 @@
     </div>
     <div class="col-xl-6">
         <a href="{{ route('income') }}">
-            <div class="card card-custom bg-info card-stretch gutter-b">
+            <div class="card card-custom bg-primary card-stretch gutter-b">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col">
@@ -107,7 +107,7 @@
     </div>
     <div class="col-xl-6">
         <a href="{{ route('expense') }}">
-            <div class="card card-custom bg-success card-stretch gutter-b">
+            <div class="card card-custom bg-info card-stretch gutter-b">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col">

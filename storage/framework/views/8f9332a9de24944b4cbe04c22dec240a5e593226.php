@@ -11,7 +11,7 @@
                             Kasam
                         </h6>
                         <span class="h3 mb-0 text-white">
-                            <?php echo e(number_format($cashAmount,  2, ',', '.')); ?> <b>₺</b>
+                            <b style="font-size:25px"><?php echo e(number_format($cashAmount,  2, ',', '.')); ?> ₺</b>
                         </span>
                     </div>
                     <div class="col-auto">
@@ -23,7 +23,7 @@
     </div>
     <div class="col-xl-6">
         <a href="<?php echo e(route('company')); ?>">
-            <div class="card card-custom bg-warning card-stretch gutter-b">
+            <div class="card card-custom bg-success card-stretch gutter-b">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col">
@@ -89,7 +89,7 @@
     </div>
     <div class="col-xl-6">
         <a href="<?php echo e(route('income')); ?>">
-            <div class="card card-custom bg-info card-stretch gutter-b">
+            <div class="card card-custom bg-primary card-stretch gutter-b">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col">
@@ -111,7 +111,7 @@
     </div>
     <div class="col-xl-6">
         <a href="<?php echo e(route('expense')); ?>">
-            <div class="card card-custom bg-success card-stretch gutter-b">
+            <div class="card card-custom bg-info card-stretch gutter-b">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col">
@@ -134,15 +134,15 @@
     <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('dashboard-mounthly-report')->html();
-} elseif ($_instance->childHasBeenRendered('GG0XTq7')) {
-    $componentId = $_instance->getRenderedChildComponentId('GG0XTq7');
-    $componentTag = $_instance->getRenderedChildComponentTagName('GG0XTq7');
+} elseif ($_instance->childHasBeenRendered('IqOfwvo')) {
+    $componentId = $_instance->getRenderedChildComponentId('IqOfwvo');
+    $componentTag = $_instance->getRenderedChildComponentTagName('IqOfwvo');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('GG0XTq7');
+    $_instance->preserveRenderedChild('IqOfwvo');
 } else {
     $response = \Livewire\Livewire::mount('dashboard-mounthly-report');
     $html = $response->html();
-    $_instance->logRenderedChild('GG0XTq7', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('IqOfwvo', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
