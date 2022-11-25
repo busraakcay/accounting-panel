@@ -22,7 +22,7 @@ return new class extends Migration
             $table->double('unit_price');
             $table->double('discount_rateof_inc');
             $table->double('discount_inc_amount');
-            $table->string('reasonfor_discount_inc');
+            $table->string('reasonfor_discount_inc')->nullable();
             $table->double('vat_rate');
             $table->double('vat_amount');
             $table->string('other_taxes')->nullable();

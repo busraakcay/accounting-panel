@@ -54,8 +54,6 @@ class BillController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', "Form bilgilerinde eksiklik bulunmaktadır.");
         }
-
-
         if ($request->input('billType') == 1) {
             $bill->is_paid = 1;
             $bill->save();
@@ -84,7 +82,6 @@ class BillController extends Controller
                 $option["unitPrice"] != null &&
                 $option["discountRateofInc"] != null &&
                 $option["discountIncAmount"] != null &&
-                $option["reasonforDiscountInc"] != null &&
                 $option["vatRate"] != null &&
                 $option["vatAmount"] != null &&
                 $option["totalAmount"] != null
@@ -95,16 +92,18 @@ class BillController extends Controller
                     $product->name = $option["productName"];
                     $product->quantity = $option['quantity'];
                     $product->quantity_type = $option['quantityType'];
-                    $product->unit_price = $option['unitPrice'];
+                    $product->unit_price = unformatPrice($option['unitPrice']);
                     $product->discount_rateof_inc = $option['discountRateofInc'];
-                    $product->discount_inc_amount = $option['discountIncAmount'];
+                    $product->discount_inc_amount = unformatPrice($option['discountIncAmount']);
                     $product->reasonfor_discount_inc = $option['reasonforDiscountInc'];
                     $product->vat_rate = $option['vatRate'];
-                    $product->vat_amount = $option['vatAmount'];
+                    $product->vat_amount = unformatPrice($option['vatAmount']);
                     $product->other_taxes = $option['otherTaxes'];
-                    $product->total_amount = $option['totalAmount'];
+                    $product->total_amount = unformatPrice($option['totalAmount']);
                     $product->save();
                 } catch (\Throwable $th) {
+                    $setBill = Bill::findOrFail($bill->id);
+                    $setBill->delete();
                     return redirect()->back()->with('error', $th->getMessage());
                 }
             } else {

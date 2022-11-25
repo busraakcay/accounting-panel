@@ -22853,3 +22853,8 @@ $(document).ready(function () {
         },
     });
 });
+
+function unformatPrice(formated) {
+    let price = formated.replaceAll(".", "");
+    return parseFloat(price.replaceAll(",", "."));
+}

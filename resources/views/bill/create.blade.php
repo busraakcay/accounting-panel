@@ -44,23 +44,23 @@
                         <table class="table borderless mt-3">
                             <tr>
                                 <th scope="row">Mal Hizmet Toplam Tutarı</th>
-                                <td class="text-right py-3"><span id="totalAmount">0.00</span> TL</td>
+                                <td class="text-right py-3"><span id="totalAmount">0,00</span> TL</td>
                             </tr>
                             <tr>
                                 <th scope="row">Toplam İskonto</th>
-                                <td class="text-right py-3"><span id="totalDiscount">0.00</span> TL</td>
+                                <td class="text-right py-3"><span id="totalDiscount">0,00</span> TL</td>
                             </tr>
                             <tr>
                                 <th scope="row">Hesaplanan KDV</th>
-                                <td class="text-right py-3"><span id="totalVAT">0.00</span> TL</td>
+                                <td class="text-right py-3"><span id="totalVAT">0,00</span> TL</td>
                             </tr>
                             <tr>
                                 <th scope="row">Vergiler Dahil Toplam Tutar</th>
-                                <td class="text-right py-3"><span id="totalAmountWithTaxes">0.00</span> TL</td>
+                                <td class="text-right py-3"><span id="totalAmountWithTaxes">0,00</span> TL</td>
                             </tr>
                             <tr>
                                 <th scope="row">Ödenecek Tutar</th>
-                                <td class="text-right py-3"><span id="paidAmount">0.00</span> TL</td>
+                                <td class="text-right py-3"><span id="paidAmount">0,00</span> TL</td>
                             </tr>
                         </table>
                     </tbody>
@@ -197,41 +197,34 @@
 
                                 for (let i = 0; i <= parseInt(counter); i++) {
 
-                                    let unitPrice = document.getElementsByName("option_group[" + i + "]" + "[unitPrice]")[0].value;
+                                    let unitPrice = unformatPrice(document.getElementsByName("option_group[" + i + "]" + "[unitPrice]")[0].value);
                                     let quantity = document.getElementsByName("option_group[" + i + "]" + "[quantity]")[0].value;
                                     let vatRate = document.getElementsByName("option_group[" + i + "]" + "[vatRate]")[0].value;
                                     let discountRateofInc = document.getElementsByName("option_group[" + i + "]" + "[discountRateofInc]")[0].value;
                                     let price = unitPrice * quantity;
                                     let discount = price * discountRateofInc / 100;
-                                    let vat = price * (1 + (vatRate / 100));
-                                    document.getElementsByName("option_group[" + i + "]" + "[totalAmount]")[0].value = price.toFixed(2);
-                                    document.getElementsByName("option_group[" + i + "]" + "[discountIncAmount]")[0].value = discount.toFixed(2);
-                                    document.getElementsByName("option_group[" + i + "]" + "[vatAmount]")[0].value = (vat - price).toFixed(2);
+                                    let vat = (price - discount) * vatRate / 100;
 
-                                    totalAmount += parseFloat(document.getElementsByName("option_group[" + i + "]" + "[totalAmount]")[0].value);
-                                    console.log(totalAmount);
-                                    totalDiscount += parseFloat(document.getElementsByName("option_group[" + i + "]" + "[discountIncAmount]")[0].value);
-                                    totalVAT += parseFloat(document.getElementsByName("option_group[" + i + "]" + "[vatAmount]")[0].value);
+                                    document.getElementsByName("option_group[" + i + "]" + "[totalAmount]")[0].value = price.toLocaleString('tr-TR');
+                                    document.getElementsByName("option_group[" + i + "]" + "[discountIncAmount]")[0].value = discount.toLocaleString('tr-TR');
+                                    document.getElementsByName("option_group[" + i + "]" + "[vatAmount]")[0].value = vat.toLocaleString('tr-TR');
+
+                                    totalAmount += unformatPrice(document.getElementsByName("option_group[" + i + "]" + "[totalAmount]")[0].value);
+                                    totalDiscount += unformatPrice(document.getElementsByName("option_group[" + i + "]" + "[discountIncAmount]")[0].value);
+                                    totalVAT += unformatPrice(document.getElementsByName("option_group[" + i + "]" + "[vatAmount]")[0].value);
                                 }
-
-
-
                                 totalAmountWithTaxes = totalAmount + totalVAT;
                                 paidAmount = totalAmountWithTaxes - totalDiscount;
-
-                                document.getElementById("totalAmount").innerHTML = totalAmount.toFixed(2);
-                                document.getElementById("totalDiscount").innerHTML = totalDiscount.toFixed(2);
-                                document.getElementById("totalVAT").innerHTML = totalVAT.toFixed(2);
-                                document.getElementById("totalAmountWithTaxes").innerHTML = totalAmountWithTaxes.toFixed(2);
-                                document.getElementById("paidAmount").innerHTML = paidAmount.toFixed(2);
-
-
-                                document.getElementById("input_totalAmount").value = totalAmount.toFixed(2);
-                                document.getElementById("input_totalDiscount").value = totalDiscount.toFixed(2);
-                                document.getElementById("input_totalVAT").value = totalVAT.toFixed(2);
-                                document.getElementById("input_totalAmountWithTaxes").value = totalAmountWithTaxes.toFixed(2);
-                                document.getElementById("input_paidAmount").value = paidAmount.toFixed(2);
-
+                                document.getElementById("totalAmount").innerHTML = totalAmount.toLocaleString('tr-TR');
+                                document.getElementById("totalDiscount").innerHTML = totalDiscount.toLocaleString('tr-TR');
+                                document.getElementById("totalVAT").innerHTML = totalVAT.toLocaleString('tr-TR');
+                                document.getElementById("totalAmountWithTaxes").innerHTML = totalAmountWithTaxes.toLocaleString('tr-TR');
+                                document.getElementById("paidAmount").innerHTML = paidAmount.toLocaleString('tr-TR');
+                                document.getElementById("input_totalAmount").value = totalAmount;
+                                document.getElementById("input_totalDiscount").value = totalDiscount;
+                                document.getElementById("input_totalVAT").value = totalVAT;
+                                document.getElementById("input_totalAmountWithTaxes").value = totalAmountWithTaxes;
+                                document.getElementById("input_paidAmount").value = paidAmount;
                             }
                         </script>
                     </div>

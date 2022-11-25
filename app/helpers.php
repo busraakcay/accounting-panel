@@ -120,3 +120,11 @@ if (!function_exists("calculateBillTotal")) {
         }
     }
 }
+
+if (!function_exists("unformatPrice")) {
+    function unformatPrice($formated)
+    {
+        $price = str_replace(".", "", $formated);
+        return floatval(str_replace(",", ".", $price));
+    }
+}

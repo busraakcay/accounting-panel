@@ -20,13 +20,12 @@ class ProductController extends Controller
             'productName' => 'required|string',
             'quantity' => 'required|numeric',
             'quantityType' => 'required|string',
-            'unitPrice' => 'required|numeric',
+            'unitPrice' => 'required',
             'discountRateofInc' => 'required|numeric',
-            'discountIncAmount' => 'required|numeric',
-            'reasonforDiscountInc' => 'required|string',
+            'discountIncAmount' => 'required',
             'vatRate' => 'required|numeric',
-            'vatAmount' => 'required|numeric',
-            'totalAmount' => 'required|numeric',
+            'vatAmount' => 'required',
+            'totalAmount' => 'required',
         ]);
 
         $product = new Product();
@@ -35,14 +34,14 @@ class ProductController extends Controller
             'name' =>  $request->input('productName'),
             'quantity' => $request->input('quantity'),
             'quantity_type' => $request->input('quantityType'),
-            'unit_price' => $request->input('unitPrice'),
+            'unit_price' => unformatPrice($request->input('unitPrice')),
             'discount_rateof_inc' => $request->input('discountRateofInc'),
-            'discount_inc_amount' => $request->input('discountIncAmount'),
+            'discount_inc_amount' => unformatPrice($request->input('discountIncAmount')),
             'reasonfor_discount_inc' => $request->input('reasonforDiscountInc'),
             'vat_rate' => $request->input('vatRate'),
-            'vat_amount' => $request->input('vatAmount'),
+            'vat_amount' => unformatPrice($request->input('vatAmount')),
             'other_taxes' => $request->input('otherTaxes'),
-            'total_amount' => $request->input('totalAmount'),
+            'total_amount' => unformatPrice($request->input('totalAmount')),
         ]);
 
         if ($insert) {
@@ -51,7 +50,6 @@ class ProductController extends Controller
         } else {
             return redirect()->route('edit-bill', $billId)->with('error', "Ürün eklenirken bir hata oluştu");
         }
-
     }
 
     public function edit($id, $billId)
@@ -66,13 +64,12 @@ class ProductController extends Controller
             'productName' => 'required|string',
             'quantity' => 'required|numeric',
             'quantityType' => 'required|string',
-            'unitPrice' => 'required|numeric',
+            'unitPrice' => 'required',
             'discountRateofInc' => 'required|numeric',
-            'discountIncAmount' => 'required|numeric',
-            'reasonforDiscountInc' => 'required|string',
+            'discountIncAmount' => 'required',
             'vatRate' => 'required|numeric',
-            'vatAmount' => 'required|numeric',
-            'totalAmount' => 'required|numeric',
+            'vatAmount' => 'required',
+            'totalAmount' => 'required',
         ]);
 
         $product = Product::findOrFail($id);
@@ -81,14 +78,14 @@ class ProductController extends Controller
             'name' =>  $request->input('productName'),
             'quantity' => $request->input('quantity'),
             'quantity_type' => $request->input('quantityType'),
-            'unit_price' => $request->input('unitPrice'),
+            'unit_price' => unformatPrice($request->input('unitPrice')),
             'discount_rateof_inc' => $request->input('discountRateofInc'),
-            'discount_inc_amount' => $request->input('discountIncAmount'),
+            'discount_inc_amount' => unformatPrice($request->input('discountIncAmount')),
             'reasonfor_discount_inc' => $request->input('reasonforDiscountInc'),
             'vat_rate' => $request->input('vatRate'),
-            'vat_amount' => $request->input('vatAmount'),
+            'vat_amount' => unformatPrice($request->input('vatAmount')),
             'other_taxes' => $request->input('otherTaxes'),
-            'total_amount' => $request->input('totalAmount'),
+            'total_amount' => unformatPrice($request->input('totalAmount')),
         ]);
 
         if ($update) {

@@ -122,17 +122,16 @@
 </div>
 <script>
     function calculate() {
-        let unitPrice = document.getElementById("unitPrice").value;
+        let unitPrice = unformatPrice(document.getElementById("unitPrice").value);
         let quantity = document.getElementById("quantity").value;
         let vatRate = document.getElementById("vatRate").value;
         let discountRateofInc = document.getElementById("discountRateofInc").value;
         let price = unitPrice * quantity;
         let discount = price * discountRateofInc / 100;
-        let vat = price * (1 + (vatRate / 100));
-        console.log(unitPrice, quantity, vatRate, discountRateofInc, price, discount, vat);
-        document.getElementById("totalAmount").value = price.toFixed(2);
-        document.getElementById("discountIncAmount").value = discount.toFixed(2);
-        document.getElementById("vatAmount").value = (vat - price).toFixed(2);
+        let vat = (price - discount) * vatRate / 100;
+        document.getElementById("totalAmount").value = price.toLocaleString('tr-TR');
+        document.getElementById("discountIncAmount").value = discount.toLocaleString('tr-TR');
+        document.getElementById("vatAmount").value = vat.toLocaleString('tr-TR');
     }
 </script>
 @endsection
