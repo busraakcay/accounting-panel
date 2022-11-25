@@ -59,21 +59,20 @@ class DebtTable extends Component
     {
         $bill = Bill::findOrFail($this->billId);
         $this->validate([
-            'paidAmount' => 'required|numeric',
+            'paidAmount' => 'required',
         ], [
             'paidAmount.required' => 'Bu alan zorunludur.',
-            'paidAmount.numeric' => 'Bu alan sayı olmalıdır.',
         ]);
 
         $paidAmountSave = PaidDebt::insert([
-            'paid_amount' => $this->paidAmount,
+            'paid_amount' => unformatPrice($this->paidAmount),
             'company_id' => $bill->company_id,
             'bill_id' => $bill->id,
         ]);
         $makeExpenseName = $bill->company->name . " Fatura (" . $bill->bill_date->format('d.m.Y') . ")";
         Expense::insert([
             'name' => $makeExpenseName,
-            'amount' => $this->paidAmount,
+            'amount' => unformatPrice($this->paidAmount),
             'type_id' => 1,
             'bill_id' => $bill->id,
             'branch_id' => session()->get('branchId'),
@@ -82,7 +81,7 @@ class DebtTable extends Component
         ]);
 
         if ($paidAmountSave) {
-            updateCashAmount(session()->get('branchId'), $this->paidAmount, 0);
+            updateCashAmount(session()->get('branchId'), unformatPrice($this->paidAmount), 0);
             $this->dispatchBrowserEvent('CloseEditDebtModal', [
                 'title' => "İşlem Başarılı",
                 'icon'  =>  'success',

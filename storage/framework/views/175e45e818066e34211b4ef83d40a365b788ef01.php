@@ -1,5 +1,4 @@
 <div class="col-xl-12 p-5">
-
     <div class="card card-custom bg-white card-stretch gutter-b">
         <div class="card-body">
             <div class="row align-items-center mt-5">

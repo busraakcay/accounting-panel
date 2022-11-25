@@ -32,16 +32,15 @@ class BranchTable extends Component
     {
         $this->validate([
             'name' => 'required',
-            'amount' => 'required|numeric',
+            'amount' => 'required',
         ], [
             'name.required' => 'Ad alanı zorunludur.',
             'amount.required' => 'Miktar alanı zorunludur.',
-            'amount.numeric' => 'Miktar alanı sayı olmalıdır.',
         ]);
 
         $save = Branch::insert([
             'name' => $this->name,
-            'amount_cash' => $this->amount,
+            'amount_cash' => unformatPrice($this->amount),
         ]);
 
         if ($save) {
@@ -73,16 +72,15 @@ class BranchTable extends Component
 
         $this->validate([
             'upd_name' => 'required',
-            'upd_amount' => 'required|numeric',
+            'upd_amount' => 'required',
         ], [
             'upd_name.required' => 'Ad alanı zorunludur.',
             'upd_amount.required' => 'Miktar alanı zorunludur.',
-            'upd_amount.numeric' => 'Miktar alanı sayı olmalıdır.',
         ]);
 
         $update = Branch::find($id)->update([
             'name' => $this->upd_name,
-            'amount_cash' => $this->upd_amount,
+            'amount_cash' => unformatPrice($this->upd_amount),
         ]);
 
         if ($update) {

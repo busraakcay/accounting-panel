@@ -54,18 +54,17 @@ class IncomeTable extends Component
     {
         $this->validate([
             'name' => 'required',
-            'amount' => 'required|numeric',
+            'amount' => 'required',
             'incomeType' => 'required',
         ], [
             'name.required' => 'Ad alanı zorunludur.',
             'amount.required' => 'Miktar alanı zorunludur.',
             'incomeType.required' => 'Tür seçimi zorunludur.',
-            'amount.numeric' => 'Miktar alanı sayı olmalıdır.',
         ]);
 
         $save = Income::insert([
             'name' => $this->name,
-            'amount' => $this->amount,
+            'amount' => unformatPrice($this->amount),
             'type_id' => $this->incomeType,
             'branch_id' => session()->get('branchId'),
             'date' => date("Y-m-d"),
@@ -73,7 +72,7 @@ class IncomeTable extends Component
         ]);
 
         if ($save) {
-            updateCashAmount(session()->get('branchId'), $this->amount, 1);
+            updateCashAmount(session()->get('branchId'), unformatPrice($this->amount), 1);
             $this->dispatchBrowserEvent('CloseCreateIncomeModal', [
                 'title' => "İşlem Başarılı",
                 'text' => "Yeni gelir eklendi.",
@@ -103,13 +102,12 @@ class IncomeTable extends Component
         $id = $this->upd_incomeId;
         $this->validate([
             'upd_name' => 'required',
-            'upd_amount' => 'required|numeric',
+            'upd_amount' => 'required',
             'upd_incomeType' => 'required',
         ], [
             'upd_name.required' => 'Ad alanı zorunludur.',
             'upd_amount.required' => 'Miktar alanı zorunludur.',
             'upd_incomeType.required' => 'Tür seçimi zorunludur.',
-            'upd_amount.numeric' => 'Miktar alanı sayı olmalıdır.',
         ]);
 
         $income = Income::findOrFail($id);
@@ -117,7 +115,7 @@ class IncomeTable extends Component
 
         $update = $income->update([
             'name' => $this->upd_name,
-            'amount' => $this->upd_amount,
+            'amount' => unformatPrice($this->upd_amount),
             'type_id' => $this->upd_incomeType,
             'branch_id' => session()->get('branchId'),
             'date' => date("Y-m-d"),
@@ -126,7 +124,7 @@ class IncomeTable extends Component
 
         if ($update) {
             updateCashAmount(session()->get('branchId'), $oldIncomeAmount, 0);
-            updateCashAmount(session()->get('branchId'), $this->upd_amount, 1);
+            updateCashAmount(session()->get('branchId'), unformatPrice($this->upd_amount), 1);
             $this->dispatchBrowserEvent('CloseEditIncomeModal', [
                 'title' => "İşlem Başarılı",
                 'text' => "Gelir başarıyla güncellendi.",

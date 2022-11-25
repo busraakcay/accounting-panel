@@ -53,18 +53,17 @@ class ExpenseTable extends Component
     {
         $this->validate([
             'name' => 'required',
-            'amount' => 'required|numeric',
+            'amount' => 'required',
             'expenseType' => 'required',
         ], [
             'name.required' => 'Ad alanı zorunludur.',
             'amount.required' => 'Miktar alanı zorunludur.',
             'expenseType.required' => 'Tür seçimi zorunludur.',
-            'amount.numeric' => 'Miktar alanı sayı olmalıdır.',
         ]);
 
         $save = Expense::insert([
             'name' => $this->name,
-            'amount' => $this->amount,
+            'amount' => unformatPrice($this->amount),
             'type_id' => $this->expenseType,
             'branch_id' => session()->get('branchId'),
             'date' => date("Y-m-d"),
@@ -72,7 +71,7 @@ class ExpenseTable extends Component
         ]);
 
         if ($save) {
-            updateCashAmount(session()->get('branchId'), $this->amount, 0);
+            updateCashAmount(session()->get('branchId'), unformatPrice($this->amount), 0);
             $this->dispatchBrowserEvent('CloseCreateExpenseModal', [
                 'title' => "İşlem Başarılı",
                 'text' => "Yeni gider eklendi.",
@@ -102,13 +101,12 @@ class ExpenseTable extends Component
         $id = $this->upd_expenseId;
         $this->validate([
             'upd_name' => 'required',
-            'upd_amount' => 'required|numeric',
+            'upd_amount' => 'required',
             'upd_expenseType' => 'required',
         ], [
             'upd_name.required' => 'Ad alanı zorunludur.',
             'upd_amount.required' => 'Miktar alanı zorunludur.',
             'upd_expenseType.required' => 'Tür seçimi zorunludur.',
-            'upd_amount.numeric' => 'Miktar alanı sayı olmalıdır.',
         ]);
 
         $expense = Expense::findOrFail($id);
@@ -116,7 +114,7 @@ class ExpenseTable extends Component
 
         $update = $expense->update([
             'name' => $this->upd_name,
-            'amount' => $this->upd_amount,
+            'amount' => unformatPrice($this->upd_amount),
             'type_id' => $this->upd_expenseType,
             'branch_id' => session()->get('branchId'),
             'date' => date("Y-m-d"),
@@ -125,7 +123,7 @@ class ExpenseTable extends Component
 
         if ($update) {
             updateCashAmount(session()->get('branchId'), $oldExpenseAmount, 1);
-            updateCashAmount(session()->get('branchId'), $this->upd_amount, 0);
+            updateCashAmount(session()->get('branchId'), unformatPrice($this->upd_amount), 0);
             $this->dispatchBrowserEvent('CloseEditExpenseModal', [
                 'title' => "İşlem Başarılı",
                 'text' => "Gider başarıyla güncellendi.",
